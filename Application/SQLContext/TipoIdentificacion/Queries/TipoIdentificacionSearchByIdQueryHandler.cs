@@ -1,6 +1,6 @@
 ﻿using Application.SQLContext.TipoIdentificacion.DTOs;
 using AutoMapper;
-using Core.Interfaces.SQLContext;
+using Core.Interfaces.Oracle;
 using MediatR;
 
 namespace Application.SQLContext.TipoIdentificacion.Queries

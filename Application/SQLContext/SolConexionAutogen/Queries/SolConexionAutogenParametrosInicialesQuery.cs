@@ -1,7 +1,7 @@
-﻿using Application.SQLContext.SolConexionAutogen.DTOs;
-using MediatR;
-
-namespace Application.SQLContext.SolConexionAutogen.Queries
+﻿namespace Application.SQLContext.SolConexionAutogen.Queries
 {
+    using Application.SQLContext.SolConexionAutogen.DTOs;
+    using MediatR;
+
     public record SolConexionAutogenParametrosInicialesQuery() : IRequest<SolConexionAutogenParamsIniDTO>;
 }

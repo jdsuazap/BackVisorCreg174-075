@@ -1,10 +1,10 @@
-﻿using Application.SQLContext.SolConexionAutogen.DTOs;
-using AutoMapper;
-using Core.Interfaces.SQLContext;
-using MediatR;
-
-namespace Application.SQLContext.SolConexionAutogen.Queries
+﻿namespace Application.SQLContext.SolConexionAutogen.Queries
 {
+    using Application.SQLContext.SolConexionAutogen.DTOs;
+    using AutoMapper;
+    using Core.Interfaces.SQLContext;
+    using MediatR;
+
     public class SolConexionAutogenParametrosInicialesQueryHandler : IRequestHandler<SolConexionAutogenParametrosInicialesQuery, SolConexionAutogenParamsIniDTO>
     {
         private readonly ISolConexionAutogenService _solConexionAutogenService;
