@@ -5,7 +5,6 @@ namespace Api.Controllers
     using Application.SQLContext.SolConexionAutogen.Queries;
     using Core.Exceptions;
     using MediatR;
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     //[Authorize(Policy = "ShouldBeAnAdminOrCreg")]

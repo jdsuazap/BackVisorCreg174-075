@@ -4,12 +4,9 @@ namespace Api.Controllers
     using Application.SQLContext.SolServicioConexion.DTOs;
     using Application.SQLContext.SolServicioConexion.Queries;
     using Core.Exceptions;
-    using Core.ModelResponse;
     using MediatR;
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    [Authorize(Policy = "ShouldBeAnAdminOrCreg")]
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]

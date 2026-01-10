@@ -98,16 +98,25 @@
             services.AddTransient<ISolServicioConexionReciboTecnicoService, SolServicioConexionReciboTecnicoService>();
             services.AddTransient<ISolServicioConexionService, SolServicioConexionService>();
             //services.AddTransient<ISolServicioConexionComentarioService, SolServicioConexionComentarioService>();                      
-            services.AddTransient<IDepartamentoService, DepartamentoService>();          
             services.AddTransient<ISolServicioConexionFactibilidadService, SolServicioConexionFactibilidadService>();
             services.AddTransient<ISolServicioConexionDisenioService, SolServicioConexionDisenioService>();
             services.AddTransient<ISolServicioConexionComentarioService , SolServicioConexionComentarioService>();
-            services.AddTransient<ITipoIdentificacionService , TipoIdentificacionService>();
             services.AddTransient<ISolServicioConexionReviewsService , SolServicioConexionReviewsService> ();
             services.AddTransient<ISolConexionAutogenComentarioService, SolConexionAutogenComentarioService>();
 
 
             services.AddTransient<ICregCiudadService, CregCiudadService>();
+            services.AddTransient<IDepartamentoService, DepartamentoService>();
+            services.AddTransient<ITipoGeneracionService, TipoGeneracionService>();
+            services.AddTransient<ITipoIdentificacionService , TipoIdentificacionService>();
+            services.AddTransient<IClasificacionProyectoService, ClasificacionProyectoService>();
+            services.AddTransient<ITipoClienteService, TipoClienteService>();
+            services.AddTransient<ITipoTecnologiaService, TipoTecnologiaService>();
+            services.AddTransient<IComercializadorService, ComercializadorService>();
+            services.AddTransient<ITipoAerogeneradorService, TipoAerogeneradorService>();
+            services.AddTransient<ITipoTecnologiaService, TipoTecnologiaService>();
+            services.AddTransient<ITipoTramiteVisitaService, TipoTramiteVisitaService>();
+
 
             return services;
         }

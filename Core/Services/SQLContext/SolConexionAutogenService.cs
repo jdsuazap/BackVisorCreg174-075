@@ -351,18 +351,17 @@
         {
             var initialParams = new SolConexionAutogenParamsIni
             {
-                //ListadoTipoGeneracion = await _unitOfWork.TipoGeneracionRepository.GetEntities(),
-                //ListadoClasificacionProyecto = await _unitOfWork.ClasificacionProyectoRepository.GetEntities(),
-                //ListadoComercializador = await _unitOfWork.ComercializadorRepository.GetEntities(),
-                //ListadoTipoIdentificacion = await _unitOfWork.TipoIdentificacionRepository.GetEntities(),
+                ListadoTipoGeneracion = await _unitOfWork.TipoGeneracionRepository.GetEntities(),
+                ListadoClasificacionProyecto = await _unitOfWork.ClasificacionProyectoRepository.GetEntities(),
+                ListadoComercializador = await _unitOfWork.ComercializadorRepository.GetEntities(),
+                ListadoTipoIdentificacion = await _unitOfWork.TipoIdentificacionRepository.GetEntities(),
                 ListadoDepartamento = await _unitOfWork.DepartamentoRepository.GetEntities(),
                 ListadoCiudad = await _unitOfWork.CregCiudadRepository.GetEntities(),
-                //ListadoTipoCliente = await _unitOfWork.TipoClienteRepository.GetEntities(),
-                //ListadoTipoTecnologia = await _unitOfWork.TipoTecnologiaRepository.GetEntities(),
-                //ListadoTipoAerogenerador = await _unitOfWork.TipoAerogeneradorRepository.GetEntities(),
-                //ListadoEstratoSocioeconomico = await _unitOfWork.EstratoSocioeconomicoRepository.GetEntities(),
-                ListadoMotivoProrroga = await _unitOfWork.MotivoProrrogaRepository.GetEntities(),
-                //ListadoTipoTramiteVisita = await _unitOfWork.TipoTramiteVisitaRepository.GetEntities(),
+                ListadoTipoCliente = await _unitOfWork.TipoClienteRepository.GetEntities(),
+                ListadoTipoTecnologia = await _unitOfWork.TipoTecnologiaRepository.GetEntities(),
+                ListadoTipoAerogenerador = await _unitOfWork.TipoAerogeneradorRepository.GetEntities(),
+                ListadoEstratoSocioeconomico = await _unitOfWork.EstratoSocioeconomicoRepository.GetEntities(),
+                ListadoTipoTramiteVisita = await _unitOfWork.TipoTramiteVisitaRepository.GetEntities(),
                 //ListadoDocumentosXformularios = await _unitOfWork.DocumentosXformularioRepository.GetEntitiesByCodFormulario((int)FormularioPrincipalEnum.Solicitud_Conexion_Autogenerador)
             };
 
