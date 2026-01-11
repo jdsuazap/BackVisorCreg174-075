@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Core.Entities.Oracle
+﻿namespace Core.Entities.Oracle
 {
     public partial class Creg174Autogen
     {
@@ -35,7 +32,7 @@ namespace Core.Entities.Oracle
         public string CodDepartamentoCliente { get; set; } = null!;
         public string CodMunicipioCliente { get; set; } = null!;
         public string? BarrioCliente { get; set; }
-        public int TelefonoCliente { get; set; }
+        public long TelefonoCliente { get; set; }
         public string EmailCliente { get; set; } = null!;
         public int CodTipoCliente { get; set; }
         public string? OtroTipoCliente { get; set; }

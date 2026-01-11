@@ -46,7 +46,7 @@
                 .HasColumnName("BARRIO_CLIENTE");
 
             entity.Property(e => e.CapacidadNominal)
-                .HasColumnType("NUMBER(10,4)")
+                .HasColumnType("NUMBER(15,4)")
                 .HasColumnName("CAPACIDAD_NOMINAL");
 
             entity.Property(e => e.ClienteSuministraMedidor)
@@ -154,7 +154,7 @@
                 .HasDefaultValueSql("0 ");
 
             entity.Property(e => e.Direccion)
-                .HasMaxLength(100)
+                .HasMaxLength(300)
                 .IsUnicode(false)
                 .HasColumnName("DIRECCION");
 
@@ -232,11 +232,11 @@
                 .HasColumnName("MEDIDOR_PERFIL_HORARIO");
 
             entity.Property(e => e.NivelTension)
-                .HasColumnType("NUMBER(10,4)")
+                .HasColumnType("NUMBER(15,4)")
                 .HasColumnName("NIVEL_TENSION");
 
             entity.Property(e => e.NombreCliente)
-                .HasMaxLength(200)
+                .HasMaxLength(400)
                 .IsUnicode(false)
                 .HasColumnName("NOMBRE_CLIENTE");
 
@@ -269,7 +269,7 @@
                 .HasColumnName("OTRO_TIPO_CLIENTE");
 
             entity.Property(e => e.PotenciaMaximaDeclarada)
-                .HasColumnType("NUMBER(10,4)")
+                .HasColumnType("NUMBER(15,4)")
                 .HasColumnName("POTENCIA_MAXIMA_DECLARADA");
 
             entity.Property(e => e.ProrrogaEnProceso)
@@ -293,7 +293,7 @@
                 .HasDefaultValueSql("0 ");
 
             entity.Property(e => e.TelefonoCliente)
-                .HasPrecision(10)
+                .HasPrecision(11)
                 .HasColumnName("TELEFONO_CLIENTE");
 
             entity.Property(e => e.UltimoEstadoProrroga)
@@ -307,9 +307,9 @@
                 .HasDefaultValueSql("0 ");
 
             entity.HasOne(d => d.CodClasificacionProyectoNavigation)
-                .WithMany(p => p.Creg174Autogens)
-                .HasForeignKey(d => d.CodClasificacionProyecto)
-                .HasConstraintName("CREG_174_AUTOGEN_CLASIF_PROY");
+                   .WithMany(p => p.Creg174Autogens)
+                   .HasForeignKey(d => d.CodClasificacionProyecto)
+                   .HasConstraintName("CREG_174_AUTOGEN_CLASIF_PROY");
 
             entity.HasOne(d => d.CodComercializadorNavigation)
                 .WithMany(p => p.Creg174Autogens)

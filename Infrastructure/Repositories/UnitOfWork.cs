@@ -38,6 +38,8 @@
         private readonly ITipoTramiteVisitaRepository _tipoTramiteVisitaRepository;
         private readonly ITipoClaseCargaRepository _tipoClaseCargaRepository;
         private readonly ITipoConexionRepository _tipoConexionRepository;
+        private readonly ITipoSolicitudServicioRepository _tipoSolicitudServicioRepository;
+        private readonly ITipoSolicitudReciboRepository _tipoSolicitudReciboRepository;
 
         #region SQLContext
 
@@ -202,6 +204,30 @@
            )
         );
 
+        public ITipoTensionRepository TipoTensionRepository => _tipoTensionRepository ?? new TipoTensionRepository(_eepContext,
+           new DbConnectionFactorySingular(
+               _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
+           )
+        );
+
+        public ITipoZonaRepository TipoZonaRepository => _tipoZonaRepository ?? new TipoZonaRepository(_eepContext,
+           new DbConnectionFactorySingular(
+               _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
+           )
+        );
+
+        public ITipoSolicitudServicioRepository TipoSolicitudServicioRepository => _tipoSolicitudServicioRepository ?? new TipoSolicitudServicioRepository(_eepContext,
+           new DbConnectionFactorySingular(
+               _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
+           )
+        );
+
+         public ITipoSolicitudReciboRepository TipoSolicitudReciboRepository => _tipoSolicitudReciboRepository ?? new TipoSolicitudReciboRepository(_eepContext,
+           new DbConnectionFactorySingular(
+               _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
+           )
+        );
+
 
         #region SQLContext
 
@@ -215,9 +241,6 @@
         public IMotivoProrrogaRepository MotivoProrrogaRepository => _motivoProrrogaRepository ?? new MotivoProrrogaRepository(_context);
         public ITipoActivoRepository TipoActivoRepository => _tipoActivoRepository ?? new TipoActivoRepository(_context);        
         //public ITipoSolicitudReciboRepository TipoSolicitudReciboRepository => _tipoSolicitudReciboRepository ?? new TipoSolicitudReciboRepository(_context);
-        //public ITipoSolicitudServicioRepository TipoSolicitudServicioRepository => _tipoSolicitudServicioRepository ?? new TipoSolicitudServicioRepository(_context);
-        public ITipoTensionRepository TipoTensionRepository => _tipoTensionRepository ?? new TipoTensionRepository(_context);
-        public ITipoZonaRepository TipoZonaRepository => _tipoZonaRepository ?? new TipoZonaRepository(_context);
         public IPasosSolConexionAutogenRepository PasosSolConexionAutogenRepository => _pasosSolConexionAutogenRepository ?? new PasosSolConexionAutogenRepository(_context);
         public IPasosSolServicioConexionRepository PasosSolServicioConexionRepository => _pasosSolServicioConexionRepository ?? new PasosSolServicioConexionRepository(_context);
         public ISolConexionAutogenRepository SolConexionAutogenRepository => _solConexionAutogenRepository ?? new SolConexionAutogenRepository(_context, _dapperContext);

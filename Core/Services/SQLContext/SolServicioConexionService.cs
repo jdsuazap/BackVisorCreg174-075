@@ -60,6 +60,7 @@
 
         public async Task<SolServicioConexionParamsIni> GetParametrosIniciales()
         {
+
             return new SolServicioConexionParamsIni()
             {
                 //ListadoActividadEconomica = await _unitOfWork.ActividadEconomicaRepository.GetEntities(),
@@ -74,10 +75,10 @@
                 ListadoTipoPersona = await _unitOfWork.TipoPersonaRepository.GetEntities(),
                 ListadoTipoProyecto = await _unitOfWork.TipoProyectoRepository.GetEntities(),
                 ListadoTipoServicio = await _unitOfWork.TipoServicioRepository.GetEntities(),
-                //ListadoTipoSolicitudRecibo = await _unitOfWork.TipoSolicitudReciboRepository.GetEntities(),
-                //ListadoTipoSolicitudServicio = await _unitOfWork.TipoSolicitudServicioRepository.GetEntities(),
-                //ListadoTipoTension = await _unitOfWork.TipoTensionRepository.GetEntities(),
-                //ListadoTipoZona = await _unitOfWork.TipoZonaRepository.GetEntities(),
+                ListadoTipoSolicitudRecibo = await _unitOfWork.TipoSolicitudReciboRepository.GetEntities(),
+                ListadoTipoSolicitudServicio = await _unitOfWork.TipoSolicitudServicioRepository.GetEntities(),
+                ListadoTipoTension = await _unitOfWork.TipoTensionRepository.GetEntities(),
+                ListadoTipoZona = await _unitOfWork.TipoZonaRepository.GetEntities(),
                 //ListadoDocumentosXformularios = await _unitOfWork.DocumentosXformularioRepository.GetEntitiesByCodFormulario((int)FormularioPrincipalEnum.Solicitud_Conexion_Servicio),
                 ListadoComercializador = await _unitOfWork.ComercializadorRepository.GetEntities(),
             };
