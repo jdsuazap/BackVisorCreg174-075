@@ -12,6 +12,7 @@
             CreateMap<ListadoSolStatusServicioConexion, ListadoSolStatusServicioConexionDTO>().ReverseMap();
             CreateMap<ListadoSolServicioConexion, ListadoSolServicioConexionDTO>().ReverseMap();
             CreateMap<SolServicioConexion, SolServicioConexionDTO>().ReverseMap();
+            CreateMap<Core.CustomEntities.FormInitialParams.SolServicioConexionParamsIni, SolServicioConexionParamsIniDTO>().ReverseMap();
         }
     }
 }
