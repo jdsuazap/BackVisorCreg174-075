@@ -5,11 +5,12 @@
         public Creg174Autogen()
         {
             Creg174Anexos = new HashSet<Creg174Anexo>();
-            Creg174BasInvs = new HashSet<Creg174BasInv>();
-            Creg174Inmuebles = new HashSet<Creg174Inmueble>();
-            Creg174NoBasInvs = new HashSet<Creg174NoBasInv>();
+            Creg174BasInvs = new Creg174BasInv();
+            Creg174Infoeolica = new Creg174Infoeolica();
+            Creg174Inmuebles = new Creg174Inmueble();
+            Creg174NoBasInvs = new Creg174NoBasInv();
             Creg174TecnUtilizada = new HashSet<Creg174TecnUtilizada>();
-            Creg174Tecnologia = new HashSet<Creg174Tecnologia>();
+            Creg174Tecnologia = new Creg174Tecnologia();
         }
 
         public int Id { get; set; }
@@ -88,10 +89,11 @@
         public virtual CregTipoCliente CodTipoClienteNavigation { get; set; } = null!;
         public virtual CregTipoIdentificacion CodTipoIdentificacionNavigation { get; set; } = null!;
         public virtual ICollection<Creg174Anexo> Creg174Anexos { get; set; }
-        public virtual ICollection<Creg174BasInv> Creg174BasInvs { get; set; }
-        public virtual ICollection<Creg174Inmueble> Creg174Inmuebles { get; set; }
-        public virtual ICollection<Creg174NoBasInv> Creg174NoBasInvs { get; set; }
+        public virtual Creg174BasInv Creg174BasInvs { get; set; }
+        public virtual Creg174Inmueble Creg174Inmuebles { get; set; }
+        public virtual Creg174Infoeolica Creg174Infoeolica { get; set; }
+        public virtual Creg174NoBasInv Creg174NoBasInvs { get; set; }
         public virtual ICollection<Creg174TecnUtilizada> Creg174TecnUtilizada { get; set; }
-        public virtual ICollection<Creg174Tecnologia> Creg174Tecnologia { get; set; }
+        public virtual Creg174Tecnologia Creg174Tecnologia { get; set; }
     }
 }

@@ -11,8 +11,14 @@
     {
 
         ICregCiudadRepository CregCiudadRepository { get; }
+        IDepartamentoRepository DepartamentoRepository { get; }
+        ITipoGeneracionRepository TipoGeneracionRepository { get; }
+        IClasificacionProyectoRepository ClasificacionProyectoRepository { get; }
+        ITipoClienteRepository TipoClienteRepository { get; }
         ITipoSolicitudServicioRepository TipoSolicitudServicioRepository { get; }
         ITipoSolicitudReciboRepository TipoSolicitudReciboRepository { get; }
+        IPersonaAutorizaReciboRepository PersonaAutorizaReciboRepository { get; }
+
         #region SQLContext       
 
         IComercializadorRepository ComercializadorRepository { get; }
@@ -23,11 +29,11 @@
         ITipoActivoRepository TipoActivoRepository { get; }
         ITipoAerogeneradorRepository TipoAerogeneradorRepository { get; }
         ITipoClaseCargaRepository TipoClaseCargaRepository { get; }
-        ITipoClienteRepository TipoClienteRepository { get; }
+        
         ITipoCompletitudRepository TipoCompletitudRepository { get; }
         ITipoConexionRepository TipoConexionRepository { get; }
         ITipoConstruccionRepository TipoConstruccionRepository { get; }
-        ITipoGeneracionRepository TipoGeneracionRepository { get; }
+        
         ITipoIdentificacionRepository TipoIdentificacionRepository { get; }
         ITipoPersonaRepository TipoPersonaRepository { get; }
         ITipoProyectoRepository TipoProyectoRepository { get; }
@@ -46,13 +52,13 @@
         ISolServicioConexionRepository SolServicioConexionRepository { get; }
         ISolServicioConexionComentarioRepository SolServicioConexionComentarioRepository { get; }
         
-        IDepartamentoRepository DepartamentoRepository { get; }
+       
 
         ISolServicioConexionFactibilidadRepository SolServicioConexionFactibilidadRepository { get; }
         ISolServicioConexionDisenioRepository SolServicioConexionDisenioRepository { get; }
         IEstadoRepository EstadoRepository { get; }
         IActividadEconomicaRepository ActividadEconomicaRepository { get; }
-        IClasificacionProyectoRepository ClasificacionProyectoRepository { get; }
+       
         ISolServicioConexionReviewRepository SolServicioConexionReviewRepository { get; }
         ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository { get; }
 

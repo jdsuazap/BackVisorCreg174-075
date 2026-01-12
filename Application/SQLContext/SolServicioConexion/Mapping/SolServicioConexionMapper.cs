@@ -2,7 +2,7 @@
 {
     using Application.SQLContext.SolServicioConexion.DTOs;
     using AutoMapper;
-    using Core.CustomEntities.SQLContext;
+    using Core.CustomEntities.Oracle;
     using Core.Entities.SQLContext;
 
     internal class SolServicioConexionMapper : Profile

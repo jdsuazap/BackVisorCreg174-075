@@ -53,8 +53,8 @@
                 .HasColumnName("OTRA_TECNOLOGIA_BASE");
 
             entity.HasOne(d => d.Cod174AutogenNavigation)
-                .WithMany(p => p.Creg174Tecnologia)
-                .HasForeignKey(d => d.Cod174Autogen)
+                .WithOne(p => p.Creg174Tecnologia)
+                .HasForeignKey<Creg174Tecnologia>(d => d.Cod174Autogen)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CREG_174_TECNOLOGIAS_AUTOGEN");
         }

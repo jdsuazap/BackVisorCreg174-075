@@ -8,16 +8,18 @@
     {
         public void Configure(EntityTypeBuilder<Creg174Infoeolica> entity)
         {
-            entity.HasNoKey();
-
             entity.ToTable("CREG_174_INFOEOLICA");
+
+            entity.Property(e => e.Id)
+                .HasPrecision(10)
+                .HasColumnName("ID");
 
             entity.Property(e => e.AnioIeee1547)
                 .HasPrecision(4)
                 .HasColumnName("ANIO_IEEE1547");
 
             entity.Property(e => e.Cod174Autogen)
-                .HasColumnType("NUMBER")
+                .HasPrecision(10)
                 .HasColumnName("COD_174_AUTOGEN");
 
             entity.Property(e => e.CodTipoAerogenerador)
@@ -37,11 +39,6 @@
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("FABRICANTE_AEROGENERADOR");
-
-            entity.Property(e => e.Id)
-                .HasColumnType("NUMBER")
-                .ValueGeneratedOnAdd()
-                .HasColumnName("ID");
 
             entity.Property(e => e.Modelo)
                 .HasMaxLength(20)
@@ -77,6 +74,12 @@
             entity.Property(e => e.VoltajeAc)
                 .HasColumnType("NUMBER(10,4)")
                 .HasColumnName("VOLTAJE_AC");
+
+            entity.HasOne(d => d.Cod174AutogenNavigation)
+                .WithOne(p => p.Creg174Infoeolica)
+                .HasForeignKey<Creg174Infoeolica>(d => d.Cod174Autogen)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("CREG_174_INFOEOLICA_AUTOGEN");
         }
     }
 }

@@ -19,9 +19,8 @@
         public List<CregTipoCompletitud> ListadoTipoCompletitud { get; set; }
         public List<CregTipoClaseCarga> ListadoTipoClaseCarga { get; set; }        
         public List<CregComercializador> ListadoComercializador { get; set; }
-
-        //public List<ActividadEconomica> ListadoActividadEconomica { get; set; }
-        //public List<DocumentosXformulario> ListadoDocumentosXformularios { get; set; }
-        //public List<PersonaAutorizaRecibo> ListadoPersonaAutorizaRecibo { get; set; }
+        public List<CregActividadEconomica> ListadoActividadEconomica { get; set; }
+        public List<CregDocumentosFormulario> ListadoDocumentosXformularios { get; set; }
+        public List<CregPersonaAutoriza> ListadoPersonaAutorizaRecibo { get; set; }
     }
 }

@@ -224,122 +224,94 @@
         ";
 
         internal const string GetEntity = @"
-            SELECT IdSolConexionAutogen AS Id, * FROM sol.SolConexionAutogen (NOLOCK) WHERE IdSolConexionAutogen = @IdSolicitud;
+            SELECT *
+            FROM CREG_174_AUTOGEN
+            WHERE ID = :IdSolicitud
 
-            SELECT cla.IdClasificacionProyecto AS Id, cla.* 
-            FROM sol.SolConexionAutogen a (NOLOCK) 
-            LEFT JOIN par.ClasificacionProyecto cla (NOLOCK) ON a.CodClasificacionProyecto = cla.IdClasificacionProyecto
-            WHERE a.IdSolConexionAutogen = @IdSolicitud;
+            SELECT CLA.*
+            FROM CREG_174_AUTOGEN A
+            LEFT JOIN CREG_CLASIFICACION_PROYECTO CLA
+                   ON A.COD_CLASIFICACION_PROYECTO = CLA.ID
+            WHERE A.ID = :IdSolicitud
 
-            SELECT com.IdComercializador AS Id, com.* 
-            FROM sol.SolConexionAutogen a (NOLOCK) 
-            LEFT JOIN par.Comercializador com (NOLOCK) ON a.CodComercializador = com.IdComercializador
-            WHERE a.IdSolConexionAutogen = @IdSolicitud;
+            SELECT COM.*
+            FROM CREG_174_AUTOGEN A
+            LEFT JOIN CREG_COMERCIALIZADOR COM
+                   ON A.COD_COMERCIALIZADOR = COM.ID
+            WHERE A.ID = :IdSolicitud
 
-            SELECT es.parIdEstado AS Id, es.* 
-            FROM sol.SolConexionAutogen a (NOLOCK) 
-            INNER JOIN par.Estados es (NOLOCK) ON a.Estado = es.parIdEstado
-            WHERE a.IdSolConexionAutogen = @IdSolicitud;
+            SELECT ES.*
+            FROM CREG_174_AUTOGEN A
+            INNER JOIN CREG_ESTADOS ES
+                    ON A.COD_ESTADO = ES.ID
+            WHERE A.ID = :IdSolicitud
 
-            SELECT es.parIdEstado AS Id, es.* 
-            FROM sol.SolConexionAutogen a (NOLOCK) 
-            INNER JOIN par.Estados es (NOLOCK) ON a.EstadoVisita = es.parIdEstado
-            WHERE a.IdSolConexionAutogen = @IdSolicitud;
+            SELECT EST.*
+            FROM CREG_174_AUTOGEN A
+            LEFT JOIN CREG_ESTRATO_SOCIOECONOMICO EST
+                   ON A.COD_ESTRATO_CLIENTE = EST.ID
+            WHERE A.ID = :IdSolicitud
 
-            SELECT es.parIdEstado AS Id, es.* 
-            FROM sol.SolConexionAutogen a (NOLOCK) 
-            INNER JOIN par.Estados es (NOLOCK) ON a.UltimoEstadoProrroga = es.parIdEstado
-            WHERE a.IdSolConexionAutogen = @IdSolicitud;
+            SELECT TC.*
+            FROM CREG_174_AUTOGEN A
+            INNER JOIN CREG_TIPO_CLIENTE TC
+                    ON A.COD_TIPO_CLIENTE = TC.ID
+            WHERE A.ID = :IdSolicitud
 
-            SELECT et.IdEtapa AS Id, et.* 
-            FROM sol.SolConexionAutogen a (NOLOCK) 
-            INNER JOIN par.Estados es (NOLOCK) ON a.Estado = es.parIdEstado
-            LEFT  JOIN par.Etapas et (NOLOCK) ON es.CodEtapa = et.IdEtapa
-            WHERE a.IdSolConexionAutogen = @IdSolicitud;
+            SELECT TG.*
+            FROM CREG_174_AUTOGEN A
+            INNER JOIN CREG_TIPO_GENERACION TG
+                    ON A.COD_TIP_GENERACION = TG.ID
+            WHERE A.ID = :IdSolicitud
 
-            SELECT est.IdEstratoSocioeconomico AS Id, est.* 
-            FROM sol.SolConexionAutogen a (NOLOCK) 
-            LEFT JOIN par.EstratoSocioeconomico est (NOLOCK) ON a.CodEstratoCliente = est.IdEstratoSocioeconomico 
-            WHERE a.IdSolConexionAutogen =  @IdSolicitud;
+            SELECT TI.*
+            FROM CREG_174_AUTOGEN A
+            INNER JOIN CREG_TIPO_IDENTIFICACION TI
+                    ON A.COD_TIPO_IDENTIFICACION = TI.ID
+            WHERE A.ID = :IdSolicitud
 
-            SELECT tc.IdTipoCliente AS Id, tc.* 
-            FROM sol.SolConexionAutogen a (NOLOCK) 
-            INNER JOIN par.TipoCliente tc (NOLOCK) ON a.CodTipoCliente = tc.IdTipoCliente 
-            WHERE a.IdSolConexionAutogen = @IdSolicitud;
+            SELECT *
+            FROM CREG_174_BAS_INV
+            WHERE COD_174_AUTOGEN = :IdSolicitud
 
-            SELECT tg.IdTipoGeneracion AS Id, tg.* 
-            FROM sol.SolConexionAutogen a (NOLOCK) 
-            INNER JOIN par.TipoGeneracion tg (NOLOCK) ON a.CodTipoGeneracion = tg.IdTipoGeneracion
-            WHERE a.IdSolConexionAutogen = @IdSolicitud;
+            SELECT *
+            FROM CREG_174_INFOEOLICA
+            WHERE COD_174_AUTOGEN = :IdSolicitud
 
-            SELECT ti.IdTipoIdentificacion AS Id, ti.* 
-            FROM sol.SolConexionAutogen a (NOLOCK) 
-            INNER JOIN par.TipoIdentificacion ti (NOLOCK) ON a.CodTipoIdentificacionCliente = ti.IdTipoIdentificacion 
-            WHERE a.IdSolConexionAutogen = @IdSolicitud;
+            SELECT *
+            FROM CREG_174_INMUEBLE
+            WHERE COD_174_AUTOGEN = :IdSolicitud
 
-            SELECT 
-                [IdSolConexionAutogenBasadaInv] AS Id,[IdSolConexionAutogenBasadaInv]
-	            ,[CodSolConexionAutogen],[PotenciaPanel],[NumPaneles],[PoseeRele]
-	            ,[CapacidadDC],[PotTotalAC],[VoltSalInv],[VoltEntInv],[NumFases]
-	            ,[NumInversores],[PoseePPC],[FabricanteInv],[ModeloInv],[CumpleUL1741]
-	            ,[AnioUL1741],[CumpleIEC61727],[AnioIEC61727]
-                ,[Transfo_PotNominal]	AS TransfoPotNominal
-                ,[Transfo_ImpedanciaCC]	AS TransfoImpedanciaCc
-                ,[Transfo_GrupoConex]	AS TransfoGrupoConex
-                ,[DescripcionElementos],[CodUser],[FechaRegistro],[CodUserUpdate]
-                ,[FechaRegistroUpdate],[Info],[InfoUpdate]
-            FROM [sol].[SolConexionAutogenBasadaInv] (NOLOCK)
-            WHERE CodSolConexionAutogen = @IdSolicitud;
+            SELECT CIU.*
+            FROM CREG_174_AUTOGEN A
+            INNER JOIN CREG_174_INMUEBLE D
+                    ON A.ID = D.COD_174_AUTOGEN
+            INNER JOIN CREG_CIUDAD CIU
+                    ON D.MUNICIPIO = CIU.ID
+            WHERE A.ID = :IdSolicitud
 
-            SELECT 
-	            [IdSolConexionAutogenInfoEolica] AS Id,[IdSolConexionAutogenInfoEolica]
-                ,[CodSolConexionAutogen],[FabricanteAerogenerador],[Modelo],[VoltajeAC]
-                ,[PotenciaNominal],[NumAerogeneradores],[CodTipoAerogenerador]
-                ,[PoseePPC]
-                ,[Transfo_PotNominal]	AS TransfoPotNominal
-                ,[Transfo_ImpedanciaCC]	AS TransfoImpedanciaCc
-                ,[Transfo_GrupoConex]	AS TransfoGrupoConex
-                ,[DescripcionElementos],[CumpleIEEE1547],[AnioIEEE1547],[CodUser]
-                ,[FechaRegistro],[CodUserUpdate],[FechaRegistroUpdate],[Info],[InfoUpdate]
-            FROM [sol].[SolConexionAutogenInfoEolica] (NOLOCK)
-            WHERE CodSolConexionAutogen = @IdSolicitud;
+            SELECT DP.*
+            FROM CREG_174_AUTOGEN A
+            INNER JOIN CREG_174_INMUEBLE D
+                    ON A.ID = D.COD_174_AUTOGEN
+            INNER JOIN CREG_CIUDAD CIU
+                    ON D.MUNICIPIO = CIU.ID
+            INNER JOIN CREG_DEPARTAMENTO DP
+                    ON CIU.COD_DEPARTAMENTO = DP.ID
+            WHERE A.ID = :IdSolicitud
 
-            SELECT IdSolConexionAutogenInmueble AS Id, * 
-            FROM sol.SolConexionAutogenInmueble (NOLOCK)
-            WHERE CodSolConexionAutogen  = @IdSolicitud;
+            SELECT *
+            FROM CREG_174_NO_BAS_INV
+            WHERE COD_174_AUTOGEN = :IdSolicitud
 
-            SELECT ciu.IdCiudad AS Id, ciu.* 
-            FROM sol.SolConexionAutogen a (NOLOCK) 
-            INNER JOIN sol.SolConexionAutogenInmueble d (NOLOCK) on a.IdSolConexionAutogen = d.CodSolConexionAutogen 
-            INNER JOIN par.Ciudad ciu (NOLOCK) ON d.Municipio = ciu.IdCiudad 
-            WHERE a.IdSolConexionAutogen = @IdSolicitud;
+            SELECT *
+            FROM CREG_174_TECNOLOGIAS
+            WHERE COD_174_AUTOGEN = :IdSolicitud
 
-            SELECT dp.IdDepartamento AS Id, dp.* 
-            FROM sol.SolConexionAutogen a (NOLOCK) 
-            INNER JOIN sol.SolConexionAutogenInmueble d (NOLOCK) on a.IdSolConexionAutogen = d.CodSolConexionAutogen 
-            INNER JOIN par.Ciudad ciu (NOLOCK) ON d.Municipio = ciu.IdCiudad 
-            INNER JOIN par.Departamento dp (NOLOCK) ON ciu.CodDepartamento = dp.IdDepartamento 
-            WHERE a.IdSolConexionAutogen = @IdSolicitud;
+            SELECT *
+            FROM CREG_174_TECN_UTILIZADAS
+            WHERE COD_174_AUTOGEN = :IdSolicitud
 
-            SELECT
-	            [IdSolConexionAutogenNoBasadaInv] AS Id,[IdSolConexionAutogenNoBasadaInv]
-                ,[CodSolConexionAutogen],[FabricanteGenerador],[ModeloGenerador],[VoltajeGenerador]
-                ,[PotenciaNominal],[FactorPotencia],[NumeroFases]
-                ,[Transfo_PotNominal]	AS TransfoPotNominal
-                ,[Transfo_ImpedanciaCC]	AS TransfoImpedanciaCc
-                ,[Transfo_GrupoConex]	AS TransfoGrupoConex
-                ,[DescripcionElementos],[CumpleIEEE1547],[AnioIEEE1547],[CodUser],[FechaRegistro]
-                ,[CodUserUpdate],[FechaRegistroUpdate],[Info],[InfoUpdate]
-            FROM [sol].[SolConexionAutogenNoBasadaInv] (NOLOCK)
-            WHERE CodSolConexionAutogen = @IdSolicitud;
-
-            SELECT IdSolConexionAutogenTecnologias AS Id, * 
-            FROM sol.SolConexionAutogenTecnologias (NOLOCK) 
-            WHERE CodSolConexionAutogen = @IdSolicitud; 
-
-            SELECT IdSolConexionAutogenTecnUtilizadas AS Id, * 
-            FROM sol.SolConexionAutogenTecnUtilizadas (NOLOCK) 
-            WHERE CodSolConexionAutogen = @IdSolicitud; 
         ";
 
         internal const string GetValidationTipoProcConexion = @"EXEC [sol].[Creg174_ValidacionTipoProcedimientoConexion] @idSolConexionAutogen = @idSolConexionAutogen";

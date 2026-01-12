@@ -1,7 +1,7 @@
 ﻿namespace Application.SQLContext.SolConexionAutogenComentario.DTOs
 {
     using Application.SQLContext.Estado.DTOs;
-    using Application.SQLContext.SolConexionAutogen.DTOs;
+    using Application.Oracle.SolConexionAutogen.DTOs;
 
     public class SolConexionAutogenComentarioDTO
     {

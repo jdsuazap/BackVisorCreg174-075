@@ -1,7 +1,7 @@
 ﻿namespace Core.CustomEntities.FormInitialParams
 {
     using Core.Entities.Oracle;
-    using Core.Entities.SQLContext;
+
     public class SolConexionAutogenParamsIni
     {
         public List<CregTipoGeneracion> ListadoTipoGeneracion { get; set; }
@@ -15,6 +15,6 @@
         public List<CregTipoAerogenerador> ListadoTipoAerogenerador { get; set; }
         public List<CregEstratoSocioeconomico> ListadoEstratoSocioeconomico { get; set; }
         public List<CregTipoTramiteVisita> ListadoTipoTramiteVisita { get; set; }
-        //public List<DocumentosXformulario> ListadoDocumentosXformularios { get; set; }
+        public List<CregDocumentosFormulario> ListadoDocumentosXformularios { get; set; }
     }
 }

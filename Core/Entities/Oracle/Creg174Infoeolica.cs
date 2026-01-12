@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Core.Entities.Oracle
+﻿namespace Core.Entities.Oracle
 {
     public partial class Creg174Infoeolica
     {
-        public decimal Id { get; set; }
-        public decimal Cod174Autogen { get; set; }
+        public int Id { get; set; }
+        public int Cod174Autogen { get; set; }
         public string? FabricanteAerogenerador { get; set; }
         public string? Modelo { get; set; }
         public decimal? VoltajeAc { get; set; }
@@ -20,5 +17,8 @@ namespace Core.Entities.Oracle
         public string? DescripcionElementos { get; set; }
         public bool? CumpleIeee1547 { get; set; }
         public byte? AnioIeee1547 { get; set; }
+
+        public virtual Creg174Autogen Cod174AutogenNavigation { get; set; } = null!;
+
     }
 }

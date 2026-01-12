@@ -1,8 +1,8 @@
 ﻿namespace Core.Services.Oracle
 {
-    using Core.Entities.SQLContext;
+    using Core.Entities.Oracle;
     using Core.Interfaces;
-    using Core.Interfaces.SQLContext;
+    using Core.Interfaces.Oracle;
 
     public class ActividadEconomicaService : IActividadEconomicaService
     {
@@ -13,27 +13,27 @@
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<ActividadEconomica> CreateEntity(ActividadEconomica entity)
+        public async Task<CregActividadEconomica> CreateEntity(CregActividadEconomica entity)
         {
             return await _unitOfWork.ActividadEconomicaRepository.CreateEntity(entity);
         }
 
-        public async Task<bool> DeleteEntity(ActividadEconomica entity)
+        public async Task<bool> DeleteEntity(CregActividadEconomica entity)
         {
             return await _unitOfWork.ActividadEconomicaRepository.DeleteEntity(entity);
         }
 
-        public async Task<List<ActividadEconomica>> GetEntities()
+        public async Task<List<CregActividadEconomica>> GetEntities()
         {
             return await _unitOfWork.ActividadEconomicaRepository.GetEntities();
         }
 
-        public async Task<ActividadEconomica> GetEntity(int idEntity)
+        public async Task<CregActividadEconomica> GetEntity(int idEntity)
         {
             return await _unitOfWork.ActividadEconomicaRepository.GetEntity(idEntity);
         }
 
-        public async Task<ActividadEconomica> UpdateEntity(ActividadEconomica entity)
+        public async Task<CregActividadEconomica> UpdateEntity(CregActividadEconomica entity)
         {
             return await _unitOfWork.ActividadEconomicaRepository.UpdateEntity(entity);
         }

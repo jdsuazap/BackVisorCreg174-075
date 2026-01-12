@@ -38,8 +38,17 @@
         private readonly ITipoTramiteVisitaRepository _tipoTramiteVisitaRepository;
         private readonly ITipoClaseCargaRepository _tipoClaseCargaRepository;
         private readonly ITipoConexionRepository _tipoConexionRepository;
+        private readonly ITipoCompletitudRepository _tipoCompletitudRepository;
+        private readonly ITipoConstruccionRepository _tipoConstruccionRepository;                
+        private readonly ITipoPersonaRepository _tipoPersonaRepository;
+        private readonly ITipoProyectoRepository _tipoProyectoRepository;
+        private readonly ITipoServicioRepository _tipoServicioRepository;
+        private readonly ITipoTensionRepository _tipoTensionRepository;
+        private readonly ITipoZonaRepository _tipoZonaRepository;
+        private readonly ISolConexionAutogenRepository _solConexionAutogenRepository;
         private readonly ITipoSolicitudServicioRepository _tipoSolicitudServicioRepository;
         private readonly ITipoSolicitudReciboRepository _tipoSolicitudReciboRepository;
+        private readonly IPersonaAutorizaReciboRepository _personaAutorizaReciboRepository;
 
         #region SQLContext
 
@@ -47,18 +56,8 @@
         private readonly IDocumentosXformularioRepository _documentosXformularioRepository;
         private readonly IMotivoProrrogaRepository _motivoProrrogaRepository;
         private readonly ITipoActivoRepository _tipoActivoRepository;
-        private readonly ITipoCompletitudRepository _tipoCompletitudRepository;
-        private readonly ITipoConstruccionRepository _tipoConstruccionRepository;
-        
-        
-        private readonly ITipoPersonaRepository _tipoPersonaRepository;
-        private readonly ITipoProyectoRepository _tipoProyectoRepository;
-        private readonly ITipoServicioRepository _tipoServicioRepository;
-        private readonly ITipoTensionRepository _tipoTensionRepository;
-        private readonly ITipoZonaRepository _tipoZonaRepository;
         private readonly IPasosSolConexionAutogenRepository _pasosSolConexionAutogenRepository;
         private readonly IPasosSolServicioConexionRepository _pasosSolServicioConexionRepository;
-        private readonly ISolConexionAutogenRepository _solConexionAutogenRepository;
         //private readonly ISolConexionAutogenComentarioRepository _solConexionAutogenComentarioRepository;
         //private readonly ISolConexionAutogenXvisitaRepository _solConexionAutogenXvisitaRepository;
         
@@ -221,8 +220,32 @@
                _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
            )
         );
+        
+        public ITipoSolicitudReciboRepository TipoSolicitudReciboRepository => _tipoSolicitudReciboRepository ?? new TipoSolicitudReciboRepository(_eepContext,
+           new DbConnectionFactorySingular(
+               _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
+           )
+        );
 
-         public ITipoSolicitudReciboRepository TipoSolicitudReciboRepository => _tipoSolicitudReciboRepository ?? new TipoSolicitudReciboRepository(_eepContext,
+        public ISolConexionAutogenRepository SolConexionAutogenRepository => _solConexionAutogenRepository ?? new SolConexionAutogenRepository(_eepContext,
+           new DbConnectionFactorySingular(
+               _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
+           )
+        );
+
+        public IDocumentosXformularioRepository DocumentosXformularioRepository => _documentosXformularioRepository ?? new DocumentosXformularioRepository(_eepContext,
+           new DbConnectionFactorySingular(
+               _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
+           )
+        );
+
+        public IActividadEconomicaRepository ActividadEconomicaRepository => _actividadEconomicaRepository ?? new ActividadEconomicaRepository(_eepContext,
+           new DbConnectionFactorySingular(
+               _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
+           )
+        );
+
+        public IPersonaAutorizaReciboRepository PersonaAutorizaReciboRepository => _personaAutorizaReciboRepository ?? new PersonaAutorizaReciboRepository(_eepContext,
            new DbConnectionFactorySingular(
                _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
            )
@@ -234,16 +257,13 @@
 
         public IEstadoRepository EstadoRepository => _estadoRepository ?? new EstadoRepository(_context);       
         public IEmpresasRepository EmpresasRepository => _empresasRepository ?? new EmpresasRepository(_context);     
-
-        public IActividadEconomicaRepository ActividadEconomicaRepository => _actividadEconomicaRepository ?? new ActividadEconomicaRepository(_context);
-        public IDocumentosXformularioRepository DocumentosXformularioRepository => _documentosXformularioRepository ?? new DocumentosXformularioRepository(_context);
        
         public IMotivoProrrogaRepository MotivoProrrogaRepository => _motivoProrrogaRepository ?? new MotivoProrrogaRepository(_context);
         public ITipoActivoRepository TipoActivoRepository => _tipoActivoRepository ?? new TipoActivoRepository(_context);        
         //public ITipoSolicitudReciboRepository TipoSolicitudReciboRepository => _tipoSolicitudReciboRepository ?? new TipoSolicitudReciboRepository(_context);
+        //public ITipoSolicitudServicioRepository TipoSolicitudServicioRepository => _tipoSolicitudServicioRepository ?? new TipoSolicitudServicioRepository(_context);
         public IPasosSolConexionAutogenRepository PasosSolConexionAutogenRepository => _pasosSolConexionAutogenRepository ?? new PasosSolConexionAutogenRepository(_context);
         public IPasosSolServicioConexionRepository PasosSolServicioConexionRepository => _pasosSolServicioConexionRepository ?? new PasosSolServicioConexionRepository(_context);
-        public ISolConexionAutogenRepository SolConexionAutogenRepository => _solConexionAutogenRepository ?? new SolConexionAutogenRepository(_context, _dapperContext);
         //public ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository => _solConexionAutogenComentarioRepository ?? new SolConexionAutogenComentarioRepository(_context, _dapperContext, _paginacionService);
         
         //public ISolConexionAutogenXvisitaRepository SolConexionAutogenXvisitaRepository => _solConexionAutogenXvisitaRepository ?? new SolConexionAutogenXvisitaRepository(_context);

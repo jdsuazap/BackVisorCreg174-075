@@ -3,7 +3,7 @@
     using Application.Oracle.Departamento.DTOs;
     using Application.Oracle.Ciudad.DTOs;
     using Application.SQLContext.SolServicioConexion.DTOs;
-    using Application.SQLContext.TipoIdentificacion.DTOs;
+    using Application.Oracle.TipoIdentificacion.DTOs;
 
     public class SolServicioConexionDatosSolicitantesDTO
     {

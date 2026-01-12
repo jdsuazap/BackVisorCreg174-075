@@ -160,6 +160,45 @@ namespace Infrastructure.Repositories
 
         #region IMPLEMENTACION DE ORACLE
 
+        public async Task<SqlMapper.GridReader> EjecutarConsultaMultipleAsync(
+            string query,
+            object? param = null)
+        {
+            try
+            {
+                var connection = _dapperContext
+                    .CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleEEP);
+
+                await ((OracleConnection)connection).OpenAsync();
+
+                return await connection.QueryMultipleAsync(query, param);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException($"Error al ejecutar la consulta. {ex.Message}");
+            }
+        }
+
+        public async Task<IEnumerable<T>> EjecutarConsultaListAsync<T>(
+        string query,
+        object? param = null) where T : class
+            {
+                try
+                {
+                    using var connection = _dapperContext
+                        .CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleEEP);
+
+                    await ((OracleConnection)connection).OpenAsync();
+
+                    return await connection.QueryAsync<T>(query, param);
+                }
+                catch (Exception ex)
+                {
+                    throw new BusinessException($"Error al ejecutar la consulta. {ex.Message}");
+                }
+            }
+
+
         public async Task<T?> EjecutarConsultaAsync<T>(string query) where T : class
         {
             try

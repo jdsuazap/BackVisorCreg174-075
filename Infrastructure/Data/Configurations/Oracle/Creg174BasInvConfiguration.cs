@@ -105,13 +105,14 @@
 
             entity.Property(e => e.VoltSalInv)
                 .HasColumnType("NUMBER(10,4)")
-                .HasColumnName("VOLT_SAL_INV");
+                .HasColumnName("VOLT_SAL_INV");            
 
             entity.HasOne(d => d.Cod174AutogenNavigation)
-                .WithMany(p => p.Creg174BasInvs)
-                .HasForeignKey(d => d.Cod174Autogen)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("CREG_174_BAS_INV_AUTOGEN");
+              .WithOne(p => p.Creg174BasInvs)
+              .HasForeignKey<Creg174BasInv>(d => d.Cod174Autogen)
+              .OnDelete(DeleteBehavior.ClientSetNull)
+              .HasConstraintName("CREG_174_BAS_INV_AUTOGEN");
+
         }
     }
 }

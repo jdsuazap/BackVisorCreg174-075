@@ -1,13 +1,12 @@
 namespace Api.Controllers
 {
     using Api.Responses;
-    using Application.SQLContext.DocumentosXformulario.DTOs;
-    using Application.SQLContext.DocumentosXformulario.Queries;
+    using Application.Oracle.DocumentosXformulario.DTOs;
+    using Application.Oracle.DocumentosXformulario.Queries;
     using Core.Exceptions;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
 
-    //[Authorize(Policy = "ShouldBeAnAdmin")]
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]

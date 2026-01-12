@@ -1,8 +1,8 @@
 namespace Api.Controllers
 {
     using Api.Responses;
-    using Application.SQLContext.SolConexionAutogen.DTOs;
-    using Application.SQLContext.SolConexionAutogen.Queries;
+    using Application.Oracle.SolConexionAutogen.DTOs;
+    using Application.Oracle.SolConexionAutogen.Queries;
     using Core.Exceptions;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;

@@ -49,6 +49,9 @@
         public virtual DbSet<CregTipoTension> CregTipoTensions { get; set; } = null!;
         public virtual DbSet<CregTipoTramiteVisita> CregTipoTramiteVisita { get; set; } = null!;
         public virtual DbSet<CregTipoZona> CregTipoZonas { get; set; } = null!;
+        public virtual DbSet<CregActividadEconomica> CregActividadEconomicas { get; set; } = null!;
+        public virtual DbSet<CregDocumentosFormulario> CregDocumentosFormulario { get; set; } = null!;
+        public virtual DbSet<CregPersonaAutoriza> CregPersonaAutorizas { get; set; } = null!;
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -76,8 +76,8 @@
                 .HasColumnName("VOLTAJE_GENERADOR");
 
             entity.HasOne(d => d.Cod174AutogenNavigation)
-                .WithMany(p => p.Creg174NoBasInvs)
-                .HasForeignKey(d => d.Cod174Autogen)
+                .WithOne(p => p.Creg174NoBasInvs)
+                .HasForeignKey<Creg174NoBasInv>(d => d.Cod174Autogen)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CREG_174_NO_BASADA_INV_AUTOGEN");
         }
