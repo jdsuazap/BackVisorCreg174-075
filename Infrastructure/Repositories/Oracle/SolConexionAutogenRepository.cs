@@ -3,9 +3,11 @@
     using Core.Entities.Oracle;
     using Core.Interfaces.Oracle;
     using Dapper;
+    using Dapper.Oracle;
     using Infrastructure.Data;
     using Infrastructure.Interfaces;
     using Infrastructure.QueryStrings.SQLContext;
+    using System.Data;
 
     public class SolConexionAutogenRepository
     : BaseRepositoryDapperOracle<Creg174Autogen>, ISolConexionAutogenRepository
@@ -25,46 +27,83 @@
         static readonly string _inPutParameterName = "s_json_nueva_registro";
         static readonly string _outPutParameterName = "s_json_respuesta";
 
-        public async Task<Creg174Autogen> GetEntity(int id)
+        public async Task<Creg174Autogen?> GetEntity(int idSolicitud, int? CodEmpresa)
         {
-            var param = new { IdSolicitud = id };
+            var parameters = new OracleDynamicParameters();
 
-            string query = SolConexionAutogenQuery.GetEntity;
+            parameters.Add("P_ID_SOLICITUD",idSolicitud,OracleMappingType.Int32,ParameterDirection.Input);
+            parameters.Add("P_ID_EMPRESA", CodEmpresa, OracleMappingType.Int32,ParameterDirection.Input);
 
-            var multi = await EjecutarConsultaMultipleAsync(query, param);
+            parameters.Add("O_SOLICITUD", null, OracleMappingType.RefCursor,ParameterDirection.Output);
+            parameters.Add("O_CLASIFICACION", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_COMERCIALIZADOR", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_ESTADO", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_ESTRATO", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_TIPO_CLIENTE", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_TIPO_GENERACION", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_TIPO_IDENTIFICACION", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_BAS_INV", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_INFO_EOLICA", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_INMUEBLE", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_CIUDAD", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_DEPARTAMENTO", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_NO_BAS_INV", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_TECNOLOGIAS", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_TECN_UTILIZADAS", null, OracleMappingType.RefCursor, ParameterDirection.Output);
 
-            var solicitud = await multi.ReadFirstAsync<Creg174Autogen>();
-            var clasificacion = (await multi.ReadAsync<CregClasificacionProyecto>()).FirstOrDefault();
-            var comercializador = (await multi.ReadAsync<CregComercializador>()).FirstOrDefault();
-            var estadoSol = (await multi.ReadAsync<CregEstado>()).FirstOrDefault();
-            var estrato = (await multi.ReadAsync<CregEstratoSocioeconomico>()).FirstOrDefault();
-            var tipoCliente = (await multi.ReadAsync<CregTipoCliente>()).FirstOrDefault();
-            var tipoGeneracion = (await multi.ReadAsync<CregTipoGeneracion>()).FirstOrDefault();
-            var tipoIdentificacion = (await multi.ReadAsync<CregTipoIdentificacion>()).FirstOrDefault();
-            var solConexionAutogenBasadaInv = (await multi.ReadAsync<Creg174BasInv>()).FirstOrDefault();
-            var solConexionAutogenInfoEolica = (await multi.ReadAsync<Creg174Infoeolica>()).FirstOrDefault();
-            var solConexionAutogenInmueble = (await multi.ReadAsync<Creg174Inmueble>()).FirstOrDefault();
-            var ciudad = (await multi.ReadAsync<CregCiudad>()).FirstOrDefault();
-            var departamento = (await multi.ReadAsync<CregDepartamento>()).FirstOrDefault();
-            var solConexionAutogenNoBasadaInv = (await multi.ReadAsync<Creg174NoBasInv>()).FirstOrDefault();
-            var solConexionAutogenTecnologias = (await multi.ReadAsync<Creg174Tecnologia>()).FirstOrDefault();
-            var solConexionAutogenTecnologiasUtil = await multi.ReadAsync<Creg174TecnUtilizada>();
+            using var multi = await EjecutarProcedimientoMultipleAsync(
+                "PKG_GET.CREG_174_AUTOGEN",
+                parameters
+            );
 
-            solicitud.CodClasificacionProyectoNavigation = clasificacion;
-            solicitud.CodComercializadorNavigation = comercializador;
-            solicitud.CodEstadoNavigation = estadoSol;
-            solicitud.CodEstratoClienteNavigation = estrato;
-            solicitud.CodTipoClienteNavigation = tipoCliente;
-            solicitud.CodTipGeneracionNavigation = tipoGeneracion;
-            solicitud.CodTipoIdentificacionNavigation = tipoIdentificacion;
-            solicitud.Creg174BasInvs = solConexionAutogenBasadaInv;
-            solicitud.Creg174Infoeolica = solConexionAutogenInfoEolica;
-            solicitud.Creg174Inmuebles = solConexionAutogenInmueble;
-            solicitud.CodMunicipioClienteNavigation = ciudad;
-            solicitud.CodDepartamentoClienteNavigation = departamento;
-            solicitud.Creg174NoBasInvs = solConexionAutogenNoBasadaInv;
-            solicitud.Creg174Tecnologia = solConexionAutogenTecnologias;
-            solicitud.Creg174TecnUtilizada = (ICollection<Creg174TecnUtilizada>)solConexionAutogenTecnologiasUtil;
+            var solicitud = await multi.ReadFirstOrDefaultAsync<Creg174Autogen>();
+            if (solicitud == null)
+                return null;
+
+            solicitud.CregClasificacionProyecto =
+                (await multi.ReadAsync<CregClasificacionProyecto>()).FirstOrDefault();
+
+            solicitud.CregComercializador =
+                (await multi.ReadAsync<CregComercializador>()).FirstOrDefault();
+
+            solicitud.CregEstado =
+                (await multi.ReadAsync<CregEstado>()).FirstOrDefault();
+
+            solicitud.CregEstratoSocioeconomico =
+                (await multi.ReadAsync<CregEstratoSocioeconomico>()).FirstOrDefault();
+
+            solicitud.CregTipoCliente =
+                (await multi.ReadAsync<CregTipoCliente>()).FirstOrDefault();
+
+            solicitud.CregTipoGeneracion =
+                (await multi.ReadAsync<CregTipoGeneracion>()).FirstOrDefault();
+
+            solicitud.CregTipoIdentificacion =
+                (await multi.ReadAsync<CregTipoIdentificacion>()).FirstOrDefault();
+
+            solicitud.Creg174BasInv =
+                (await multi.ReadAsync<Creg174BasInv>()).FirstOrDefault();
+
+            solicitud.Creg174Infoeolica =
+                (await multi.ReadAsync<Creg174Infoeolica>()).FirstOrDefault();
+
+            solicitud.Creg174Inmueble =
+                (await multi.ReadAsync<Creg174Inmueble>()).FirstOrDefault();
+
+            solicitud.CregCiudad =
+                (await multi.ReadAsync<CregCiudad>()).FirstOrDefault();
+
+            solicitud.CregDepartamento =
+                (await multi.ReadAsync<CregDepartamento>()).FirstOrDefault();
+
+            solicitud.Creg174NoBasInv =
+                (await multi.ReadAsync<Creg174NoBasInv>()).FirstOrDefault();
+
+            solicitud.Creg174Tecnologia =
+                (await multi.ReadAsync<Creg174Tecnologia>()).FirstOrDefault();
+
+            solicitud.Creg174TecnUtilizada =
+                (await multi.ReadAsync<Creg174TecnUtilizada>()).ToList();
 
             return solicitud;
         }

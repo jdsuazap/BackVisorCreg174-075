@@ -108,7 +108,7 @@
                 .HasColumnName("VOLT_SAL_INV");            
 
             entity.HasOne(d => d.Cod174AutogenNavigation)
-              .WithOne(p => p.Creg174BasInvs)
+              .WithOne(p => p.Creg174BasInv)
               .HasForeignKey<Creg174BasInv>(d => d.Cod174Autogen)
               .OnDelete(DeleteBehavior.ClientSetNull)
               .HasConstraintName("CREG_174_BAS_INV_AUTOGEN");

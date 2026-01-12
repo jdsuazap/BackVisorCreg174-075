@@ -767,17 +767,17 @@
             WHERE h.FechaRegistroUpdate <= @fechaRegistro	              
         ";
 
-        internal static string GetTecnologiasUtilBySolicitud = @"
-            SELECT IdSolConexionAutogenTecnUtilizadas AS Id, * 
-            FROM sol.SolConexionAutogenTecnUtilizadas (NOLOCK) 
-            WHERE CodSolConexionAutogen = @IdSolicitud;
+        internal static string GetTecnologiasUtilBySolicitud = @"            
+            SELECT *
+            FROM CREG_174_TECN_UTILIZADAS
+            WHERE COD_174_AUTOGEN = :IdSolicitud            
         ";
 
         internal static string GetAnexosBySolicitud = @"
-            SELECT IdSolConexionAutogenAnexos AS Id, *
-            FROM sol.SolConexionAutogenAnexos (NOLOCK)
-            WHERE CodSolConexionAutogen = @IdSolicitud AND EstadoDocumento = 1
-            ORDER BY IdSolConexionAutogenAnexos DESC;
+            SELECT *
+            FROM CREG_174_ANEXOS
+            WHERE COD_174_AUTOGEN = :IdSolicitud AND Estado_Documento = 1
+            ORDER BY ID DESC
         ";
 
         internal static string GetContratoConexionAnexosBySolicitud = @"

@@ -30,7 +30,8 @@
         {
             var idEntity = entity.Id;
 
-            var solicitud = await _unitOfWork.SolConexionAutogenRepository.GetEntity(idEntity)
+
+            var solicitud = await _unitOfWork.SolConexionAutogenRepository.GetEntity(idEntity, entity.CodEmpresa)
                 ?? throw new BusinessException("Solicitud inexistente");
 
             solicitud.Creg174TecnUtilizada = await GetTecnologiasUtilBySolicitud(idEntity);

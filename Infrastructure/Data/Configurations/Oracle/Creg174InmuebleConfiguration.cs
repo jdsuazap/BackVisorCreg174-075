@@ -54,7 +54,7 @@
                 .HasColumnName("VEREDA");
 
             entity.HasOne(d => d.Cod174AutogenNavigation)
-                .WithOne(p => p.Creg174Inmuebles)
+                .WithOne(p => p.Creg174Inmueble)
                 .HasForeignKey<Creg174Inmueble>(d => d.Cod174Autogen)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CREG_174_INMUEBLE_AUTOGEN");

@@ -8,5 +8,7 @@
     {
         [Required]
         public int Id { get; set; }
+        [Required]
+        public int Empresa { get; set; }
     }
 }

@@ -306,62 +306,62 @@
                 .HasColumnName("ULTIMO_HALLAZGO_FUEGRAVE")
                 .HasDefaultValueSql("0 ");
 
-            entity.HasOne(d => d.CodClasificacionProyectoNavigation)
+            entity.HasOne(d => d.CregClasificacionProyecto)
                    .WithMany(p => p.Creg174Autogens)
                    .HasForeignKey(d => d.CodClasificacionProyecto)
                    .HasConstraintName("CREG_174_AUTOGEN_CLASIF_PROY");
 
-            entity.HasOne(d => d.CodComercializadorNavigation)
+            entity.HasOne(d => d.CregComercializador)
                 .WithMany(p => p.Creg174Autogens)
                 .HasForeignKey(d => d.CodComercializador)
                 .HasConstraintName("CREG_174_AUTOGEN_COMER");
 
-            entity.HasOne(d => d.CodDepartamentoClienteNavigation)
+            entity.HasOne(d => d.CregDepartamento)
                 .WithMany(p => p.Creg174Autogens)
                 .HasForeignKey(d => d.CodDepartamentoCliente)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CREG_174_AUTOGEN_DEPTO");
 
-            entity.HasOne(d => d.CodEmpresaNavigation)
+            entity.HasOne(d => d.CregEmpresa)
                 .WithMany(p => p.Creg174Autogens)
                 .HasForeignKey(d => d.CodEmpresa)
                 .HasConstraintName("CREG_174_AUTOGEN_EMPRESA");
 
-            entity.HasOne(d => d.CodEstadoNavigation)
+            entity.HasOne(d => d.CregEstado)
                 .WithMany(p => p.Creg174Autogens)
                 .HasForeignKey(d => d.CodEstado)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CREG_174_AUTOGEN_ESTADO");
 
-            entity.HasOne(d => d.CodEstratoClienteNavigation)
+            entity.HasOne(d => d.CregEstratoSocioeconomico)
                 .WithMany(p => p.Creg174Autogens)
                 .HasForeignKey(d => d.CodEstratoCliente)
                 .HasConstraintName("CREG_174_AUTOGEN_ESTRATO");
 
-            entity.HasOne(d => d.CodMunicipioClienteNavigation)
+            entity.HasOne(d => d.CregCiudad)
                 .WithMany(p => p.Creg174Autogens)
                 .HasForeignKey(d => d.CodMunicipioCliente)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CREG_174_AUTOGEN_MUN");
 
-            entity.HasOne(d => d.CodTipGeneracionNavigation)
+            entity.HasOne(d => d.CregTipoGeneracion)
                 .WithMany(p => p.Creg174Autogens)
                 .HasForeignKey(d => d.CodTipGeneracion)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CREG_174_AUTOGEN_GENE");
 
-            entity.HasOne(d => d.CodTipProcedConexionNavigation)
+            entity.HasOne(d => d.CregTipoProcedConexion)
                 .WithMany(p => p.Creg174Autogens)
                 .HasForeignKey(d => d.CodTipProcedConexion)
                 .HasConstraintName("CREG_174_AUTOGEN_PROCED_CON");
 
-            entity.HasOne(d => d.CodTipoClienteNavigation)
+            entity.HasOne(d => d.CregTipoCliente)
                 .WithMany(p => p.Creg174Autogens)
                 .HasForeignKey(d => d.CodTipoCliente)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CREG_174_AUTOGEN_TIP_CLIENTE");
 
-            entity.HasOne(d => d.CodTipoIdentificacionNavigation)
+            entity.HasOne(d => d.CregTipoIdentificacion)
                 .WithMany(p => p.Creg174Autogens)
                 .HasForeignKey(d => d.CodTipoIdentificacion)
                 .OnDelete(DeleteBehavior.ClientSetNull)
