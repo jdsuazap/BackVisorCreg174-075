@@ -1,8 +1,8 @@
 namespace Api.Controllers
 {
     using Api.Responses;
-    using Application.Oracle.TipoTecnologia.DTOs;
-    using Application.Oracle.TipoTecnologia.Queries;
+    using Application.Oracle.DocumentosXformulario.DTOs;
+    using Application.Oracle.DocumentosXformulario.Queries;
     using Core.Exceptions;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
@@ -11,11 +11,10 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //[ApiExplorerSettings(IgnoreApi = true)]
-    public class TipoTecnologiaController : ControllerBase
+    public class DocumentosSolicitudController : ControllerBase
     {
         private readonly IMediator _mediator;
-
-        public TipoTecnologiaController(IMediator mediator)
+        public DocumentosSolicitudController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -24,20 +23,20 @@ namespace Api.Controllers
         /// Metodo para consultar todos los registros
         /// </summary>
         /// <returns></returns>
-        [HttpGet("GetAll", Name = "GetEntitiesTipoTecnologia")]
+        [HttpGet("GetDocumentos", Name = "GetAllEntitiesDocumentos")]
         [Consumes("application/json")]
-        public async Task<IActionResult> GetEntitiesTipoTecnologia()
+        public async Task<IActionResult> GetAllEntitiesDocumentos()
         {
             try
             {
-                var entities = await _mediator.Send(new TipoTecnologiaSearchAllQuery());                
-                var response = new ApiResponse<List<TipoTecnologiaDTO>>(entities, 200);
+                var entities = await _mediator.Send(new DocumentosXformularioSearchAllQuery());
+                var response = new ApiResponse<List<DocumentosXformularioDTO>>(entities, 200);
                 return Ok(response);
             }
             catch (Exception e)
             {
                 throw new BusinessException($"Error en la búsqueda. Detalle: {e.Message}");
             }
-        }       
+        }
     }
 }

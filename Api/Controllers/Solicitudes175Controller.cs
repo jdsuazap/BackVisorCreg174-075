@@ -11,10 +11,10 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //[ApiExplorerSettings(IgnoreApi = true)]
-    public class SolServicioConexionController: ControllerBase
+    public class Solicitudes175Controller: ControllerBase
     {
         private readonly IMediator _mediator;
-        public SolServicioConexionController(IMediator mediator)
+        public Solicitudes175Controller(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -23,9 +23,9 @@ namespace Api.Controllers
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        [HttpGet("GetById", Name = "GetEntitySolServicioConexion")]
+        [HttpGet("GetById", Name = "GetEntitySolicitud075")]
         [Consumes("application/json")]
-        public async Task<IActionResult> GetEntitySolServicioConexion([FromQuery] SolServicioConexionSearchByIdQuery entity)
+        public async Task<IActionResult> GetEntitySolicitud075([FromQuery] SolServicioConexionSearchByIdQuery entity)
         {
             try
             {
@@ -49,9 +49,9 @@ namespace Api.Controllers
         /// </summary>
         /// <returns></returns>
         /// <exception cref="BusinessException"></exception>
-        [HttpGet("GetInitialParams", Name = "GetParametrosInicialesCreg075")]
+        [HttpGet("GetInitialParams", Name = "GetDatosGenerales075")]
         [Consumes("application/json")]
-        public async Task<IActionResult> GetParametrosInicialesCreg075()
+        public async Task<IActionResult> GetDatosGenerales174()
         {
             try
             {
