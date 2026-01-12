@@ -13,6 +13,7 @@ using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Interfaces;
 using Core.Enumerations;
+using Dapper.Oracle;
 
 namespace Infrastructure.Repositories
 {
@@ -160,9 +161,9 @@ namespace Infrastructure.Repositories
 
         #region IMPLEMENTACION DE ORACLE
 
-        public async Task<SqlMapper.GridReader> EjecutarConsultaMultipleAsync(
-            string query,
-            object? param = null)
+        public async Task<SqlMapper.GridReader> EjecutarProcedimientoMultipleAsync(
+            string procedureName,
+            OracleDynamicParameters parameters)
         {
             try
             {
@@ -171,13 +172,21 @@ namespace Infrastructure.Repositories
 
                 await ((OracleConnection)connection).OpenAsync();
 
-                return await connection.QueryMultipleAsync(query, param);
+                return await connection.QueryMultipleAsync(
+                    procedureName,
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
             }
             catch (Exception ex)
             {
-                throw new BusinessException($"Error al ejecutar la consulta. {ex.Message}");
+                throw new BusinessException(
+                    $"Error al ejecutar el procedimiento. {ex.Message}"
+                );
             }
         }
+
+
 
         public async Task<IEnumerable<T>> EjecutarConsultaListAsync<T>(
         string query,

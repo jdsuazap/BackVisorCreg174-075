@@ -5,10 +5,10 @@
         public Creg174Autogen()
         {
             Creg174Anexos = new HashSet<Creg174Anexo>();
-            Creg174BasInvs = new Creg174BasInv();
+            Creg174BasInv = new Creg174BasInv();
             Creg174Infoeolica = new Creg174Infoeolica();
-            Creg174Inmuebles = new Creg174Inmueble();
-            Creg174NoBasInvs = new Creg174NoBasInv();
+            Creg174Inmueble = new Creg174Inmueble();
+            Creg174NoBasInv = new Creg174NoBasInv();
             Creg174TecnUtilizada = new HashSet<Creg174TecnUtilizada>();
             Creg174Tecnologia = new Creg174Tecnologia();
         }
@@ -77,22 +77,22 @@
         public DateTime FechaRegistro { get; set; }
         public DateTime FechaRegistroUpdate { get; set; }
 
-        public virtual CregClasificacionProyecto? CodClasificacionProyectoNavigation { get; set; }
-        public virtual CregComercializador? CodComercializadorNavigation { get; set; }
-        public virtual CregDepartamento CodDepartamentoClienteNavigation { get; set; } = null!;
-        public virtual CregEmpresa? CodEmpresaNavigation { get; set; }
-        public virtual CregEstado CodEstadoNavigation { get; set; } = null!;
-        public virtual CregEstratoSocioeconomico? CodEstratoClienteNavigation { get; set; }
-        public virtual CregCiudad CodMunicipioClienteNavigation { get; set; } = null!;
-        public virtual CregTipoGeneracion CodTipGeneracionNavigation { get; set; } = null!;
-        public virtual CregTipoProcedConexion? CodTipProcedConexionNavigation { get; set; }
-        public virtual CregTipoCliente CodTipoClienteNavigation { get; set; } = null!;
-        public virtual CregTipoIdentificacion CodTipoIdentificacionNavigation { get; set; } = null!;
+        public virtual CregClasificacionProyecto? CregClasificacionProyecto { get; set; }
+        public virtual CregComercializador? CregComercializador { get; set; }
+        public virtual CregDepartamento CregDepartamento { get; set; } = null!;
+        public virtual CregEmpresa? CregEmpresa { get; set; }
+        public virtual CregEstado CregEstado { get; set; } = null!;
+        public virtual CregEstratoSocioeconomico? CregEstratoSocioeconomico { get; set; }
+        public virtual CregCiudad CregCiudad { get; set; } = null!;
+        public virtual CregTipoGeneracion CregTipoGeneracion { get; set; } = null!;
+        public virtual CregTipoProcedConexion? CregTipoProcedConexion { get; set; }
+        public virtual CregTipoCliente CregTipoCliente { get; set; } = null!;
+        public virtual CregTipoIdentificacion CregTipoIdentificacion { get; set; } = null!;
         public virtual ICollection<Creg174Anexo> Creg174Anexos { get; set; }
-        public virtual Creg174BasInv Creg174BasInvs { get; set; }
-        public virtual Creg174Inmueble Creg174Inmuebles { get; set; }
+        public virtual Creg174BasInv Creg174BasInv { get; set; }
+        public virtual Creg174Inmueble Creg174Inmueble { get; set; }
         public virtual Creg174Infoeolica Creg174Infoeolica { get; set; }
-        public virtual Creg174NoBasInv Creg174NoBasInvs { get; set; }
+        public virtual Creg174NoBasInv Creg174NoBasInv { get; set; }
         public virtual ICollection<Creg174TecnUtilizada> Creg174TecnUtilizada { get; set; }
         public virtual Creg174Tecnologia Creg174Tecnologia { get; set; }
     }

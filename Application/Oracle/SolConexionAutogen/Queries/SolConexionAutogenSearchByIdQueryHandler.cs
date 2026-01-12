@@ -21,7 +21,7 @@
 
         public async Task<SolConexionAutogenDTO> Handle(SolConexionAutogenSearchByIdQuery request, CancellationToken cancellationToken)
         {
-            var solConAutogen = new Core.Entities.Oracle.Creg174Autogen{Id = request.Id,};
+            var solConAutogen = new Core.Entities.Oracle.Creg174Autogen{Id = request.Id, CodEmpresa = request.Empresa};
 
             var entity = await _solConexionAutogenService.GetEntity(solConAutogen);
             return _mapper.Map<SolConexionAutogenDTO>(entity);

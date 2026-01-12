@@ -4,7 +4,7 @@
     using Core.Entities.SQLContext;
     public interface ISolConexionAutogenRepository
     {
-        Task<Creg174Autogen> GetEntity(int idEntity);
+        Task<Creg174Autogen> GetEntity(int idEntity, int? CodEmpresa);
 
         Task<List<Creg174TecnUtilizada>> GetTecnologiasUtilBySolicitud(int idEntity);
         Task<List<Creg174Anexo>> GetAnexosBySolicitud(int idEntity);

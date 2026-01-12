@@ -17,9 +17,9 @@
         public string? FabricanteInv { get; set; }
         public string? ModeloInv { get; set; }
         public bool? CumpleUl1741 { get; set; }
-        public byte? AnioUl1741 { get; set; }
+        public decimal? AnioUl1741 { get; set; }
         public bool? CumpleIec61727 { get; set; }
-        public byte? AnioIec61727 { get; set; }
+        public decimal? AnioIec61727 { get; set; }
         public decimal? TrafoPotNominal { get; set; }
         public decimal? TrafoImpedancia { get; set; }
         public string? TrafoGrupoConex { get; set; }
