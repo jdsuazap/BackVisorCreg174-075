@@ -12,11 +12,11 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //[ApiExplorerSettings(IgnoreApi = true)]
-    public class TipoTramiteVisitaController : ControllerBase
+    public class TramiteVisitaController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public TipoTramiteVisitaController(IMediator mediator)
+        public TramiteVisitaController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -25,7 +25,7 @@ namespace Api.Controllers
         /// Metodo para consultar todos los registros
         /// </summary>
         /// <returns></returns>
-        [HttpGet("GetAll", Name = "GetEntitiesTipoTramiteVisita")]
+        [HttpGet("GetTramitesVisita", Name = "GetEntitiesTipoTramiteVisita")]
         [Consumes("application/json")]
         public async Task<IActionResult> GetEntitiesTipoTramiteVisita()
         {

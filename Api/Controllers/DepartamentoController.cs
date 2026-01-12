@@ -7,7 +7,6 @@ namespace Api.Controllers
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
 
-    //[Authorize(Policy = "ShouldBeAnAdmin")]
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
@@ -24,7 +23,7 @@ namespace Api.Controllers
         /// Metodo para consultar todos los registros
         /// </summary>
         /// <returns></returns>
-        [HttpGet("GetAll", Name = "GetEntitiesDepartamento")]
+        [HttpGet("GetDepartamentos", Name = "GetEntitiesDepartamento")]
         [Consumes("application/json")]
         public async Task<IActionResult> GetEntitiesDepartamento()
         {

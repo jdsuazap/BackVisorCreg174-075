@@ -25,14 +25,14 @@ namespace Api.Controllers
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        [HttpGet("GetByDpto", Name = "GetEntitiesByDptoCiudad")]
-        public async Task<IActionResult> GetEntitiesByDptoCiudad([FromQuery] CiudadSearchByDptoQuery entity)
+        [HttpGet("GetDptoCiudad", Name = "GetEntitiesDptoCiudad")]
+        public async Task<IActionResult> GetEntitiesDptoCiudad([FromQuery] CiudadSearchByDptoQuery entity)
         {
             try
             {
                 if (string.IsNullOrEmpty(entity.CodDepartamento))
                 {
-                    throw new ArgumentNullException(nameof(entity), "el valor de 'CodDepartamento' no es válido");
+                    throw new ArgumentNullException(nameof(entity), "el valor de 'Departamento' es invalido");
                 }
 
                 var entityResp = await _mediator.Send(entity);

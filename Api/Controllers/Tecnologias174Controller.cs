@@ -1,8 +1,8 @@
 namespace Api.Controllers
 {
     using Api.Responses;
-    using Application.Oracle.DocumentosXformulario.DTOs;
-    using Application.Oracle.DocumentosXformulario.Queries;
+    using Application.Oracle.TipoTecnologia.DTOs;
+    using Application.Oracle.TipoTecnologia.Queries;
     using Core.Exceptions;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
@@ -11,10 +11,11 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //[ApiExplorerSettings(IgnoreApi = true)]
-    public class DocumentosXformularioController : ControllerBase
+    public class Tecnologias174Controller : ControllerBase
     {
         private readonly IMediator _mediator;
-        public DocumentosXformularioController(IMediator mediator)
+
+        public Tecnologias174Controller(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -23,20 +24,20 @@ namespace Api.Controllers
         /// Metodo para consultar todos los registros
         /// </summary>
         /// <returns></returns>
-        [HttpGet("GetAll", Name = "GetEntitiesDocumentosXformulario")]
+        [HttpGet("GetTecnologias", Name = "GetEntitiesTipoTecnologia")]
         [Consumes("application/json")]
-        public async Task<IActionResult> GetEntitiesDocumentosXformulario()
+        public async Task<IActionResult> GetEntitiesTipoTecnologia()
         {
             try
             {
-                var entities = await _mediator.Send(new DocumentosXformularioSearchAllQuery());
-                var response = new ApiResponse<List<DocumentosXformularioDTO>>(entities, 200);
+                var entities = await _mediator.Send(new TipoTecnologiaSearchAllQuery());                
+                var response = new ApiResponse<List<TipoTecnologiaDTO>>(entities, 200);
                 return Ok(response);
             }
             catch (Exception e)
             {
                 throw new BusinessException($"Error en la búsqueda. Detalle: {e.Message}");
             }
-        }
+        }       
     }
 }

@@ -10,12 +10,12 @@ namespace Api.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    //[ApiExplorerSettings(IgnoreApi = true)]
-    public class SolServicioConexionComentarioController : ControllerBase
+    [ApiExplorerSettings(IgnoreApi = true)]
+    public class Solicitudes175ComentarioController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public SolServicioConexionComentarioController(IMediator mediator)
+        public Solicitudes175ComentarioController(IMediator mediator)
         {
             _mediator = mediator;
         }

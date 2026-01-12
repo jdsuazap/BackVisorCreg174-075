@@ -7,22 +7,21 @@ namespace Api.Controllers
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
 
-    //[Authorize(Policy = "ShouldBeAnAdminOrCreg")]
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     //[ApiExplorerSettings(IgnoreApi = true)]
-    public class SolConexionAutogenController : ControllerBase
+    public class Solicitudes174Controller : ControllerBase
     {
         private readonly IMediator _mediator;
-        public SolConexionAutogenController(IMediator mediator)
+        public Solicitudes174Controller(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        [HttpGet("GetById", Name = "GetEntitySolConexionAutogen")]
+        [HttpGet("GetById", Name = "GetEntitySolicitud174")]
         [Consumes("application/json")]
-        public async Task<IActionResult> GetEntitySolConexionAutogen([FromQuery] SolConexionAutogenSearchByIdQuery entity)
+        public async Task<IActionResult> GetEntitySolicitud174([FromQuery] SolConexionAutogenSearchByIdQuery entity)
         {
             try
             {
@@ -40,9 +39,9 @@ namespace Api.Controllers
             }
         }
 
-        [HttpGet("GetInitialParams", Name = "GetParametrosIniciales")]
+        [HttpGet("GetDatosGenerales", Name = "GetDatosGenerales174")]
         [Consumes("application/json")]
-        public async Task<IActionResult> GetParametrosIniciales()
+        public async Task<IActionResult> GetDatosGenerales174()
         {
             try
             {
