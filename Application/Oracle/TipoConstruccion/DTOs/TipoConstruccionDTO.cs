@@ -1,7 +1,6 @@
 ﻿namespace Application.Oracle.TipoConstruccion.DTOs
 {
     using Application.SQLContext.SolServicioConexion.DTOs;
-    using System;
 
     public class TipoConstruccionDTO
     {

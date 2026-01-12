@@ -3,7 +3,7 @@
     using Core.Entities.Oracle;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    internal class CregActividadEconomicaConfiguration
+    internal class CregActividadEconomicaConfiguration : IEntityTypeConfiguration<CregActividadEconomica>
     {
         public void Configure(EntityTypeBuilder<CregActividadEconomica> entity)
         {
