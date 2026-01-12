@@ -61,26 +61,6 @@
 
         public async Task<SolServicioConexionParamsIni> GetParametrosIniciales()
         {
-
-            //var ListadoActividadEconomica = await _unitOfWork.ActividadEconomicaRepository.GetEntities();
-            var ListadoEstratoSocioeconomico = await _unitOfWork.EstratoSocioeconomicoRepository.GetEntities();
-            var ListadoPersonaAutorizaRecibo = await _unitOfWork.PersonaAutorizaReciboRepository.GetEntities();
-            var ListadoTipoClaseCarga = await _unitOfWork.TipoClaseCargaRepository.GetEntities();
-            var ListadoTipoCliente = await _unitOfWork.TipoClienteRepository.GetEntities();
-            var ListadoTipoCompletitud = await _unitOfWork.TipoCompletitudRepository.GetEntities();
-            var ListadoTipoConexion = await _unitOfWork.TipoConexionRepository.GetEntities();
-            var ListadoTipoConstruccion = await _unitOfWork.TipoConstruccionRepository.GetEntities();
-            var ListadoTipoIdentificacion = await _unitOfWork.TipoIdentificacionRepository.GetEntities();
-            var ListadoTipoPersona = await _unitOfWork.TipoPersonaRepository.GetEntities();
-            var ListadoTipoProyecto = await _unitOfWork.TipoProyectoRepository.GetEntities();
-            var ListadoTipoServicio = await _unitOfWork.TipoServicioRepository.GetEntities();
-            var ListadoTipoSolicitudRecibo = await _unitOfWork.TipoSolicitudReciboRepository.GetEntities();
-            var ListadoTipoSolicitudServicio = await _unitOfWork.TipoSolicitudServicioRepository.GetEntities();
-            var ListadoTipoTension = await _unitOfWork.TipoTensionRepository.GetEntities();
-            var ListadoTipoZona = await _unitOfWork.TipoZonaRepository.GetEntities();
-            var ListadoDocumentosXformularios = await _unitOfWork.DocumentosXformularioRepository.GetEntitiesByCodFormulario((int)FormularioPrincipalEnum.Solicitud_Conexion_Servicio);
-            var ListadoComercializador = await _unitOfWork.ComercializadorRepository.GetEntities();
-
             return new SolServicioConexionParamsIni()
             {
                 ListadoActividadEconomica = await _unitOfWork.ActividadEconomicaRepository.GetEntities(),

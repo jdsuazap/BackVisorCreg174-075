@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Application.Oracle.TipoZona.DTOs
+﻿namespace Application.Oracle.TipoZona.DTOs
 {
     public class TipoZonaDTO
     {

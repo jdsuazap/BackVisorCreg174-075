@@ -2,6 +2,7 @@
 {
     using Application.SQLContext.SolServicioConexion.DTOs;
     using AutoMapper;
+    using Core.CustomEntities.FormInitialParams;
     using Core.CustomEntities.Oracle;
     using Core.Entities.SQLContext;
 
@@ -12,7 +13,7 @@
             CreateMap<ListadoSolStatusServicioConexion, ListadoSolStatusServicioConexionDTO>().ReverseMap();
             CreateMap<ListadoSolServicioConexion, ListadoSolServicioConexionDTO>().ReverseMap();
             CreateMap<SolServicioConexion, SolServicioConexionDTO>().ReverseMap();
-            CreateMap<Core.CustomEntities.FormInitialParams.SolServicioConexionParamsIni, SolServicioConexionParamsIniDTO>().ReverseMap();
+            CreateMap<SolServicioConexionParamsIni, SolServicioConexionParamsIniDTO>().ReverseMap();
         }
     }
 }

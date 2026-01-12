@@ -3,7 +3,7 @@
     using Core.Entities.Oracle;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    internal class CregPersonaAutorizaConfiguration
+    internal class CregPersonaAutorizaConfiguration: IEntityTypeConfiguration<CregPersonaAutoriza>
     {
         public void Configure(EntityTypeBuilder<CregPersonaAutoriza> entity)
         {
