@@ -961,24 +961,12 @@
         ";
 
         internal const string GetEntitiesTrafo = @"
-            WITH CTE_SolConexion AS (
-                SELECT *
-                FROM [sol].[SolConexionAutogen] (NOLOCK)
-                WHERE 
-                    Empresa = @Empresa
-                    AND CodTransformador = @CodTransformador
-            )
-            SELECT 
-	            a.IdSolConexionAutogen	AS Id, a.*
-	            , es.parIdEstado		AS Id, es.*
-	            , tg.IdTipoGeneracion	AS Id, tg.*
-                , xv.IdSolConexionAutogenXVisita	AS Id, xv.*
-                , xp.IdSolConexionAutogenXProrroga	AS Id, xp.*
-            FROM CTE_SolConexion a
-            INNER JOIN par.Estados es (NOLOCK) ON a.Estado = es.parIdEstado 
-            INNER JOIN par.TipoGeneracion tg (NOLOCK) ON a.CodTipoGeneracion = tg.IdTipoGeneracion
-            LEFT JOIN sol.SolConexionAutogenXVisita xv (NOLOCK) ON a.IdSolConexionAutogen = xv.CodSolConexionAutogen 
-            LEFT JOIN sol.SolConexionAutogenXProrroga xp (NOLOCK) ON a.IdSolConexionAutogen = xp.CodSolConexionAutogen
-        ";
+            SELECT
+                SUM(POTENCIA_MAXIMA_DECLARADA) AS PotenciaMaximaDeclarada
+            FROM CREG_174_AUTOGEN
+            WHERE 
+                COD_EMPRESA = :Empresa
+                AND COD_TRANSFORMADOR = :CodTransformador
+                AND COD_ESTADO = 18";
     }
 }

@@ -55,5 +55,20 @@ namespace Api.Controllers
             }
         }
 
+        [HttpGet("GetTrafoPotenciaReservada", Name = "GetTrafoPotenciaReservada")]
+        public async Task<IActionResult> GetTrafoPotenciaReservada([FromQuery] InfoFormularioSearchQuery parameters)
+        {
+            try
+            {
+                var entities = await _mediator.Send(parameters);
+                var response = new ApiResponse<InfoFormularioDTO>(entities, 200);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                throw new BusinessException($"Error en la búsqueda. Detalle: {e.Message}");
+            }
+        }
+
     }
 }

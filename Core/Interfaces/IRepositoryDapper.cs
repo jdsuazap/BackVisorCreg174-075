@@ -1,5 +1,6 @@
 ﻿namespace Core.Interfaces
 {
+    using Dapper.Oracle;
     using System.Linq.Expressions;
 
     public interface IRepositoryDapper<T>
@@ -17,7 +18,8 @@
         Task Update(T entity);
         Task Delete(int id);
         Task ExecuteNonQuery(string sqlCommand);
-        Task<TOut?> EjecutarConsultaAsync<TOut>(string query) where TOut : class;
+        Task<T?> EjecutarConsultaAsync<T>(string query, OracleDynamicParameters parameters) where T : class;
+
         Task<IEnumerable<TOut>> EjecutarConsultaListAsync<TOut>(string query) where TOut : class;
         #endregion
 

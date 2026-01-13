@@ -18,6 +18,7 @@
         ITipoSolicitudServicioRepository TipoSolicitudServicioRepository { get; }
         ITipoSolicitudReciboRepository TipoSolicitudReciboRepository { get; }
         IPersonaAutorizaReciboRepository PersonaAutorizaReciboRepository { get; }
+        ICreg_TransformadorRepository Creg_transformadorRepository { get; }
 
         #region SQLContext       
 

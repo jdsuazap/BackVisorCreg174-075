@@ -3,6 +3,7 @@
     public enum EnumConnectionStrings
     {
         BaseDeDatosSqlServer,
-        BaseDeDatoOracleEEP        
+        BaseDeDatoOracleEEP,   
+        BaseDeDatoOracleSpard   
     }
 }

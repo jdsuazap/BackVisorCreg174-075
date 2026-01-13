@@ -2,7 +2,6 @@
 {
     using Core.Entities.Oracle;
     using Core.Interfaces.Oracle;
-    using Dapper;
     using Dapper.Oracle;
     using Infrastructure.Data;
     using Infrastructure.Interfaces;
@@ -130,6 +129,17 @@
             return result.ToList();
         }
 
+        public async Task<Creg174Autogen> GetEntitiesTrafo(int empresa, string CodTransformador)
+        {
+            var parameters = new OracleDynamicParameters();
+
+            parameters.Add("Empresa", empresa, OracleMappingType.Int32, ParameterDirection.Input);
+            parameters.Add("CodTransformador", CodTransformador, OracleMappingType.Varchar2, ParameterDirection.Input);
+
+            string query = SolConexionAutogenQuery.GetEntitiesTrafo;
+            var result = await EjecutarConsultaAsync<Creg174Autogen>(query, parameters);
+            return result;
+        }
 
         //public async Task<List<PasosSolConexionAutogen>> GetPasosBySolicitud(int idEntity)
         //{

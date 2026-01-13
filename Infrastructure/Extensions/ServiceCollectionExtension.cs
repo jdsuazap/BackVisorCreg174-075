@@ -39,6 +39,13 @@
                 { EnumConnectionStrings.BaseDeDatoOracleEEP.ToString(), oracleConectionEEP }
             };
 
+            string oracleConnSpard = configuration.GetConnectionString("ConexionOracleSpard")
+                ?? throw new BusinessException($"No existe cadena de conexión para 'ConexionOracleSpard' ");
+
+            var oracleConectionSpard = new DbConnectionFactoryModel() { ConnectionString = oracleConnSpard, TipoDB = EnumDatabaseType.Oracle };
+
+            connections.Add(EnumConnectionStrings.BaseDeDatoOracleSpard.ToString(), oracleConectionSpard);
+
             services.AddSingleton<IDictionary<string, DbConnectionFactoryModel>>(connections);
 
             SqlConnectionStringBuilder builder = new(appConnString)
@@ -55,6 +62,11 @@
             services.AddDbContext<DbOracleContext>(options =>
             {
                 options.UseOracle(oracleConnEEP);
+            }, ServiceLifetime.Scoped);
+
+            services.AddDbContext<DbSpardContext>(options =>
+            {
+                options.UseOracle(oracleConnSpard);
             }, ServiceLifetime.Scoped);
 
             // Configuración Dapper
@@ -110,6 +122,7 @@
             services.AddTransient<IActividadEconomicaService, ActividadEconomicaService>();
             services.AddTransient<IPersonaAutorizaReciboService, PersonaAutorizaReciboService>();
             services.AddTransient<ITipoTramiteVisitaService, TipoTramiteVisitaService>();
+            services.AddTransient<ICreg_TransformadorService, Creg_TransformadorService>();
 
 
             services.AddTransient<ICregCiudadService, CregCiudadService>();
