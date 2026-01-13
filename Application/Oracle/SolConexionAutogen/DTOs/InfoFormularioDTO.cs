@@ -4,9 +4,9 @@
     { 
         //Datos de infraestructura
         public string Transformador { get; set; }
-        public string PorcentajeTransformador { get; set; }
-        public decimal? Cap_Max_Disponible { get; set; }
-        public decimal? Tot_Cap_Ocupada { get; set; }
+        public string Porcentaje { get; set; }
+        public decimal? CapacidadMaximaDisponible { get; set; }
+        public decimal? TotalCapacidadOcupada { get; set; }
 
     }
 }
