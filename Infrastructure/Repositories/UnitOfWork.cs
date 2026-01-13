@@ -7,6 +7,7 @@
     using Core.Interfaces.SQLContext;
     using Infrastructure.Data;
     using Infrastructure.Factories;
+    using Infrastructure.Repositories.EEP;
     using Infrastructure.Repositories.Oracle;
     using Infrastructure.Repositories.SQLContext;
     using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,7 @@
     {
         private readonly DbSQLContext _context;
         private readonly DbOracleContext _eepContext;
+        private readonly DbSpardContext _SpardContext;
         private readonly IDbConnection _dapperContext;
         private readonly IDictionary<string, DbConnectionFactoryModel> _connections;
 
@@ -49,6 +51,7 @@
         private readonly ITipoSolicitudServicioRepository _tipoSolicitudServicioRepository;
         private readonly ITipoSolicitudReciboRepository _tipoSolicitudReciboRepository;
         private readonly IPersonaAutorizaReciboRepository _personaAutorizaReciboRepository;
+        private readonly ICreg_TransformadorRepository _creg_transformadorRepository;
 
         #region SQLContext
 
@@ -81,16 +84,17 @@
         public UnitOfWork(
             DbSQLContext context,
             DbOracleContext oracleContext,
+            DbSpardContext spardContext,
             IDbConnection dapperContext,
             IDictionary<string, DbConnectionFactoryModel> conexiones
         )
         {
             _context = context;
-            //_sgdContext = oracleContext;
             _eepContext = oracleContext;
-            //_context.Database.SetCommandTimeout(86400);
-            //_sgdContext.Database.SetCommandTimeout(86400);
+            _SpardContext = spardContext;
+
             _eepContext.Database.SetCommandTimeout(86400);
+            _SpardContext.Database.SetCommandTimeout(86400);
             _dapperContext = dapperContext;
             _connections = conexiones;
         }
@@ -251,6 +255,13 @@
            )
         );
 
+        public ICreg_TransformadorRepository Creg_transformadorRepository =>
+           _creg_transformadorRepository ?? new Creg_TransformadorRepositoryEEP(
+               _SpardContext,
+               new DbConnectionFactorySingular(
+                   _connections[EnumConnectionStrings.BaseDeDatoOracleSpard.ToString()]
+               )
+           );
 
         #region SQLContext
 

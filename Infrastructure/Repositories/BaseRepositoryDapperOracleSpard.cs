@@ -17,16 +17,16 @@ using Dapper.Oracle;
 
 namespace Infrastructure.Repositories
 {
-    public class BaseRepositoryDapperOracle<T> : IRepositoryDapper<T> where T : class
+    public class BaseRepositoryDapperOracleSpard<T> : IRepositoryDapper<T> where T : class
     {
-        protected readonly DbOracleContext _context;
+        protected readonly DbSpardContext _context;
         protected readonly IDbConnectionFactory _dapperContext;
         protected readonly DbSet<T> _entities;
         protected string _NombreVariableEntrada;
         protected string _NombreVariableSalida;
 
-        public BaseRepositoryDapperOracle(
-            DbOracleContext context,
+        public BaseRepositoryDapperOracleSpard(
+            DbSpardContext context,
             string nombreVariableEntrada,
             string nombreVariableSalida,
             IDbConnectionFactory dapperContext = null
@@ -73,7 +73,7 @@ namespace Infrastructure.Repositories
             try
             {
                 // Crear una nueva conexión por cada solicitud
-                using var connection = _dapperContext.CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleEEP);
+                using var connection = _dapperContext.CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleSpard);
 
                 // Abrir la conexión si está cerrada
                 await OpenConnectionAsync(connection);
@@ -168,7 +168,7 @@ namespace Infrastructure.Repositories
             try
             {
                 var connection = _dapperContext
-                    .CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleEEP);
+                    .CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleSpard);
 
                 await ((OracleConnection)connection).OpenAsync();
 
@@ -191,21 +191,21 @@ namespace Infrastructure.Repositories
         public async Task<IEnumerable<T>> EjecutarConsultaListAsync<T>(
         string query,
         object? param = null) where T : class
+        {
+            try
             {
-                try
-                {
-                    using var connection = _dapperContext
-                        .CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleEEP);
+                using var connection = _dapperContext
+                    .CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleSpard);
 
-                    await ((OracleConnection)connection).OpenAsync();
+                await ((OracleConnection)connection).OpenAsync();
 
-                    return await connection.QueryAsync<T>(query, param);
-                }
-                catch (Exception ex)
-                {
-                    throw new BusinessException($"Error al ejecutar la consulta. {ex.Message}");
-                }
+                return await connection.QueryAsync<T>(query, param);
             }
+            catch (Exception ex)
+            {
+                throw new BusinessException($"Error al ejecutar la consulta. {ex.Message}");
+            }
+        }
 
 
         public async Task<T?> EjecutarConsultaAsync<T>(
@@ -216,7 +216,7 @@ namespace Infrastructure.Repositories
             try
             {
                 using var connection =
-                    _dapperContext.CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleEEP);
+                    _dapperContext.CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleSpard);
 
                 await ((OracleConnection)connection).OpenAsync();
 
@@ -235,7 +235,7 @@ namespace Infrastructure.Repositories
         {
             try
             {
-                using var connection = _dapperContext.CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleEEP);
+                using var connection = _dapperContext.CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleSpard);
                 await ((OracleConnection)connection).OpenAsync();
 
                 var result = await connection.QueryAsync<T>(query);
@@ -291,7 +291,7 @@ namespace Infrastructure.Repositories
             try
             {
                 // Crear una nueva conexión por cada solicitud
-                using var connection = _dapperContext.CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleEEP);
+                using var connection = _dapperContext.CreateDbConnection(EnumConnectionStrings.BaseDeDatoOracleSpard);
 
                 // Abrir la conexión si está cerrada
                 await OpenConnectionAsync(connection);

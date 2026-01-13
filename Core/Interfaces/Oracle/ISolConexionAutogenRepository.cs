@@ -1,7 +1,6 @@
 ﻿namespace Core.Interfaces.Oracle
 {
     using Core.Entities.Oracle;
-    using Core.Entities.SQLContext;
     public interface ISolConexionAutogenRepository
     {
         Task<Creg174Autogen> GetEntity(int idEntity, int? CodEmpresa);
@@ -14,6 +13,8 @@
         //Task<List<SolConexionAutogenXvisita>> GetVisitaBySolicitud(int idEntity);
         //Task<List<SolConexionAutogenDocumentacionVisita>> GetDocVisitaBySolicitud(int idEntity);
         //Task<List<SolConexionAutogenComentario>> GetComentarioBySolicitud(int idEntity);
-        //Task<List<SolConexionAutogenObservacion>> GetObservacionBySolicitud(int idEntity);    
+        //Task<List<SolConexionAutogenObservacion>> GetObservacionBySolicitud(int idEntity);
+        
+        Task<Creg174Autogen> GetEntitiesTrafo(int Empresa, string CodTransformador);
     }
 }
