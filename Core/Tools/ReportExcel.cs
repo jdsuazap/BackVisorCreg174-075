@@ -12,8 +12,8 @@ namespace Core.Tools
         public ReportExcel()
         {
             Libro = new ExcelPackage();
-            Libro.Workbook.Properties.Author = "Syspotec";
-            Libro.Workbook.Properties.Company = "Syspotec S.A.S.";
+            Libro.Workbook.Properties.Author = "EEP";
+            Libro.Workbook.Properties.Company = "EEP S.A.S.";
             Libro.Workbook.Properties.Keywords = "Excel,Epplus";
             Libro.Workbook.Properties.Created = DateTime.Now;
         }
