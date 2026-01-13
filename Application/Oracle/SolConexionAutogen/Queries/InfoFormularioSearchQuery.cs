@@ -10,8 +10,8 @@
         public decimal Empresa { get; set; }
 
         [Required]
-        public string Transformador { get; set; }
+        public string CodTransformador { get; set; }
 
-        public string Matricula { get; set; }
+        //public string Matricula { get; set; }
     }
 }

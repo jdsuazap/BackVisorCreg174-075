@@ -6,7 +6,6 @@
     using Core.Enumerations;
     using Core.Interfaces.Oracle;
     using MediatR;
-    using System.Security.Cryptography.Xml;
 
     public class InfoFormularioSearchQueryHandler : IRequestHandler<InfoFormularioSearchQuery, InfoFormularioDTO>
     {
@@ -31,18 +30,18 @@
 
             var infoFormularioDTO = new InfoFormularioDTO();
 
-            if (request.Transformador != null)
+            if (request.CodTransformador != null)
             {
                 var trafo = isPereira
-                    ? await _TransformadorService.GetEntityByCodigo(request.Transformador)
-                    : await _TransformadorService.GetEntityByCodigoCTG(request.Transformador);
+                    ? await _TransformadorService.GetEntityByCodigo(request.CodTransformador)
+                    : await _TransformadorService.GetEntityByCodigoCTG(request.CodTransformador);
 
                 TransformadorCircuitoDto entity = isPereira
-                    ? await _TransformadorService.GetEntityByCodigoInfo(request.Transformador)
-                    : await _TransformadorService.GetEntityByCodigoInfoCTG(request.Transformador);
+                    ? await _TransformadorService.GetEntityByCodigoInfo(request.CodTransformador)
+                    : await _TransformadorService.GetEntityByCodigoInfoCTG(request.CodTransformador);
 
                             
-                infoFormularioDTO.Transformador = request.Transformador.ToString();
+                infoFormularioDTO.Transformador = request.CodTransformador.ToString();
                 infoFormularioDTO.PorcentajeTransformador = entity.Gen_Instalada.ToString();
                 infoFormularioDTO.Cap_Max_Disponible = entity.Cap_Max_Disponible;
                 infoFormularioDTO.Tot_Cap_Ocupada = entity.Tot_Cap_Ocupada;
