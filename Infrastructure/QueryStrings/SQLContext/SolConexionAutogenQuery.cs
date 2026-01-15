@@ -836,17 +836,12 @@
 
         internal static string GetPasosBySolicitud = @"
             SELECT 
-	            ps.IdPasosConexionAutogen					AS Id, ps.*
-                , es2.parIdEstado							AS Id, es2.*
-                , et2.IdEtapa								AS Id, et2.*
-	            , rh.IdSolConexionAutogenReporteHallazgo	AS Id, rh.*
-            FROM sol.PasosSolConexionAutogen ps (NOLOCK) 
-            INNER JOIN par.Estados es2 (NOLOCK) ON ps.CodEstado = es2.parIdEstado 
-            LEFT  JOIN par.Etapas et2 (NOLOCK) ON es2.CodEtapa = et2.IdEtapa
-            LEFT  JOIN sol.SolconexionAutogenReporteHallazgo rh (NOLOCK) ON ps.CodSolconexionAutogenReporteHallazgo = rh.IdSolConexionAutogenReporteHallazgo
-            WHERE ps.CodSolConexionAutogen = @IdSolicitud
-            ORDER BY ps.IdPasosConexionAutogen DESC;
-        ";
+	            ps.*,
+                es2.*                
+            FROM CREG_174_PASOS ps 
+            INNER JOIN CREG_Estados es2 ON ps.Cod_Estado = es2.Id             
+            WHERE ps.COD_174_AUTOGEN = :IdSolicitud
+            ORDER BY ps.Id DESC";
 
         internal static string GetPasosByRadicado = @"
             SELECT 

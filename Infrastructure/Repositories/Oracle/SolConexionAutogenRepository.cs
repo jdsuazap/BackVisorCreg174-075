@@ -1,6 +1,7 @@
 ﻿namespace Infrastructure.Repositories.Oracle
 {
     using Core.Entities.Oracle;
+    using Dapper;
     using Core.Interfaces.Oracle;
     using Dapper.Oracle;
     using Infrastructure.Data;
@@ -141,40 +142,41 @@
             return result;
         }
 
-        //public async Task<List<PasosSolConexionAutogen>> GetPasosBySolicitud(int idEntity)
-        //{
-        //    var param = new { IdSolicitud = idEntity };
+        public async Task<List<Creg174Pasos>> GetPasosBySolicitud(int idEntity)
+        {
+            var param = new { IdSolicitud = idEntity };
 
-        //    var query = SolConexionAutogenQuery.GetPasosBySolicitud;
-        //    var result = await _dapperContext.QueryAsync<
-        //        PasosSolConexionAutogen,
-        //        Estado,
-        //        PasosSolConexionAutogen
-        //    >(
-        //        query,
-        //        (pasosSolConexionAutogen, estado) =>
-        //        {
-        //            pasosSolConexionAutogen.CodEstadoNavigation = estado;
-        //            return pasosSolConexionAutogen;
-        //        },
-        //        param
-        //    );
+            var query = SolConexionAutogenQuery.GetPasosBySolicitud;
+            var result = await _dapperContext.QueryAsync<
+                        Creg174Pasos,
+                        CregEstado,                        
+                        Creg174Pasos
+                    >(
+                        query,
+                        (pasosSolConexionAutogen, estado) =>
+                        {
+                            pasosSolConexionAutogen.CregEstado = estado;
 
-        //    return result.ToList();
-        //}
+                            return pasosSolConexionAutogen;
+                        },
+                        param
+                    );
 
-        //public async Task<List<PasosSolConexionAutogen>> GetPasosByRadicado(string numRadicado)
-        //{
-        //    var param = new { Radicado = numRadicado };
+            return result.ToList();
+        }
 
-        //    var query = SolConexionAutogenQuery.GetPasosByRadicado;
-        //    return (await _dapperContext.QueryAsync<PasosSolConexionAutogen, Estado, PasosSolConexionAutogen>(query,
-        //        (pasosSolConexionAutogen, estado) =>
-        //        {
-        //            pasosSolConexionAutogen.CodEstadoNavigation = estado;
-        //            return pasosSolConexionAutogen;
-        //        }, param)).ToList();
-        //}
+        public async Task<List<Creg174Pasos>> GetPasosByRadicado(string numRadicado)
+        {
+            var param = new { Radicado = numRadicado };
+
+            var query = SolConexionAutogenQuery.GetPasosByRadicado;
+            return (await _dapperContext.QueryAsync<Creg174Pasos, CregEstado, Creg174Pasos>(query,
+                (pasosSolConexionAutogen, estado) =>
+                {
+                    pasosSolConexionAutogen.CregEstado = estado;
+                    return pasosSolConexionAutogen;
+                }, param)).ToList();
+        }
 
 
         //public async Task<List<SolConexionAutogenObservacion>> GetObservacionBySolicitud(int idEntity)

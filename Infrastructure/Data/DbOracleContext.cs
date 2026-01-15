@@ -52,6 +52,7 @@
         public virtual DbSet<CregActividadEconomica> CregActividadEconomicas { get; set; } = null!;
         public virtual DbSet<CregDocumentosFormulario> CregDocumentosFormulario { get; set; } = null!;
         public virtual DbSet<CregPersonaAutoriza> CregPersonaAutorizas { get; set; } = null!;
+        public virtual DbSet<Creg174Pasos> Creg174Pasos { get; set; } = null!;
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

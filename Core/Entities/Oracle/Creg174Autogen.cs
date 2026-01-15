@@ -11,6 +11,7 @@
             Creg174NoBasInv = new Creg174NoBasInv();
             Creg174TecnUtilizada = new HashSet<Creg174TecnUtilizada>();
             Creg174Tecnologia = new Creg174Tecnologia();
+            Creg174Historico = new HashSet<Creg174Pasos>();
         }
 
         public int Id { get; set; }
@@ -95,5 +96,6 @@
         public virtual Creg174NoBasInv Creg174NoBasInv { get; set; }
         public virtual ICollection<Creg174TecnUtilizada> Creg174TecnUtilizada { get; set; }
         public virtual Creg174Tecnologia Creg174Tecnologia { get; set; }
+        public virtual ICollection<Creg174Pasos> Creg174Historico { get; set; }
     }
 }

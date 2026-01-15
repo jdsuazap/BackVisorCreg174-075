@@ -1,9 +1,8 @@
-﻿using Core.Entities.SQLContext;
-using Core.Interfaces;
-using Core.Interfaces.SQLContext;
-
-namespace Core.Services.SQLContext
+﻿namespace Core.Services.Oracle
 {
+    using Core.Entities.Oracle;
+    using Core.Interfaces;
+    using Core.Interfaces.Oracle;
     public class PasosSolConexionAutogenService : IPasosSolConexionAutogenService
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -13,27 +12,27 @@ namespace Core.Services.SQLContext
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<PasosSolConexionAutogen> CreateEntity(PasosSolConexionAutogen entity)
+        public async Task<Creg174Pasos> CreateEntity(Creg174Pasos entity)
         {
             return await _unitOfWork.PasosSolConexionAutogenRepository.CreateEntity(entity);
         }
 
-        public async Task<bool> DeleteEntity(PasosSolConexionAutogen entity)
+        public async Task<bool> DeleteEntity(Creg174Pasos entity)
         {
             return await _unitOfWork.PasosSolConexionAutogenRepository.DeleteEntity(entity);
         }
 
-        public async Task<List<PasosSolConexionAutogen>> GetEntities()
+        public async Task<List<Creg174Pasos>> GetEntities()
         {
             return await _unitOfWork.PasosSolConexionAutogenRepository.GetEntities();
         }
 
-        public async Task<PasosSolConexionAutogen> GetEntity(int idEntity)
+        public async Task<Creg174Pasos> GetEntity(int idEntity)
         {
             return await _unitOfWork.PasosSolConexionAutogenRepository.GetEntity(idEntity);
         }
 
-        public async Task<PasosSolConexionAutogen> UpdateEntity(PasosSolConexionAutogen entity)
+        public async Task<Creg174Pasos> UpdateEntity(Creg174Pasos entity)
         {
             return await _unitOfWork.PasosSolConexionAutogenRepository.UpdateEntity(entity);
         }
