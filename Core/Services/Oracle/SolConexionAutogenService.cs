@@ -39,7 +39,7 @@
             solicitud.Creg174Anexos = await GetAnexosBySolicitud(idEntity);
 
 
-            //solicitud.PasosSolConexionAutogens = await GetPasosBySolicitud(idEntity);
+            solicitud.Creg174Historico = await GetPasosBySolicitud(idEntity);
 
             //solicitud.SolConexionAutogenXvisita = await GetVisitaBySolicitud(idEntity);
 
@@ -189,10 +189,10 @@
 
         //    return lstViabilidadTecnicaRechazo;
         //}
-        //public async Task<List<PasosSolConexionAutogen>> GetPasosBySolicitud(int idEntity)
-        //{
-        //    return await _unitOfWork.SolConexionAutogenRepository.GetPasosBySolicitud(idEntity);
-        //}
+        public async Task<List<Creg174Pasos>> GetPasosBySolicitud(int idEntity)
+        {
+            return await _unitOfWork.SolConexionAutogenRepository.GetPasosBySolicitud(idEntity);
+        }
         //public async Task<List<SolConexionAutogenXprorroga>> GetProrrogaBySolicitud(int idEntity)
         //{
         //    var lstProrroga = await _unitOfWork.SolConexionAutogenRepository.GetProrrogaBySolicitud(idEntity);

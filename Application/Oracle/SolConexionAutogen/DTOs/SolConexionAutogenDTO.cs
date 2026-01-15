@@ -63,7 +63,7 @@
         public virtual Creg174Tecnologia Creg174Tecnologia { get; set; }
         public virtual ICollection<Creg174Anexo> Creg174Anexos { get; set; }
         //public virtual ICollection<SolConexionAutogenComentarioDTO> SolConexionAutogenComentarios { get; set; }
-        //public virtual ICollection<PasosSolConexionAutogenDTO> PasosSolConexionAutogens { get; set; }
+        public virtual ICollection<Creg174Pasos> Creg174Historico { get; set; }
         public virtual ICollection<Creg174TecnUtilizada> Creg174TecnUtilizada { get; set; }        
     }
 }

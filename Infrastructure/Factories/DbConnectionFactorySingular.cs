@@ -3,6 +3,7 @@
     using Core.CustomEntities;
     using Core.Enumerations;
     using Core.Exceptions;
+    using Dapper;
     using Infrastructure.Interfaces;
     using Microsoft.Data.SqlClient;
     using Oracle.ManagedDataAccess.Client;
@@ -15,6 +16,28 @@
         public DbConnectionFactorySingular(DbConnectionFactoryModel connection)
         {
             _internal = connection;
+        }
+
+        public async Task<IEnumerable<T>> QueryAsync<T>(
+            string sql,
+            object param = null,
+            EnumConnectionStrings connectionName = EnumConnectionStrings.BaseDeDatoOracleEEP
+        )
+        {
+            using var conn = CreateDbConnection(connectionName);
+            return await conn.QueryAsync<T>(sql, param);
+        }
+
+        public async Task<IEnumerable<TReturn>> QueryAsync<T1, T2, TReturn>(
+            string sql,
+            Func<T1, T2, TReturn> map,
+            object param = null,
+            string splitOn = "Id",
+            EnumConnectionStrings connectionName = EnumConnectionStrings.BaseDeDatoOracleEEP
+        )
+        {
+            using var conn = CreateDbConnection(connectionName);
+            return await conn.QueryAsync(sql, map, param, splitOn: splitOn);
         }
 
         public IDbConnection CreateDbConnection(EnumConnectionStrings connectionName)

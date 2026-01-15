@@ -41,7 +41,7 @@
         private readonly ITipoClaseCargaRepository _tipoClaseCargaRepository;
         private readonly ITipoConexionRepository _tipoConexionRepository;
         private readonly ITipoCompletitudRepository _tipoCompletitudRepository;
-        private readonly ITipoConstruccionRepository _tipoConstruccionRepository;                
+        private readonly ITipoConstruccionRepository _tipoConstruccionRepository;
         private readonly ITipoPersonaRepository _tipoPersonaRepository;
         private readonly ITipoProyectoRepository _tipoProyectoRepository;
         private readonly ITipoServicioRepository _tipoServicioRepository;
@@ -256,12 +256,18 @@
         );
 
         public ICreg_TransformadorRepository Creg_transformadorRepository =>
-           _creg_transformadorRepository ?? new Creg_TransformadorRepositoryEEP(
-               _SpardContext,
-               new DbConnectionFactorySingular(
-                   _connections[EnumConnectionStrings.BaseDeDatoOracleSpard.ToString()]
-               )
-           );
+        _creg_transformadorRepository ?? new Creg_TransformadorRepositoryEEP(
+            _SpardContext,
+            new DbConnectionFactorySingular(
+                _connections[EnumConnectionStrings.BaseDeDatoOracleSpard.ToString()]
+            )
+        );
+
+        public IPasosSolConexionAutogenRepository PasosSolConexionAutogenRepository => _pasosSolConexionAutogenRepository ?? new PasosSolConexionAutogenRepository(_eepContext,
+           new DbConnectionFactorySingular(
+               _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
+           )
+        );
 
         #region SQLContext
 
@@ -273,7 +279,7 @@
         public ITipoActivoRepository TipoActivoRepository => _tipoActivoRepository ?? new TipoActivoRepository(_context);        
         //public ITipoSolicitudReciboRepository TipoSolicitudReciboRepository => _tipoSolicitudReciboRepository ?? new TipoSolicitudReciboRepository(_context);
         //public ITipoSolicitudServicioRepository TipoSolicitudServicioRepository => _tipoSolicitudServicioRepository ?? new TipoSolicitudServicioRepository(_context);
-        public IPasosSolConexionAutogenRepository PasosSolConexionAutogenRepository => _pasosSolConexionAutogenRepository ?? new PasosSolConexionAutogenRepository(_context);
+
         public IPasosSolServicioConexionRepository PasosSolServicioConexionRepository => _pasosSolServicioConexionRepository ?? new PasosSolServicioConexionRepository(_context);
         //public ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository => _solConexionAutogenComentarioRepository ?? new SolConexionAutogenComentarioRepository(_context, _dapperContext, _paginacionService);
         
