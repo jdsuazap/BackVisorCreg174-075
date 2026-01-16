@@ -1,11 +1,8 @@
 using Api;
 using Api.Responses;
-using Api.ViewsProcess;
 using Application.Interfaces;
 using Application.Services;
 using FluentValidation.AspNetCore;
-using Hangfire;
-using Hangfire.Dashboard;
 using Infrastructure.Extensions;
 using Infrastructure.Filters;
 using MediatR;
@@ -203,8 +200,6 @@ builder.Services.AddScoped<IGenericHttpContext, GenericHttpContext>();
 
 // Configuracion para controlar Filtros del Request y las Validaciones de las entidades
 builder.Services.AddMvc();
-builder.Services.AddHangFire(builder.Configuration);
-builder.Services.AddJob();
 
 string appsettingFile = $"appsettings.{builder.Environment.EnvironmentName}.json";
 
@@ -245,19 +240,6 @@ if (!new string[] { ApiEnvironments.Production }.Contains(app.Environment.Enviro
         options.DisplayRequestDuration();
     });
 }
-
-app.UseHangfireDashboard("/hangfire", new DashboardOptions
-{
-    DashboardTitle = "Plataforma de Tareas",
-    DarkModeEnabled = true,
-    DisplayStorageConnectionString = false,
-    TimeZoneResolver = new TimeZoneConverterResolver(),
-    //AppPath = "https://localhost:7050/swagger",
-    Authorization = new IDashboardAuthorizationFilter[]
-    {
-        new NoAuthorizationFilter() // Sin autorización (para fines de prueba)
-    }
-});
 
 // Habilitamos los CORS
 app.UseCors("ApiCors");
