@@ -1,6 +1,6 @@
 namespace Api.Controllers
 {
-    using Application.SQLContext.File.Queries;
+    using Application.Oracle.File.Queries;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
 

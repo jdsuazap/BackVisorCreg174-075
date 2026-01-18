@@ -15,6 +15,15 @@
         {
         }
 
+        public virtual DbSet<Creg075Anexo> Creg075Anexos { get; set; } = null!;
+        public virtual DbSet<Creg075Detalle> Creg075Detalles { get; set; } = null!;
+        public virtual DbSet<Creg075DetallesCuenta> Creg075DetallesCuentas { get; set; } = null!;
+        public virtual DbSet<Creg075Disenio> Creg075Disenios { get; set; } = null!;
+        public virtual DbSet<Creg075Factibilidad> Creg075Factibilidads { get; set; } = null!;
+        public virtual DbSet<Creg075Predio> Creg075Predios { get; set; } = null!;
+        public virtual DbSet<Creg075ServicioConexion> Creg075ServicioConexions { get; set; } = null!;
+        public virtual DbSet<Creg075Solicitante> Creg075Solicitantes { get; set; } = null!;
+        public virtual DbSet<Creg075Suscriptor> Creg075Suscriptors { get; set; } = null!;
         public virtual DbSet<Creg174Anexo> Creg174Anexos { get; set; } = null!;
         public virtual DbSet<Creg174Autogen> Creg174Autogens { get; set; } = null!;
         public virtual DbSet<Creg174BasInv> Creg174BasInvs { get; set; } = null!;

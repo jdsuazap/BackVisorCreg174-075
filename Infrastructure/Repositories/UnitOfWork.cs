@@ -269,6 +269,12 @@
            )
         );
 
+        public ISolServicioConexionRepository SolServicioConexionRepository => _solServicioConexionRepository ?? new SolServicioConexionRepository(_eepContext,
+           new DbConnectionFactorySingular(
+               _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
+           )
+        );
+
         #region SQLContext
 
 
@@ -285,7 +291,6 @@
         
         //public ISolConexionAutogenXvisitaRepository SolConexionAutogenXvisitaRepository => _solConexionAutogenXvisitaRepository ?? new SolConexionAutogenXvisitaRepository(_context);
         public ISolServicioConexionReciboTecnicoRepository SolServicioConexionReciboTecnicoRepository => _solServicioConexionReciboTecnicoRepository ?? new SolServicioConexionReciboTecnicoRepository(_context);
-        public ISolServicioConexionRepository SolServicioConexionRepository => _solServicioConexionRepository ?? new SolServicioConexionRepository(_context, _dapperContext);
         public ISolServicioConexionComentarioRepository SolServicioConexionComentarioRepository => _solServicioConexionComentarioRepository ?? new SolServicioConexionComentarioRepository(_context, _dapperContext);       
         public ISolServicioConexionFactibilidadRepository SolServicioConexionFactibilidadRepository => _solServicioConexionFactibilidadRepository ?? new SolServicioConexionFactibilidadRepository(_context);        
         public ISolServicioConexionDisenioRepository SolServicioConexionDisenioRepository => _solServicioConexionDisenioRepository ?? new SolServicioConexionDisenioRepository(_context);

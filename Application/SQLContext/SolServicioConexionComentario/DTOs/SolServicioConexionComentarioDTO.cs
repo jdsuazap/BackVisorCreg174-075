@@ -1,6 +1,6 @@
 ﻿namespace Application.SQLContext.SolServicioConexionComentario.DTOs
 {
-    using Application.SQLContext.SolServicioConexion.DTOs;
+    using Application.Oracle.SolServicioConexion.DTOs;
 
     public class SolServicioConexionComentarioDTO
     {

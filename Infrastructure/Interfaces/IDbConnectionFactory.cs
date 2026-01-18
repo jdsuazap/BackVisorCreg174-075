@@ -19,6 +19,14 @@
             EnumConnectionStrings connectionName = EnumConnectionStrings.BaseDeDatoOracleEEP
         );
 
+        Task<IEnumerable<TReturn>> QueryAsync<T1, T2, T3, TReturn>(
+            string sql,
+            Func<T1, T2, T3, TReturn> map,
+            object param = null,
+            string splitOn = "Id",
+            EnumConnectionStrings connectionName = EnumConnectionStrings.BaseDeDatoOracleEEP
+        );
+
         IDbConnection CreateDbConnection(EnumConnectionStrings connectionName);
         string GetProvider(EnumConnectionStrings connectionName);
     }

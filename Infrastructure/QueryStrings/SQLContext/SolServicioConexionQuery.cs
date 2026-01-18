@@ -353,13 +353,15 @@
 
         internal static string GetByDetalleCuentaSolicitud = @"
             SELECT 
-	            a.IdSolServicioConexionDetalleCuentas	AS Id, a.*
-	            , b.IdTipoCliente						AS Id, b.*
-	            , c.IdTipoClaseCarga					AS Id, c.*
-            FROM sol.SolServicioConexionDetalleCuentas a (NOLOCK) 
-            INNER JOIN par.TipoCliente b (NOLOCK) ON a.CodTipoCarga = b.IdTipoCliente 
-            INNER JOIN par.TipoClaseCarga c (NOLOCK) ON a.CodTipoClaseCarga = c.IdTipoClaseCarga
-            WHERE a.CodSolServicioConexion = @IdSolicitud;
+	            SOL.*,
+	            b.*,
+	            c.*
+            FROM CREG_075_SERVICIO_CONEXION A
+            INNER JOIN CREG_075_DETALLES_CUENTAS SOL
+                ON A.ID = SOL.COD_075_CONEXION
+            INNER JOIN CREG_TIPO_CLIENTE b  ON SOL.COD_TIPO_CARGA = b.ID
+            INNER JOIN CREG_TIPO_CLASE_CARGA c ON SOL.COD_TIPO_CLASE_CARGA = c.ID
+            WHERE A.ID = :IdSolicitud
         ";
 
         internal const string GetEntitiesTrafo = @"

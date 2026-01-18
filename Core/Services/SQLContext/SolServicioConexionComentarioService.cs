@@ -2,6 +2,7 @@
 {
     using Core.Entities.SQLContext;
     using Core.Interfaces;
+    using Core.Interfaces.Oracle;
     using Core.Interfaces.SQLContext;
     using Core.Options;
     using Microsoft.Extensions.Options;

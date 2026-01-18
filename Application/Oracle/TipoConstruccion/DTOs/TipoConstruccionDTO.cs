@@ -1,6 +1,7 @@
 ﻿namespace Application.Oracle.TipoConstruccion.DTOs
 {
-    using Application.SQLContext.SolServicioConexion.DTOs;
+    using Application.Oracle.SolServicioConexion.DTOs;
+    using Core.Entities.Oracle;
 
     public class TipoConstruccionDTO
     {
@@ -8,6 +9,6 @@
         public string Descripcion { get; set; }
         public bool? Estado { get; set; }
 
-        //public virtual ICollection<SolServicioConexionDatosSolicitante> SolServicioConexionDatosSolicitantes { get; set; }
+        public virtual ICollection<Creg075Solicitante> SolServicioConexionDatosSolicitantes { get; set; }
     }
 }

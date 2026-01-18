@@ -768,13 +768,32 @@
         ";
 
         internal static string GetTecnologiasUtilBySolicitud = @"            
-            SELECT *
+            SELECT 
+                ID,
+                COD_174_AUTOGEN AS Cod174Autogen,
+                COD_TIPO_TECNOLOGIA AS CodTipoTecnologia,
+                OTRO_TIPO_TECNOLOGIA AS OtroTipoTecnologia,
+                CAPACIDAD_KW_POR_TECNOLOGIA AS CapacidadKwPorTecnologia,
+                FECHA_REGISTRO AS FechaRegistro
             FROM CREG_174_TECN_UTILIZADAS
             WHERE COD_174_AUTOGEN = :IdSolicitud            
         ";
 
         internal static string GetAnexosBySolicitud = @"
-            SELECT *
+            SELECT 
+                ID,
+                COD_174_AUTOGEN              AS Cod174Autogen,
+                COD_DOCUMENTOS_XFORMULARIO   AS CodDocumentosXformulario,
+                NAME_DOCUMENT                AS NameDocument,
+                EXT_DOCUMENT                 AS ExtDocument,
+                SIZE_DOCUMENT                AS SizeDocument,
+                URL_DOCUMENT                 AS UrlDocument,
+                URL_REL_DOCUMENT             AS UrlRelDocument,
+                ORIGINAL_NAMEDO_CUMENT       AS OriginalNamedoCument,
+                ESTADO_DOCUMENTO             AS EstadoDocumento,
+                EXPEDICION                   AS Expedicion,
+                VALIDATION_DOCUMENT          AS ValidationDocument,
+                SEND_NOTIFICATION             AS SendNotification
             FROM CREG_174_ANEXOS
             WHERE COD_174_AUTOGEN = :IdSolicitud AND Estado_Documento = 1
             ORDER BY ID DESC
@@ -841,7 +860,7 @@
             FROM CREG_174_PASOS ps 
             INNER JOIN CREG_Estados es2 ON ps.Cod_Estado = es2.Id             
             WHERE ps.COD_174_AUTOGEN = :IdSolicitud
-            ORDER BY ps.Id DESC";
+            ORDER BY ps.Id ASC";
 
         internal static string GetPasosByRadicado = @"
             SELECT 
