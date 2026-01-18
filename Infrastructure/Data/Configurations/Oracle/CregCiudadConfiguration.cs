@@ -30,6 +30,12 @@
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("NOMBRE_CIUDAD");
+
+            entity.HasOne(d => d.CodDepartamentoNavigation)
+               .WithMany(p => p.Ciudads)
+               .HasForeignKey(d => d.CodDepartamento)
+               .OnDelete(DeleteBehavior.ClientSetNull)
+               .HasConstraintName("FK_Ciudad_Departamento");
         }
     }
 }

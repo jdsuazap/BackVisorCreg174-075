@@ -317,9 +317,22 @@
         ";
 
         internal const string GetAnexosBySolicitud = @"
-            SELECT IdSolServicioConexionAnexo AS Id, *
-            FROM sol.SolServicioConexionAnexos (NOLOCK) 
-            WHERE CodSolServicioConexion = @IdSolicitud AND EstadoDocumento = 1;
+            SELECT 
+            ID                             AS Id,
+            COD_075_CONEXION               AS Cod075Conexion,
+            COD_DOCUMENTOS                 AS CodDocumentos,
+            NAME_DOCUMENT                  AS NameDocument,
+            EXT_DOCUMENT                   AS ExtDocument,
+            SIZE_DOCUMENT                  AS SizeDocument,
+            URL_DOCUMENT                   AS UrlDocument,
+            URL_REL_DOCUMENT               AS UrlRelDocument,
+            ORIGINAL_DOCUMENT              AS OriginalDocument,
+            ESTADO_DOCUMENTO               AS EstadoDocumento,
+            EXPEDICION                     AS Expedicion,
+            VALIDATION_DOCUMENT            AS ValidationDocument,
+            SEND_NOTIFICATION              AS SendNotification
+            FROM CREG_075_ANEXOS
+            WHERE COD_075_CONEXION = :IdSolicitud AND ESTADO_DOCUMENTO = 1
         ";
 
         internal static string GetPasosBySolicitud = @"

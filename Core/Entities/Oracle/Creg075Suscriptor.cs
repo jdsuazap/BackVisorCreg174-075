@@ -14,7 +14,7 @@ namespace Core.Entities.Oracle
         public string Direccion { get; set; } = null!;
         public string CodMunicipio { get; set; } = null!;
         public string CodDepartamento { get; set; } = null!;
-        public int Celular { get; set; }
+        public Int64 Celular { get; set; }
         public int? Telefono { get; set; }
         public string Email { get; set; } = null!;
 

@@ -40,8 +40,6 @@
 
         public async Task<Creg075ServicioConexion> GetEntity(int idEntity, int Empresa)
         {
-            var param = new { IdSolicitud = idEntity };
-
             var parameters = new OracleDynamicParameters();
 
             parameters.Add("P_ID_SOLICITUD", idEntity, OracleMappingType.Int32, ParameterDirection.Input);
@@ -50,7 +48,7 @@
             parameters.Add("O_SOLICITUD", null, OracleMappingType.RefCursor, ParameterDirection.Output);
             parameters.Add("O_ACT_ECONOMICA", null, OracleMappingType.RefCursor, ParameterDirection.Output);
             parameters.Add("O_ESTADO", null, OracleMappingType.RefCursor, ParameterDirection.Output);
-            parameters.Add("O_ESTAPA", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_ETAPA", null, OracleMappingType.RefCursor, ParameterDirection.Output);
             parameters.Add("O_ESTRATO", null, OracleMappingType.RefCursor, ParameterDirection.Output);
             parameters.Add("O_TIPO_CONEXION", null, OracleMappingType.RefCursor, ParameterDirection.Output);
             parameters.Add("O_TIPO_CLIENTE", null, OracleMappingType.RefCursor, ParameterDirection.Output);
@@ -79,7 +77,7 @@
                 parameters
             );
 
-            var solicitud = await multi.ReadFirstAsync<Creg075ServicioConexion>();
+            var solicitud = await multi.ReadFirstOrDefaultAsync<Creg075ServicioConexion>();
             if (solicitud == null)
                 return null;
 

@@ -11,10 +11,10 @@
     [Route("api/[controller]")]
     [ApiController]
     [ApiExplorerSettings(IgnoreApi = true)]
-    public class Solicitudes175FactibilidadController: ControllerBase
+    public class Solicitudes075FactibilidadController: ControllerBase
     {
         private readonly IMediator _mediator;
-        public Solicitudes175FactibilidadController(IMediator mediator)
+        public Solicitudes075FactibilidadController(IMediator mediator)
         {
             _mediator = mediator;
         }
