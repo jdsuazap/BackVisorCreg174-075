@@ -11,10 +11,10 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //[ApiExplorerSettings(IgnoreApi = true)]
-    public class Solicitudes175Controller: ControllerBase
+    public class Solicitudes075Controller: ControllerBase
     {
         private readonly IMediator _mediator;
-        public Solicitudes175Controller(IMediator mediator)
+        public Solicitudes075Controller(IMediator mediator)
         {
             _mediator = mediator;
         }

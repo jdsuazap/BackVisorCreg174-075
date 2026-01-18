@@ -28,7 +28,7 @@
             _mapper = mapper;
         }
 
-        internal async Task<List<SolServicioConexionDTO>> GetDtoListAsync(List<SolServicioConexionDTO> entities, bool includeAllDependencies = false)
+        internal async Task<SolServicioConexionDTO> GetDtoListAsync(Creg075ServicioConexion entities, bool includeAllDependencies = false)
         {
             var resultList = _mapper.Map<List<SolServicioConexionDTO>>(entities);
 
@@ -46,7 +46,7 @@
             //await GetDesistimientoAsync(resultList, includeAllDependencies);
             //await GetAnulacionAsync(resultList, includeAllDependencies);
 
-            return resultList;
+            return resultList.First();
         }
 
         //private async Task GetSolicitudOtherAnexos(List<Creg075ServicioConexion> entitiesDto, List<CregEstado> estados)

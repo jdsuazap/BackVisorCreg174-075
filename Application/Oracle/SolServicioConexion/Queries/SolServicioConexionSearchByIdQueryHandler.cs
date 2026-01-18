@@ -27,14 +27,15 @@
             var solServicio = new SolServicioConexionDTO
             {
                 Id = request.Id,
+                Empresa = request.Empresa
             };
 
-            var entity = await _solServicioConexionService.GetEntity(solServicio.Id, (int)solServicio.Empresa);
+            var entity = await _solServicioConexionService.GetEntity(solServicio.Id, solServicio.Empresa);
 
-            var entidad = _mapper.Map<List<SolServicioConexionDTO>>(entity);
+            //var entities = await GetDtoListAsync(entity, true);
+            var result = _mapper.Map<SolServicioConexionDTO>(entity);
 
-            var entities = await GetDtoListAsync(entidad, true);
-            return entities.First();
+            return result;
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Core.Entities.SQLContext;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Core.Entities.Oracle
@@ -21,6 +20,8 @@ namespace Core.Entities.Oracle
         public string CodDepartamento { get; set; } = null!;
         public string NombreCiudad { get; set; } = null!;
         public bool? Estado { get; set; }
+
+        public virtual CregDepartamento CodDepartamentoNavigation { get; set; }
 
         public virtual ICollection<Creg075Predio> Creg075Predios { get; set; }
         public virtual ICollection<Creg075Solicitante> Creg075Solicitantes { get; set; }
