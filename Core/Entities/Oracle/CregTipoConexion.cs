@@ -1,9 +1,19 @@
-﻿namespace Core.Entities.Oracle
+﻿using System;
+using System.Collections.Generic;
+
+namespace Core.Entities.Oracle
 {
     public partial class CregTipoConexion
     {
+        public CregTipoConexion()
+        {
+            Creg075ServicioConexions = new HashSet<Creg075ServicioConexion>();
+        }
+
         public int Id { get; set; }
         public string Descripcion { get; set; } = null!;
         public bool Estado { get; set; }
+
+        public virtual ICollection<Creg075ServicioConexion> Creg075ServicioConexions { get; set; }
     }
 }

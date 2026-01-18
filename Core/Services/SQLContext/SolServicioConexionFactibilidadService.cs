@@ -83,13 +83,13 @@
             return await _unitOfWork.SolServicioConexionFactibilidadRepository.GetEntity(idEntity);
         }
 
-        public async Task<SolServicioConexionFactibilidad> GetEntityByIdSolicitud(long idEntity)
+        public async Task<SolServicioConexionFactibilidad> GetEntityByIdSolicitud(long idEntity, int Empresa)
         {
             SolServicioConexionFactibilidad result = new();
 
             int idSol = (int)idEntity;
 
-            var solicitud = await _unitOfWork.SolServicioConexionRepository.GetEntity(idSol)
+            var solicitud = await _unitOfWork.SolServicioConexionRepository.GetEntity(idSol, Empresa)
                 ?? throw new BusinessException("Solicitud inexistente");
 
             Expression<Func<SolServicioConexionFactibilidad, object>>[] includes = {
@@ -106,7 +106,7 @@
             if (entity == null)
             {
                 result.CodSolServicioConexion = idSol;
-                result.CodSolServicioConexionNavigation = solicitud;
+                //result.CodSolServicioConexionNavigation = solicitud;
             }
             else
             {

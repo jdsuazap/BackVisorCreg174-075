@@ -40,6 +40,18 @@
             return await conn.QueryAsync(sql, map, param, splitOn: splitOn);
         }
 
+        public async Task<IEnumerable<TReturn>> QueryAsync<T1, T2, T3, TReturn>(
+            string sql,
+            Func<T1, T2, T3, TReturn> map,
+            object param = null,
+            string splitOn = "Id",
+            EnumConnectionStrings connectionName = EnumConnectionStrings.BaseDeDatoOracleEEP
+        )
+        {
+            using var conn = CreateDbConnection(connectionName);
+            return await conn.QueryAsync(sql, map, param, splitOn: splitOn);
+        }
+
         public IDbConnection CreateDbConnection(EnumConnectionStrings connectionName)
         {
             // Aquí ignoramos connectionName porque el adaptador es específico para uno

@@ -27,6 +27,7 @@
         {
             string appConnString = configuration.GetConnectionString("AppEntities")
                ?? throw new BusinessException($"No existe cadena de conexión para 'AppEntities' ");
+            //string sgdConnString = configuration.GetConnectionString("SGDEntities");
 
             string oracleConnEEP = configuration.GetConnectionString("ConexionOracleEEP")
                 ?? throw new BusinessException($"No existe cadena de conexión para 'ConexionOracleEEP' ");

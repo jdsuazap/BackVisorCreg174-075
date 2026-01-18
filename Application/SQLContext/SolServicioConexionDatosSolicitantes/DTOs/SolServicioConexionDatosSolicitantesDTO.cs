@@ -2,7 +2,7 @@
 {
     using Application.Oracle.Departamento.DTOs;
     using Application.Oracle.Ciudad.DTOs;
-    using Application.SQLContext.SolServicioConexion.DTOs;
+    using Application.Oracle.SolServicioConexion.DTOs;
     using Application.Oracle.TipoIdentificacion.DTOs;
 
     public class SolServicioConexionDatosSolicitantesDTO

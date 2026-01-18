@@ -1,6 +1,6 @@
 ﻿namespace Application.SQLContext.SolServicioConexionDatosSuscriptor.DTOs
 {
-    using Application.SQLContext.SolServicioConexion.DTOs;
+    using Application.Oracle.SolServicioConexion.DTOs;
 
     public class SolServicioConexionDatosSuscriptorDTO
     {

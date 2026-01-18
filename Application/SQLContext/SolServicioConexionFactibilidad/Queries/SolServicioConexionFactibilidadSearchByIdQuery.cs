@@ -8,5 +8,7 @@
     {
         [Required]
         public int CodSolServicioConexion { get; set; }
+        [Required]
+        public int Empresa { get; set; }
     }
 }
