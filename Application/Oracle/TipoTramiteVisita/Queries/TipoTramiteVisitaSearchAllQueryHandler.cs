@@ -1,4 +1,4 @@
-﻿namespace Application.SQLContext.TipoTramiteVisita.Queries
+﻿namespace Application.Oracle.TipoTramiteVisita.Queries
 {
     using Application.Oracle.TipoTramiteVisita.DTOs;
     using Application.Oracle.TipoTramiteVisita.Queries;

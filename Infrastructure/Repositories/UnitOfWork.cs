@@ -18,7 +18,7 @@
     /// </summary>
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DbSQLContext _context;
+        //private readonly DbSQLContext _context;
         private readonly DbOracleContext _eepContext;
         private readonly DbSpardContext _SpardContext;
         private readonly IDbConnection _dapperContext;
@@ -51,43 +51,37 @@
         private readonly ITipoSolicitudReciboRepository _tipoSolicitudReciboRepository;
         private readonly IPersonaAutorizaReciboRepository _personaAutorizaReciboRepository;
         private readonly ICreg_TransformadorRepository _creg_transformadorRepository;
+        private readonly IEmpresasRepository _empresasRepository;
+        private readonly IDocumentosXformularioRepository _documentosXformularioRepository;
+        private readonly IPasosSolConexionAutogenRepository _pasosSolConexionAutogenRepository;
+        private readonly ISolServicioConexionRepository _solServicioConexionRepository;
+        private readonly IEstadoRepository _estadoRepository;            
+        private readonly IActividadEconomicaRepository _actividadEconomicaRepository;        
 
         #region SQLContext
 
-        private readonly IEmpresasRepository _empresasRepository;
-        private readonly IDocumentosXformularioRepository _documentosXformularioRepository;
         //private readonly ITipoActivoRepository _tipoActivoRepository;
-        private readonly IPasosSolConexionAutogenRepository _pasosSolConexionAutogenRepository;
         //private readonly IPasosSolServicioConexionRepository _pasosSolServicioConexionRepository;
         //private readonly ISolConexionAutogenComentarioRepository _solConexionAutogenComentarioRepository;
-        //private readonly ISolConexionAutogenXvisitaRepository _solConexionAutogenXvisitaRepository;
-        
+        //private readonly ISolConexionAutogenXvisitaRepository _solConexionAutogenXvisitaRepository;        
         //private readonly ISolServicioConexionReciboTecnicoRepository _solServicioConexionReciboTecnicoRepository;
-        private readonly ISolServicioConexionRepository _solServicioConexionRepository;
-        //private readonly ISolServicioConexionComentarioRepository _solServicioConexionComentarioRepository;
-        
-        
-
+        //private readonly ISolServicioConexionComentarioRepository _solServicioConexionComentarioRepository;                
         //private readonly ISolServicioConexionFactibilidadRepository _solServicioConexionFactibilidadRepository;        
-        //private readonly ISolServicioConexionDisenioRepository _solServicioConexionDisenioRepository;        
-        private readonly IEstadoRepository _estadoRepository;            
-        private readonly IActividadEconomicaRepository _actividadEconomicaRepository;        
-        
+        //private readonly ISolServicioConexionDisenioRepository _solServicioConexionDisenioRepository;                
         //private readonly ISolServicioConexionReviewRepository _solServicioConexionReviewRepository;
         //private readonly ISolConexionAutogenComentarioRepository _solConexionAutogenComentarioRepository;
-
         //private readonly ISolServicioConexionComentarioAnexoRepository _solServicioConexionComentarioAnexoRepository;
         #endregion
 
         public UnitOfWork(
-            DbSQLContext context,
+            //DbSQLContext context,
             DbOracleContext oracleContext,
             DbSpardContext spardContext,
             IDbConnection dapperContext,
             IDictionary<string, DbConnectionFactoryModel> conexiones
         )
         {
-            _context = context;
+            //_context = context;
             _eepContext = oracleContext;
             _SpardContext = spardContext;
 
@@ -285,16 +279,14 @@
            )
         );
 
-        #region SQLContext
- 
-       
+
         //public ITipoActivoRepository TipoActivoRepository => _tipoActivoRepository ?? new TipoActivoRepository(_context);        
         //public ITipoSolicitudReciboRepository TipoSolicitudReciboRepository => _tipoSolicitudReciboRepository ?? new TipoSolicitudReciboRepository(_context);
         //public ITipoSolicitudServicioRepository TipoSolicitudServicioRepository => _tipoSolicitudServicioRepository ?? new TipoSolicitudServicioRepository(_context);
 
         //public IPasosSolServicioConexionRepository PasosSolServicioConexionRepository => _pasosSolServicioConexionRepository ?? new PasosSolServicioConexionRepository(_context);
         //public ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository => _solConexionAutogenComentarioRepository ?? new SolConexionAutogenComentarioRepository(_context, _dapperContext, _paginacionService);
-        
+
         //public ISolConexionAutogenXvisitaRepository SolConexionAutogenXvisitaRepository => _solConexionAutogenXvisitaRepository ?? new SolConexionAutogenXvisitaRepository(_context);
         //public ISolServicioConexionReciboTecnicoRepository SolServicioConexionReciboTecnicoRepository => _solServicioConexionReciboTecnicoRepository ?? new SolServicioConexionReciboTecnicoRepository(_context);
         //public ISolServicioConexionComentarioRepository SolServicioConexionComentarioRepository => _solServicioConexionComentarioRepository ?? new SolServicioConexionComentarioRepository(_context, _dapperContext);       
@@ -303,39 +295,46 @@
         //public ISolServicioConexionReviewRepository SolServicioConexionReviewRepository => _solServicioConexionReviewRepository ?? new SolServicioConexionReviewRepository(_context);
         //public ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository => _solConexionAutogenComentarioRepository ?? new SolConexionAutogenComentarioRepository(_context, _dapperContext);
 
-
-        #endregion
-
         public void Dispose()
         {
-            if (_context != null)
+            if (_eepContext != null)
             {
-                _context.Dispose();
+                _eepContext.Dispose();
             }
+
+            if (_SpardContext != null)
+            {
+                _SpardContext.Dispose();
+            }
+
+            //if (_context != null)
+            //{
+            //    _context.Dispose();
+            //}
         }
 
-        public async Task<IDbContextTransaction> BeginTransactionAsync()
-        {
-            if (_context.Database.CurrentTransaction == null)
-            {
-                // Si no hay una transacción actual, comenzamos una nueva
-                return await _context.Database.BeginTransactionAsync();
-            }
-            else
-            {
-                // Si ya hay una transacción en curso, la devolvemos para su reutilización
-                return null;
-            }
-        }
+        //public async Task<IDbContextTransaction> BeginTransactionAsync()
+        //{
+        //    if (_context.Database.CurrentTransaction == null)
+        //    {
+        //        // Si no hay una transacción actual, comenzamos una nueva
+        //        return await _context.Database.BeginTransactionAsync();
+        //    }
+        //    else
+        //    {
+        //        // Si ya hay una transacción en curso, la devolvemos para su reutilización
+        //        return null;
+        //    }
+        //}
 
-        public void SaveChanges()
-        {
-            _context.SaveChanges();
-        }
+        //public void SaveChanges()
+        //{
+        //    _context.SaveChanges();
+        //}
 
-        public async Task SaveChangesAsync()
-        {
-            await _context.SaveChangesAsync();
-        }
+        //public async Task SaveChangesAsync()
+        //{
+        //    await _context.SaveChangesAsync();
+        //}
     }
 }

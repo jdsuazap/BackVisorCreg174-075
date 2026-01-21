@@ -8,7 +8,6 @@
     /// </summary>
     public interface IUnitOfWork : IDisposable
     {
-
         ICregCiudadRepository CregCiudadRepository { get; }
         IDepartamentoRepository DepartamentoRepository { get; }
         ITipoGeneracionRepository TipoGeneracionRepository { get; }
@@ -19,19 +18,15 @@
         IPersonaAutorizaReciboRepository PersonaAutorizaReciboRepository { get; }
         ICreg_TransformadorRepository Creg_transformadorRepository { get; }
       
-
         IComercializadorRepository ComercializadorRepository { get; }
         IEmpresasRepository EmpresasRepository { get; }
         IDocumentosXformularioRepository DocumentosXformularioRepository { get; }
         IEstratoSocioeconomicoRepository EstratoSocioeconomicoRepository { get; }
-        //ITipoActivoRepository TipoActivoRepository { get; }
         ITipoAerogeneradorRepository TipoAerogeneradorRepository { get; }
-        ITipoClaseCargaRepository TipoClaseCargaRepository { get; }
-        
+        ITipoClaseCargaRepository TipoClaseCargaRepository { get; }        
         ITipoCompletitudRepository TipoCompletitudRepository { get; }
         ITipoConexionRepository TipoConexionRepository { get; }
-        ITipoConstruccionRepository TipoConstruccionRepository { get; }
-        
+        ITipoConstruccionRepository TipoConstruccionRepository { get; }        
         ITipoIdentificacionRepository TipoIdentificacionRepository { get; }
         ITipoPersonaRepository TipoPersonaRepository { get; }
         ITipoProyectoRepository TipoProyectoRepository { get; }
@@ -41,30 +36,25 @@
         ITipoTramiteVisitaRepository TipoTramiteVisitaRepository { get; }
         ITipoZonaRepository TipoZonaRepository { get; }
         IPasosSolConexionAutogenRepository PasosSolConexionAutogenRepository { get; }
-        //IPasosSolServicioConexionRepository PasosSolServicioConexionRepository { get; }
-        ISolConexionAutogenRepository SolConexionAutogenRepository { get; }
-        //ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository { get; }
-        //ISolConexionAutogenXvisitaRepository SolConexionAutogenXvisitaRepository { get; }
-
-        //ISolServicioConexionReciboTecnicoRepository SolServicioConexionReciboTecnicoRepository { get; }
-        ISolServicioConexionRepository SolServicioConexionRepository { get; }
-        //ISolServicioConexionComentarioRepository SolServicioConexionComentarioRepository { get; }
-        
-       
-
-        //ISolServicioConexionFactibilidadRepository SolServicioConexionFactibilidadRepository { get; }
-        //ISolServicioConexionDisenioRepository SolServicioConexionDisenioRepository { get; }
         IEstadoRepository EstadoRepository { get; }
         IActividadEconomicaRepository ActividadEconomicaRepository { get; }
-       
+        ISolConexionAutogenRepository SolConexionAutogenRepository { get; }
+        ISolServicioConexionRepository SolServicioConexionRepository { get; }
+               
+        //IPasosSolServicioConexionRepository PasosSolServicioConexionRepository { get; }
+        //ITipoActivoRepository TipoActivoRepository { get; }
+        //ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository { get; }
+        //ISolConexionAutogenXvisitaRepository SolConexionAutogenXvisitaRepository { get; }
+        //ISolServicioConexionReciboTecnicoRepository SolServicioConexionReciboTecnicoRepository { get; }
+        //ISolServicioConexionComentarioRepository SolServicioConexionComentarioRepository { get; }
+        //ISolServicioConexionFactibilidadRepository SolServicioConexionFactibilidadRepository { get; }
+        //ISolServicioConexionDisenioRepository SolServicioConexionDisenioRepository { get; }       
         //ISolServicioConexionReviewRepository SolServicioConexionReviewRepository { get; }
         //ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository { get; }
-
         //ISolServicioConexionComentarioAnexoRepository SolServicioConexionComentarioAnexoRepository { get; }
 
-
-        Task<IDbContextTransaction> BeginTransactionAsync();
-        void SaveChanges();
-        Task SaveChangesAsync();
+        //Task<IDbContextTransaction> BeginTransactionAsync();
+        //void SaveChanges();
+        //Task SaveChangesAsync();
     }
 }
