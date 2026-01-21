@@ -1,7 +1,6 @@
 ﻿namespace Core.Interfaces
 {
     using Core.Interfaces.Oracle;
-    using Core.Interfaces.SQLContext;
     using Microsoft.EntityFrameworkCore.Storage;
 
     /// <summary>
@@ -19,15 +18,13 @@
         ITipoSolicitudReciboRepository TipoSolicitudReciboRepository { get; }
         IPersonaAutorizaReciboRepository PersonaAutorizaReciboRepository { get; }
         ICreg_TransformadorRepository Creg_transformadorRepository { get; }
-
-        #region SQLContext       
+      
 
         IComercializadorRepository ComercializadorRepository { get; }
         IEmpresasRepository EmpresasRepository { get; }
         IDocumentosXformularioRepository DocumentosXformularioRepository { get; }
         IEstratoSocioeconomicoRepository EstratoSocioeconomicoRepository { get; }
-        IMotivoProrrogaRepository MotivoProrrogaRepository { get; }
-        ITipoActivoRepository TipoActivoRepository { get; }
+        //ITipoActivoRepository TipoActivoRepository { get; }
         ITipoAerogeneradorRepository TipoAerogeneradorRepository { get; }
         ITipoClaseCargaRepository TipoClaseCargaRepository { get; }
         
@@ -44,29 +41,27 @@
         ITipoTramiteVisitaRepository TipoTramiteVisitaRepository { get; }
         ITipoZonaRepository TipoZonaRepository { get; }
         IPasosSolConexionAutogenRepository PasosSolConexionAutogenRepository { get; }
-        IPasosSolServicioConexionRepository PasosSolServicioConexionRepository { get; }
+        //IPasosSolServicioConexionRepository PasosSolServicioConexionRepository { get; }
         ISolConexionAutogenRepository SolConexionAutogenRepository { get; }
         //ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository { get; }
         //ISolConexionAutogenXvisitaRepository SolConexionAutogenXvisitaRepository { get; }
 
-        ISolServicioConexionReciboTecnicoRepository SolServicioConexionReciboTecnicoRepository { get; }
+        //ISolServicioConexionReciboTecnicoRepository SolServicioConexionReciboTecnicoRepository { get; }
         ISolServicioConexionRepository SolServicioConexionRepository { get; }
-        ISolServicioConexionComentarioRepository SolServicioConexionComentarioRepository { get; }
+        //ISolServicioConexionComentarioRepository SolServicioConexionComentarioRepository { get; }
         
        
 
-        ISolServicioConexionFactibilidadRepository SolServicioConexionFactibilidadRepository { get; }
-        ISolServicioConexionDisenioRepository SolServicioConexionDisenioRepository { get; }
+        //ISolServicioConexionFactibilidadRepository SolServicioConexionFactibilidadRepository { get; }
+        //ISolServicioConexionDisenioRepository SolServicioConexionDisenioRepository { get; }
         IEstadoRepository EstadoRepository { get; }
         IActividadEconomicaRepository ActividadEconomicaRepository { get; }
        
-        ISolServicioConexionReviewRepository SolServicioConexionReviewRepository { get; }
-        ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository { get; }
+        //ISolServicioConexionReviewRepository SolServicioConexionReviewRepository { get; }
+        //ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository { get; }
 
         //ISolServicioConexionComentarioAnexoRepository SolServicioConexionComentarioAnexoRepository { get; }
 
-
-        #endregion
 
         Task<IDbContextTransaction> BeginTransactionAsync();
         void SaveChanges();

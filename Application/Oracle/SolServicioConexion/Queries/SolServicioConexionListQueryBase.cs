@@ -11,10 +11,7 @@
     //using Application.Oracle.SolServicioConexionSeguimientoObra.DTOs;
     using AutoMapper;
     using Core.Entities.Oracle;
-    using Core.Entities.SQLContext;
-    using Core.Enumerations;
     using Core.Interfaces;
-    using Core.Interfaces.Oracle;
     using System.Linq;
 
     public class SolServicioConexionListQueryBase
@@ -35,7 +32,6 @@
             var estados = await _unitOfWork.EstadoRepository.GetEntities();
 
             //PasosPorEtapaSolServicioconexion(resultList, includeAllDependencies);
-            //await GetAlertsAsync(resultList);
             //await GetSolicitudOtherAnexos(resultList, estados);
             //await GetFactibilidadAsync(resultList);
             //await GetFactibilidadAsync(resultList, estados, includeAllDependencies);
@@ -43,8 +39,6 @@
             //await GetSeguimientoObraAsync(resultList, includeAllDependencies, estados);
             //await GetReciboTecnicoAnexosAsync(resultList, estados, includeAllDependencies);
             //await GetComentariosAsync(resultList, includeAllDependencies);
-            //await GetDesistimientoAsync(resultList, includeAllDependencies);
-            //await GetAnulacionAsync(resultList, includeAllDependencies);
 
             return resultList.First();
         }

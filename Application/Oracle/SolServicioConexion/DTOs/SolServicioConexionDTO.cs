@@ -1,13 +1,5 @@
 ﻿namespace Application.Oracle.SolServicioConexion.DTOs
 {
-    using Application.SQLContext.SolReciboTecnico.DTOs;
-    using Application.SQLContext.SolServicioConexionComentario.DTOs;
-    using Application.SQLContext.SolServicioConexionDatosSolicitantes.DTOs;
-    using Application.SQLContext.SolServicioConexionDatosSuscriptor.DTOs;
-    using Application.SQLContext.SolServicioConexionDetalle.DTOs;
-    using Application.SQLContext.SolServicioConexionDetalleCuentas.DTOs;
-    using Application.SQLContext.SolServicioConexionPredio.DTOs;
-    using Application.SQLContext.SolServicioConexionReciboTecnico.DTOs;
     using Core.Entities.Oracle;
 
     public class SolServicioConexionDTO

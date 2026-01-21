@@ -1,13 +1,14 @@
-﻿using Application.Oracle.TipoIdentificacion.DTOs;
-using AutoMapper;
-
-namespace Application.Oracle.TipoIdentificacion.Mapping
+﻿namespace Application.Oracle.TipoIdentificacion.Mapping
 {
+    using Application.Oracle.TipoIdentificacion.DTOs;
+    using AutoMapper;
+    using Core.Entities.Oracle;
+
     internal class TipoIdentificacionMapper : Profile
     {
         public TipoIdentificacionMapper()
         {
-            CreateMap<Core.Entities.SQLContext.TipoIdentificacion, TipoIdentificacionDTO>().ReverseMap();
+            CreateMap<CregTipoIdentificacion, TipoIdentificacionDTO>().ReverseMap();
         }
     }
 }
