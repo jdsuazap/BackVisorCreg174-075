@@ -1,4 +1,4 @@
-﻿namespace Core.Services.SQLContext
+﻿namespace Core.Services.Oracle
 {
     using Core.Entities.Oracle;
     using Core.Interfaces;

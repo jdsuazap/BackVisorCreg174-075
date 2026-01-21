@@ -7,7 +7,6 @@
     using Core.Interfaces.Oracle;
     using Core.Options;
     using Core.Services.Oracle;
-    using Core.Services.SQLContext;
     using Infrastructure.Data;
     using Infrastructure.Interfaces;
     using Infrastructure.Repositories;
@@ -18,16 +17,13 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.OpenApi.Models;
+    using Oracle.ManagedDataAccess.Client;
     using System.Data;
 
     public static class ServiceCollectionExtension
     {
         public static IServiceCollection AddDbContexts(this IServiceCollection services, IConfiguration configuration)
-        {
-            string appConnString = configuration.GetConnectionString("AppEntities")
-               ?? throw new BusinessException($"No existe cadena de conexión para 'AppEntities' ");
-            //string sgdConnString = configuration.GetConnectionString("SGDEntities");
-
+        {     
             string oracleConnEEP = configuration.GetConnectionString("ConexionOracleEEP")
                 ?? throw new BusinessException($"No existe cadena de conexión para 'ConexionOracleEEP' ");
 
@@ -46,18 +42,7 @@
             connections.Add(EnumConnectionStrings.BaseDeDatoOracleSpard.ToString(), oracleConectionSpard);
 
             services.AddSingleton<IDictionary<string, DbConnectionFactoryModel>>(connections);
-
-            SqlConnectionStringBuilder builder = new(appConnString)
-            {
-                TrustServerCertificate = true
-            };
-
-            services.AddDbContext<DbSQLContext>(options =>
-            {
-                options.UseSqlServer(builder.ConnectionString);
-            }, ServiceLifetime.Scoped);
-
-            // Configuracion para la conexion a la Base de Datos Oracle
+           
             services.AddDbContext<DbOracleContext>(options =>
             {
                 options.UseOracle(oracleConnEEP);
@@ -69,7 +54,20 @@
             }, ServiceLifetime.Scoped);
 
             // Configuración Dapper
-            services.AddScoped<IDbConnection>((c) => new SqlConnection(builder.ConnectionString));
+            services.AddScoped<IDbConnection>(sp =>
+            {
+                var conn = new OracleConnection(oracleConnEEP);
+                conn.Open();
+                return conn;
+            });
+
+            services.AddScoped<IDbConnection>(sp =>
+            {
+                var conn = new OracleConnection(oracleConnSpard);
+                conn.Open();
+                return conn;
+            });
+
             return services;
         }
 
@@ -102,29 +100,29 @@
             });          
             
             services.AddTransient<IDocumentosXformularioService, DocumentosXformularioService>();            
-            //services.AddTransient<IMotivoProrrogaService, MotivoProrrogaService>();          
-            //services.AddTransient<IPasosSolConexionAutogenService, PasosSolConexionAutogenService>();
-            //services.AddTransient<IPasosSolServicioConexionService, PasosSolServicioConexionService>();
             services.AddTransient<ISolConexionAutogenService, SolConexionAutogenService>();            
-            //services.AddTransient<ISolServicioConexionReciboTecnicoService, SolServicioConexionReciboTecnicoService>();
             services.AddTransient<ISolServicioConexionService, SolServicioConexionService>();
-            //services.AddTransient<ISolServicioConexionComentarioService, SolServicioConexionComentarioService>();                      
             services.AddTransient<IDepartamentoService, DepartamentoService>();          
-            //services.AddTransient<ISolServicioConexionFactibilidadService, SolServicioConexionFactibilidadService>();
-            //services.AddTransient<ISolServicioConexionDisenioService, SolServicioConexionDisenioService>();
-            //services.AddTransient<ISolServicioConexionComentarioService , SolServicioConexionComentarioService>();
             services.AddTransient<ITipoIdentificacionService , TipoIdentificacionService>();
-            //services.AddTransient<ISolServicioConexionReviewsService , SolServicioConexionReviewsService> ();
-            //services.AddTransient<ISolConexionAutogenComentarioService, SolConexionAutogenComentarioService>();
             services.AddTransient<ITipoTecnologiaService, TipoTecnologiaService>();
             services.AddTransient<ITipoTramiteVisitaService, TipoTramiteVisitaService>();
             services.AddTransient<IActividadEconomicaService, ActividadEconomicaService>();
             services.AddTransient<IPersonaAutorizaReciboService, PersonaAutorizaReciboService>();
             services.AddTransient<ITipoTramiteVisitaService, TipoTramiteVisitaService>();
             services.AddTransient<ICreg_TransformadorService, Creg_TransformadorService>();
-
-
             services.AddTransient<ICregCiudadService, CregCiudadService>();
+
+
+            //services.AddTransient<ISolServicioConexionReciboTecnicoService, SolServicioConexionReciboTecnicoService>();
+            //services.AddTransient<IMotivoProrrogaService, MotivoProrrogaService>();          
+            //services.AddTransient<IPasosSolConexionAutogenService, PasosSolConexionAutogenService>();
+            //services.AddTransient<IPasosSolServicioConexionService, PasosSolServicioConexionService>();
+            //services.AddTransient<ISolServicioConexionComentarioService, SolServicioConexionComentarioService>();                      
+            //services.AddTransient<ISolServicioConexionFactibilidadService, SolServicioConexionFactibilidadService>();
+            //services.AddTransient<ISolServicioConexionDisenioService, SolServicioConexionDisenioService>();
+            //services.AddTransient<ISolServicioConexionComentarioService , SolServicioConexionComentarioService>();
+            //services.AddTransient<ISolServicioConexionReviewsService , SolServicioConexionReviewsService> ();
+            //services.AddTransient<ISolConexionAutogenComentarioService, SolConexionAutogenComentarioService>();
 
             return services;
         }
