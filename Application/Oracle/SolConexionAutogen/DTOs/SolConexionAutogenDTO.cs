@@ -1,6 +1,6 @@
 ﻿namespace Application.Oracle.SolConexionAutogen.DTOs
 {
-    using Application.SQLContext.SolConexionAutogenComentario.DTOs;
+    //using Application.SQLContext.SolConexionAutogenComentario.DTOs;
     using Core.Entities.Oracle;
 
     public class SolConexionAutogenDTO
@@ -42,7 +42,7 @@
         public DateTime? FechaLimiteConexion { get; set; }        
         public DateTime FechaRegistro { get; set; }     
              
-        public virtual ICollection<SolConexionAutogenComentarioDTO> SolConexionAutogenComentarios { get; set; }
+        //public virtual ICollection<SolConexionAutogenComentarioDTO> SolConexionAutogenComentarios { get; set; }
 
         public virtual CregCiudad CregCiudad { get; set; } = null!;
         public virtual CregClasificacionProyecto CregClasificacionProyecto { get; set; }

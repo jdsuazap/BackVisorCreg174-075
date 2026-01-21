@@ -1,6 +1,4 @@
-﻿using Core.Entities.SQLContext;
-
-namespace Core.Entities.Oracle
+﻿namespace Core.Entities.Oracle
 {
     public partial class Creg174Pasos
     {

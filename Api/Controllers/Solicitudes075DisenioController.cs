@@ -1,8 +1,8 @@
 ﻿namespace Api.Controllers
 {
     using Api.Responses;
-    using Application.SQLContext.SolServicioConexionDisenio.DTOs;
-    using Application.SQLContext.SolServicioConexionDisenio.Queries;
+    //using Application.SQLContext.SolServicioConexionDisenio.DTOs;
+    //using Application.SQLContext.SolServicioConexionDisenio.Queries;
     using Core.Exceptions;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
@@ -25,26 +25,26 @@
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        [HttpGet("GetById", Name = "GetEntitySolServicioConexionDisenio")]
-        [Consumes("application/json")]
-        public async Task<IActionResult> GetEntitySolServicioConexionDisenio([FromQuery] SolServicioConexionDisenioSearchByIdQuery entity)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(entity.Id.ToString()))
-                {
-                    throw new ArgumentNullException(nameof(entity), "el valor de 'Id' no es válido");
-                }
+        //[HttpGet("GetById", Name = "GetEntitySolServicioConexionDisenio")]
+        //[Consumes("application/json")]
+        //public async Task<IActionResult> GetEntitySolServicioConexionDisenio([FromQuery] SolServicioConexionDisenioSearchByIdQuery entity)
+        //{
+        //    try
+        //    {
+        //        if (string.IsNullOrEmpty(entity.Id.ToString()))
+        //        {
+        //            throw new ArgumentNullException(nameof(entity), "el valor de 'Id' no es válido");
+        //        }
 
-                var entityResp = await _mediator.Send(entity);
-                var response = new ApiResponse<SolServicioConexionDisenioDTO>(entityResp, 200);
-                return Ok(response);
-            }
-            catch (Exception e)
-            {
-                throw new BusinessException($"Error en la búsqueda. Detalle: {e.Message}");
-            }
-        }
+        //        var entityResp = await _mediator.Send(entity);
+        //        var response = new ApiResponse<SolServicioConexionDisenioDTO>(entityResp, 200);
+        //        return Ok(response);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw new BusinessException($"Error en la búsqueda. Detalle: {e.Message}");
+        //    }
+        //}
 
     }
 }
