@@ -49,9 +49,9 @@ namespace Api.Controllers
         /// </summary>
         /// <returns></returns>
         /// <exception cref="BusinessException"></exception>
-        [HttpGet("GetInitialParams", Name = "GetDatosGenerales075")]
+        [HttpGet("GetDatosGenerales", Name = "GetDatosGenerales075")]
         [Consumes("application/json")]
-        public async Task<IActionResult> GetDatosGenerales174()
+        public async Task<IActionResult> GetDatosGenerales075()
         {
             try
             {
