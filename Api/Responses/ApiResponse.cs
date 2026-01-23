@@ -12,20 +12,17 @@ namespace Api.Responses
         public int Status { get; set; }
         public T Data { get; set; }
         public Metadata Metadata { get; set; }
-        public int TotalRecords { get; set; }
         
         public ApiResponse(T data, int status)
         {
             Data = data;
             Status = status;
-            TotalRecords = 0;
         }
 
         public ApiResponse(T data, int status, int totalRecords)
         {
             Data = data;
             Status = status;
-            TotalRecords = totalRecords;
         }
 
         public ApiResponse(T data, int status, Metadata meta)
@@ -34,11 +31,5 @@ namespace Api.Responses
             Status = status;
             Metadata = meta;
         }
-
-        /*public ApiResponse((List<FormasPago>, List<TipoUsuario>) list, int v)
-        {
-            this.list = list;
-            this.v = v;
-        }*/
     }
 }

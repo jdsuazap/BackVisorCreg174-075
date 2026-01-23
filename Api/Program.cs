@@ -222,9 +222,48 @@ _ = int.TryParse(builder.Configuration["RateLimit:Anonymous:Concurrency:QueueLim
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!new string[] { ApiEnvironments.Production }.Contains(app.Environment.EnvironmentName))
+
+app.Use(async (context, next) =>
 {
+    if (context.Request.Path.StartsWithSegments("/swagger"))
+    {
+        var authHeader = context.Request.Headers["Authorization"].ToString();
+
+        if (string.IsNullOrEmpty(authHeader) || !authHeader.StartsWith("Basic "))
+        {
+            context.Response.Headers["WWW-Authenticate"] = "Basic realm=\"Swagger\"";
+            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            await context.Response.WriteAsync("Autenticación requerida.");
+            return;
+        }
+
+        var encodedCredentials = authHeader.Substring("Basic ".Length).Trim();
+
+        var decodedCredentials =
+            Encoding.UTF8.GetString(Convert.FromBase64String(encodedCredentials));
+
+        var credentials = decodedCredentials.Split(':');
+
+        var username = credentials[0];
+        var password = credentials[1];
+
+        if (username != "admin" ||
+            password != "EEP_" + DateTime.Now.Year)
+        {
+            context.Response.Headers["WWW-Authenticate"] = "Basic realm=\"Swagger\"";
+            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            await context.Response.WriteAsync("Credenciales incorrectas.");
+            return;
+        }
+    }
+
+    await next();
+});
+
+
+// Configure the HTTP request pipeline.
+//if (!new string[] { ApiEnvironments.Production }.Contains(app.Environment.EnvironmentName))
+//{
     app.UseDeveloperExceptionPage();
 
     // Configuracion Swagger
@@ -238,7 +277,7 @@ if (!new string[] { ApiEnvironments.Production }.Contains(app.Environment.Enviro
         options.DocExpansion(DocExpansion.None);
         options.DisplayRequestDuration();
     });
-}
+//}
 
 // Habilitamos los CORS
 app.UseCors("ApiCors");

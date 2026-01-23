@@ -5,7 +5,6 @@
     using Core.Exceptions;
     using Dapper;
     using Infrastructure.Interfaces;
-    using Microsoft.Data.SqlClient;
     using Oracle.ManagedDataAccess.Client;
     using System.Data;
 
@@ -57,7 +56,6 @@
             // Aquí ignoramos connectionName porque el adaptador es específico para uno
             return _internal.TipoDB switch
             {
-                EnumDatabaseType.SqlServer => new SqlConnection(_internal.ConnectionString),
                 EnumDatabaseType.Oracle => new OracleConnection(_internal.ConnectionString),
                 _ => throw new BusinessException($"Tipo de base de datos '{_internal.TipoDB}' no soportado.")
             };

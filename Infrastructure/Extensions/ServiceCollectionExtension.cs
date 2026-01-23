@@ -12,7 +12,6 @@
     using Infrastructure.Repositories;
     using Infrastructure.Services;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.Data.SqlClient;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;

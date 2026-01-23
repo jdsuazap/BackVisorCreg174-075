@@ -15,6 +15,6 @@ namespace Core.Interfaces
         Task AddRange(List<T> entities);
         Task Update(T entity);
         Task Delete(string id);
-        Task ExecuteNonQuery(string sqlCommand);
+        //Task ExecuteNonQuery(string sqlCommand);
     }
 }
