@@ -59,151 +59,12 @@
         {
             return await _unitOfWork.SolConexionAutogenRepository.GetAnexosBySolicitud(idEntity);
         }
-        //public async Task<List<SolConexionAutogenContratoAnexo>> GetContratoConexionAnexosBySolicitud(int idEntity)
-        //{
-        //    return await _unitOfWork.SolConexionAutogenRepository.GetContratoConexionAnexosBySolicitud(idEntity);
-        //}
-        //public async Task<List<SolConexionAutogenDocumentacionRetieRechazo>> GetDocumentacionRetieRechazoBySolicitud(int idEntity)
-        //{
-        //    var lstDocumentacionRetieRechazo = new List<SolConexionAutogenDocumentacionRetieRechazo>();
-
-        //    var lstQuery = await _unitOfWork.SolConexionAutogenRepository.GetDocumentacionRetieRechazoBySolicitud(idEntity);
-
-        //    foreach (var item in lstQuery)
-        //    {
-        //        if (lstDocumentacionRetieRechazo.Count == 0)
-        //        {
-        //            lstDocumentacionRetieRechazo.Add(item);
-        //        }
-        //        else
-        //        {
-        //            if (item.SolConexionAutogenDocumentacionRetieRechazoAnexos != null && item.SolConexionAutogenDocumentacionRetieRechazoAnexos.Count > 0)
-        //            {
-        //                lstDocumentacionRetieRechazo[0].SolConexionAutogenDocumentacionRetieRechazoAnexos.Add(item.SolConexionAutogenDocumentacionRetieRechazoAnexos.ToList()[0]);
-        //            }
-        //        }
-        //    }
-
-        //    return lstDocumentacionRetieRechazo;
-        //}
-        //public async Task<List<SolConexionAutogenAnexoRechazo>> GetAnexoRechazosBySolicitud(int idEntity)
-        //{
-        //    //Obtener los datos
-        //    var resp = await _unitOfWork.SolConexionAutogenRepository.GetAnexoRechazosBySolicitud(idEntity);
-
-        //    //Si no hay datos
-        //    if (resp.Count == 0)
-        //    {
-        //        //Se envia datos vacios
-        //        return [];
-        //    }
-
-        //    //Inicio para la organización de los datos
-        //    var lstAnexoRechazo = new List<SolConexionAutogenAnexoRechazo>();
-
-        //    // Inicia ciclo
-        //    foreach (var anexoRechazo in resp)
-        //    {
-        //        //Se valida si existe rechazos en la lista 
-        //        var anexoRechazoIndex = lstAnexoRechazo.FindIndex(ar => ar.Id == anexoRechazo.Id);
-
-        //        //Si no existe en la lista
-        //        if (anexoRechazoIndex == -1)
-        //        {
-        //            //Se agrega el rechazo a lista
-        //            lstAnexoRechazo.Add(anexoRechazo);
-
-        //            //Se ajusta el indice en donde se encuentra el rechazo en la lista
-        //            anexoRechazoIndex = lstAnexoRechazo.Count - 1;
-        //        }
-
-        //        //Obteniendo los anexos 
-        //        var anexoRechazoAnexo = anexoRechazo.SolConexionAutogenAnexoRechazoAnexos.FirstOrDefault();
-
-        //        //Si existen anexos
-        //        if (anexoRechazoAnexo != null)
-        //        {
-        //            //Obteniendo el indice donde puede estar el anexo 
-        //            var valAnexo = lstAnexoRechazo[anexoRechazoIndex].SolConexionAutogenAnexoRechazoAnexos.FirstOrDefault(a => a.Id == anexoRechazoAnexo.Id);
-
-        //            //Si no existe el anexo
-        //            if (valAnexo == null)
-        //            {
-        //                //Se agrega el anexo a la lista
-        //                lstAnexoRechazo[anexoRechazoIndex].SolConexionAutogenAnexoRechazoAnexos.Add(anexoRechazoAnexo);
-        //            }
-        //        }
-        //    }
-
-        //    return lstAnexoRechazo;
-        //}        
-
-        //public async Task<List<SolConexionAutogenViabilidadTecnicaRechazo>> GetViabilidadTecnicaRechazos(int idEntity)
-        //{
-        //    //Obtener los datos
-        //    var resp = await _unitOfWork.SolConexionAutogenRepository.GetViabilidadTecnicaRechazos(idEntity);
-
-        //    //Si no hay datos
-        //    if (resp.Count == 0)
-        //    {
-        //        //Se envia datos vacios
-        //        return new();
-        //    }
-
-        //    //Inicio para la organización de los datos
-        //    var lstViabilidadTecnicaRechazo = new List<SolConexionAutogenViabilidadTecnicaRechazo>();
-
-        //    // Inicia ciclo
-        //    foreach (var rechazo in resp)
-        //    {
-        //        //Se valida si existe rechazos en la lista 
-        //        var rechazoIndex = lstViabilidadTecnicaRechazo.FindIndex(r => r.Id == rechazo.Id);
-
-        //        //Si no existe en la lista
-        //        if (rechazoIndex == -1)
-        //        {
-        //            //Se agrega el rechazo a lista
-        //            lstViabilidadTecnicaRechazo.Add(rechazo);
-
-        //            //Se ajusta el indice en donde se encuentra el rechazo en la lista
-        //            rechazoIndex = lstViabilidadTecnicaRechazo.Count - 1;
-        //        }
-
-        //        //Obteniendo los anexos 
-        //        var rechazoAnexo = rechazo.SolConexionAutogenViabilidadTecnicaRechazoAnexos.FirstOrDefault();
-
-        //        //Si existen anexos
-        //        if (rechazoAnexo != null)
-        //        {
-        //            //Obteniendo el indice donde puede estar el anexo 
-        //            var valAnexo = lstViabilidadTecnicaRechazo[rechazoIndex].SolConexionAutogenViabilidadTecnicaRechazoAnexos.FirstOrDefault(a => a.Id == rechazoAnexo.Id);
-
-        //            //Si no existe el anexo
-        //            if (valAnexo == null)
-        //            {
-        //                //Se agrega el anexo a la lista
-        //                lstViabilidadTecnicaRechazo[rechazoIndex].SolConexionAutogenViabilidadTecnicaRechazoAnexos.Add(rechazoAnexo);
-        //            }
-        //        }
-        //    }
-
-        //    return lstViabilidadTecnicaRechazo;
-        //}
+               
         public async Task<List<Creg174Pasos>> GetPasosBySolicitud(int idEntity)
         {
             return await _unitOfWork.SolConexionAutogenRepository.GetPasosBySolicitud(idEntity);
         }
-        //public async Task<List<SolConexionAutogenXprorroga>> GetProrrogaBySolicitud(int idEntity)
-        //{
-        //    var lstProrroga = await _unitOfWork.SolConexionAutogenRepository.GetProrrogaBySolicitud(idEntity);
-
-        //    for (int i = 0; i < lstProrroga.Count; i++)
-        //    {
-        //        lstProrroga[i].SolConexionAutogenXprorrogaGarantia = await _unitOfWork.SolConexionAutogenXprorrogaRepository.GetProrrogaGarantiaById(lstProrroga[i].Id);
-        //    }
-
-        //    return lstProrroga;
-        //}
+        
         //public async Task<List<SolConexionAutogenDocumentacionVisita>> GetDocVisitaBySolicitud(int idEntity)
         //{
         //    return await _unitOfWork.SolConexionAutogenRepository.GetDocVisitaBySolicitud(idEntity);
@@ -313,18 +174,7 @@
         //{
         //    return await _unitOfWork.SolConexionAutogenRepository.GetObservacionBySolicitud(idEntity);
         //}
-        //public async Task<List<SolConexionAutogenConexionRechazo>> GetConexionRechazosBySolicitud(int idEntity)
-        //{
-        //    return await _unitOfWork.SolConexionAutogenRepository.GetConexionRechazosBySolicitud(idEntity);
-        //}
-        //public async Task<List<SolConexionAutogenReporteHallazgo>> GetReporteHallazgosBySolicitud(int idEntity)
-        //{
-        //    return await _unitOfWork.SolConexionAutogenRepository.GetReporteHallazgosBySolicitud(idEntity);
-        //}
-        //public async Task<List<SolConexionAutogenDesistimiento>> GetDesistimientosBySolicitud(int idEntity)
-        //{
-        //    return await _unitOfWork.SolConexionAutogenRepository.GetDesistimientosBySolicitud(idEntity);
-        //}
+        
 
         public async Task<SolConexionAutogenParamsIni> GetParametrosIniciales()
         {

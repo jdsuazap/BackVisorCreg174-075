@@ -18,7 +18,7 @@ namespace Core.Interfaces
         Task Update(T entity);
         Task Delete(int id);
         Task DeleteEntityRange(List<T> entities);
-        Task ExecuteNonQuery(string sqlCommand);
+        //Task ExecuteNonQuery(string sqlCommand);
         #endregion
 
         #region Métodos Dapper
