@@ -99,7 +99,11 @@
             decimal factorPotencia = 1, potencia_reservada = 0;
 
             var potencia = await _unitOfWork.SolConexionAutogenRepository.GetEntitiesTrafo(empresa, codigo);
-            potencia_reservada = potencia.PotenciaMaximaDeclarada;
+
+            if (Convert.ToDecimal(potencia) > potencia.PotenciaMaximaDeclarada)
+                potencia_reservada = Convert.ToDecimal(potencia);
+            else
+                potencia_reservada = potencia.PotenciaMaximaDeclarada;
 
             double capTotalKw = Convert.ToDouble(capKva) * Convert.ToDouble(factorPotencia);
 

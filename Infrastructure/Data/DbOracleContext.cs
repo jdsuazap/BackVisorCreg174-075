@@ -19,7 +19,12 @@
         public virtual DbSet<Creg075Detalle> Creg075Detalles { get; set; } = null!;
         public virtual DbSet<Creg075DetallesCuenta> Creg075DetallesCuentas { get; set; } = null!;
         public virtual DbSet<Creg075Disenio> Creg075Disenios { get; set; } = null!;
+        public virtual DbSet<Creg075DisenioActor> Creg075DisenioActors { get; set; } = null!;
+        public virtual DbSet<Creg075DisenioAnexo> Creg075DisenioAnexos { get; set; } = null!;
         public virtual DbSet<Creg075Factibilidad> Creg075Factibilidads { get; set; } = null!;
+        public virtual DbSet<Creg075FactibilidadAnexo> Creg075FactibilidadAnexos { get; set; } = null!;
+        public virtual DbSet<Creg075ReciboTecnico> Creg075ReciboTecnicos { get; set; } = null!;
+
         public virtual DbSet<Creg075Predio> Creg075Predios { get; set; } = null!;
         public virtual DbSet<Creg075ServicioConexion> Creg075ServicioConexions { get; set; } = null!;
         public virtual DbSet<Creg075Solicitante> Creg075Solicitantes { get; set; } = null!;
@@ -62,6 +67,7 @@
         public virtual DbSet<CregDocumentosFormulario> CregDocumentosFormulario { get; set; } = null!;
         public virtual DbSet<CregPersonaAutoriza> CregPersonaAutorizas { get; set; } = null!;
         public virtual DbSet<Creg174Pasos> Creg174Pasos { get; set; } = null!;
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -7,6 +7,7 @@ namespace Core.Entities.Oracle
     {
         public CregEstado()
         {
+            Creg075Pasos = new HashSet<Creg075Pasos>();
             Creg075ServicioConexions = new HashSet<Creg075ServicioConexion>();
             Creg174Autogens = new HashSet<Creg174Autogen>();
             Creg174Pasos = new HashSet<Creg174Pasos>();
@@ -22,5 +23,6 @@ namespace Core.Entities.Oracle
         public virtual ICollection<Creg075ServicioConexion> Creg075ServicioConexions { get; set; }
         public virtual ICollection<Creg174Autogen> Creg174Autogens { get; set; }
         public virtual ICollection<Creg174Pasos> Creg174Pasos { get; set; }
+        public virtual ICollection<Creg075Pasos> Creg075Pasos { get; set; }
     }
 }

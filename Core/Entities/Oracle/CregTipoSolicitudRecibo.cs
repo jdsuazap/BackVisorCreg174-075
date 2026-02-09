@@ -8,6 +8,7 @@ namespace Core.Entities.Oracle
         public CregTipoSolicitudRecibo()
         {
             Creg075Factibilidads = new HashSet<Creg075Factibilidad>();
+            Creg075ReciboTecnico = new HashSet<Creg075ReciboTecnico>();
         }
 
         public int Id { get; set; }
@@ -15,5 +16,7 @@ namespace Core.Entities.Oracle
         public bool Estado { get; set; }
 
         public virtual ICollection<Creg075Factibilidad> Creg075Factibilidads { get; set; }
+        public virtual ICollection<Creg075ReciboTecnico> Creg075ReciboTecnico { get; set; }
+
     }
 }
