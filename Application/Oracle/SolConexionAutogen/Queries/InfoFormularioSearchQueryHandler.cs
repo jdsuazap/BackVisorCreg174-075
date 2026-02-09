@@ -44,7 +44,7 @@
                 infoFormularioDTO.Transformador = request.CodTransformador.ToString();
                 infoFormularioDTO.Porcentaje = entity.Gen_Instalada.ToString();
                 infoFormularioDTO.CapacidadMaximaDisponible = entity.Cap_Max_Disponible;
-                infoFormularioDTO.TotalCapacidadOcupada = entity.Ener_Hor_Ocup_Fv;
+                infoFormularioDTO.TotalCapacidadOcupada = entity.Tot_Cap_Ocupada;
             }
 
 
