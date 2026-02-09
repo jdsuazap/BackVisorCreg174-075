@@ -55,7 +55,8 @@
             trafo.Gen_Instalada = Convert.ToDecimal(porcentajeInstalado);
             trafo.Cap_Max_Disponible = Convert.ToDecimal(capDisponibleKw);
             
-            trafo.Tot_Cap_Ocupada = (potencia_reservada / (decimal)CapTotalKw);
+            //trafo.Tot_Cap_Ocupada = (potencia_reservada / (decimal)CapTotalKw);
+            trafo.Tot_Cap_Ocupada = potencia_reservada;
            
             return trafo;
         }
