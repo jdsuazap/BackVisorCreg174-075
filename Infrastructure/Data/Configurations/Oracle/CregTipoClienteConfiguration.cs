@@ -9,6 +9,8 @@
         {
             entity.ToTable("CREG_TIPO_CLIENTE");
 
+            entity.HasKey(e => e.Id);
+
             entity.Property(e => e.Id)
                 .HasPrecision(10)
                 .HasColumnName("ID");

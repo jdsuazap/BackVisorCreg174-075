@@ -67,6 +67,8 @@
         public virtual DbSet<CregDocumentosFormulario> CregDocumentosFormulario { get; set; } = null!;
         public virtual DbSet<CregPersonaAutoriza> CregPersonaAutorizas { get; set; } = null!;
         public virtual DbSet<Creg174Pasos> Creg174Pasos { get; set; } = null!;
+        public virtual DbSet<Creg075FactibilidadDetCuen> Creg075FactibilidadDetCuens { get; set; } = null!;
+
 
 
 

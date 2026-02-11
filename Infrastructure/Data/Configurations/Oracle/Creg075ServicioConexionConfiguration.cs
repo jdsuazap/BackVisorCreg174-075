@@ -159,6 +159,12 @@
                             .HasForeignKey(d => d.CodTipoConexion)
                             .OnDelete(DeleteBehavior.ClientSetNull)
                             .HasConstraintName("CREG_075_SERV_CON_T_CON");
+                
+                entity.HasOne(d => d.CodTipoUsoNavigation)
+                    .WithMany(p => p.Creg075ServicioConexion)
+                    .HasForeignKey(d => d.CodTipoUso)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_CREG_075_SER_CON_TIP_CLI");
             }
         }
     }

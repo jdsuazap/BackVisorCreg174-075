@@ -52,6 +52,8 @@ namespace Core.Entities.Oracle
         public virtual CregEstratoSocioeconomico? CodEstratoNavigation { get; set; }
         public virtual CregEtapa CodEtapaNavigation { get; set; } = null!;
         public virtual CregTipoConexion CodTipoConexionNavigation { get; set; } = null!;
+        public virtual CregTipoCliente CodTipoUsoNavigation { get; set; }
+
         public virtual ICollection<Creg075Anexo> Creg075Anexos { get; set; }
         public virtual Creg075Detalle Creg075Detalles { get; set; }
         public virtual ICollection<Creg075DetallesCuenta> Creg075DetallesCuentas { get; set; }

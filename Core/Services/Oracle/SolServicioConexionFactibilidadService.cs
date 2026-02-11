@@ -40,13 +40,11 @@
             {
                 x => x.Creg075ServicioConexion,
                 x => x.Creg075FactibilidadAnexo,
-                // x => x.SolServicioConexionFactibilidadDetalleCuentas,
+                x => x.Creg075FactibilidadDetCuen,
                 // x => x.SolServicioConexionFactibilidadObservaciones,
                 // x => x.SolServicioConexionFactibilidadPorProyectos,
                 // x => x.SolServicioConexionFactibilidadPorDocumentos
             };
-
-
 
             var entity = await GetEntityWithDependences(idEntity, includes);
 
