@@ -48,9 +48,9 @@
                 .HasColumnName("FECHA_FACTIBILIDAD")
                 .HasDefaultValueSql("SYSDATE ");
 
-            entity.Property(e => e.FechaRespuestaFactibiidad)
+            entity.Property(e => e.FechaRespuestaFactibilidad)
                 .HasColumnType("DATE")
-                .HasColumnName("FECHA_RESPUESTA_FACTIBIIDAD")
+                .HasColumnName("FECHA_RESPUESTA_FACTIBILIDAD")
                 .HasDefaultValueSql("SYSDATE ");
 
             entity.Property(e => e.Latitud)
@@ -121,17 +121,23 @@
                 .HasPrecision(10)
                 .HasColumnName("VIGENCIA_FACTIBILIDAD");
 
-            entity.HasOne(d => d.Cod075ConexionNavigation)
+            entity.HasOne(d => d.Creg075ServicioConexion)
                 .WithMany(p => p.Creg075Factibilidads)
                 .HasForeignKey(d => d.Cod075Conexion)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CREG_075_FACTIBILIDAD_SERVICIO");
 
-            entity.HasOne(d => d.CodTipoSolicitudNavigation)
+            entity.HasOne(d => d.CregTipoSolicitudRecibo)
                 .WithMany(p => p.Creg075Factibilidads)
                 .HasForeignKey(d => d.CodTipoSolicitud)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CREG_075_FACTIBILIDAD_T_SOL");
+
+            entity.HasOne(d => d.CregTipoTension)
+               .WithMany(p => p.Creg075Factibilidad)
+               .HasForeignKey(d => d.NivelAprobacion)
+               .OnDelete(DeleteBehavior.ClientSetNull)
+               .HasConstraintName("FK_CREG_FACTIBILIDAD_NIVEL_T");
         }
     }
 }

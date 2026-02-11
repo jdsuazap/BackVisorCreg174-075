@@ -24,5 +24,6 @@ namespace Core.Entities.Oracle
         public virtual ICollection<Creg174Autogen> Creg174Autogens { get; set; }
         public virtual ICollection<Creg174Pasos> Creg174Pasos { get; set; }
         public virtual ICollection<Creg075Pasos> Creg075Pasos { get; set; }
+        public virtual CregEtapa? CregEtapa { get; set; }
     }
 }

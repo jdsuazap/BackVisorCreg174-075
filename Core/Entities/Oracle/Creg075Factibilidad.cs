@@ -33,13 +33,13 @@ namespace Core.Entities.Oracle
         public string Longitud { get; set; } = null!;
         public string Latitud { get; set; } = null!;
         public string? Altura { get; set; }
-        public DateTime FechaRespuestaFactibiidad { get; set; }
+        public DateTime FechaRespuestaFactibilidad { get; set; }
         public bool Estado { get; set; }
 
-        public virtual Creg075ServicioConexion Cod075ConexionNavigation { get; set; } = null!;
-        public virtual CregTipoSolicitudRecibo CodTipoSolicitudNavigation { get; set; } = null!;
+        public virtual Creg075ServicioConexion Creg075ServicioConexion { get; set; } = null!;
+        public virtual CregTipoSolicitudRecibo CregTipoSolicitudRecibo { get; set; } = null!;
         public virtual ICollection<Creg075Disenio> Creg075Disenios { get; set; }
         public virtual ICollection<Creg075FactibilidadAnexo> Creg075FactibilidadAnexo { get; set; } = new List<Creg075FactibilidadAnexo>();
-
+        public virtual CregTipoTension CregTipoTension { get; set; } = null!;
     }
 }

@@ -110,6 +110,7 @@
             services.AddTransient<ITipoTramiteVisitaService, TipoTramiteVisitaService>();
             services.AddTransient<ICreg_TransformadorService, Creg_TransformadorService>();
             services.AddTransient<ICregCiudadService, CregCiudadService>();
+            services.AddTransient<ISolServicioConexionFactibilidadService, SolServicioConexionFactibilidadService>();
 
 
             //services.AddTransient<ISolServicioConexionReciboTecnicoService, SolServicioConexionReciboTecnicoService>();
@@ -117,7 +118,6 @@
             //services.AddTransient<IPasosSolConexionAutogenService, PasosSolConexionAutogenService>();
             //services.AddTransient<IPasosSolServicioConexionService, PasosSolServicioConexionService>();
             //services.AddTransient<ISolServicioConexionComentarioService, SolServicioConexionComentarioService>();                      
-            //services.AddTransient<ISolServicioConexionFactibilidadService, SolServicioConexionFactibilidadService>();
             //services.AddTransient<ISolServicioConexionDisenioService, SolServicioConexionDisenioService>();
             //services.AddTransient<ISolServicioConexionComentarioService , SolServicioConexionComentarioService>();
             //services.AddTransient<ISolServicioConexionReviewsService , SolServicioConexionReviewsService> ();

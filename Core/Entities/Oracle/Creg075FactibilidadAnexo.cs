@@ -10,7 +10,7 @@ namespace Core.Entities.Oracle
             EstadoDocumento = 1;
         }
         public int Id { get; set; }
-        public int? Cod075Factibilidad { get; set; }
+        public long Cod075Factibilidad { get; set; }
         public int? CodDocumentos { get; set; }
         public string NameDocument { get; set; } = null!;
         public string ExtDocument { get; set; } = null!;

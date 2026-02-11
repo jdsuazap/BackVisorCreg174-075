@@ -6,6 +6,7 @@ namespace Core.Entities.Oracle
     public partial class Creg075Disenio
     {
         public long Id { get; set; }
+        public int Cod075Conexion { get; set; }
         public Creg075ServicioConexion Creg075ServicioConexion { get; set; }
         public long CodFactibilidad { get; set; }
         public Creg075Factibilidad Creg075Factibilidad { get; set; }

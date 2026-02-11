@@ -170,21 +170,19 @@
             return result.ToList();
         }
 
-        //public async Task<List<PasosSolServicioConexion>> GetPasosBySolicitud(int idEntity)
-        //{
-        //    var param = new { IdSolicitud = idEntity };
+        public async Task<List<Creg075Pasos>> GetPasosBySolicitud(int idEntity)
+        {
+            var param = new { IdSolicitud = idEntity };
 
-        //    //var query = SolServicioConexionQuery.GetPasosBySolicitud;
-        //    //return (await _dapperContext.QueryAsync<PasosSolServicioConexion, PasosSolServicioConexion>(query,
-        //    //    (pasosSolServicioConexion) =>
-        //    //    {
-        //    //        pasosSolServicioConexion.CodEstadoNavigation = estado;
-        //    //        pasosSolServicioConexion.CodEstadoNavigation.CodEtapaNavigation = etapa;
-        //    //        return pasosSolServicioConexion;
-        //    //    }, param)).ToList();
-
-        //    return null;
-        //}
+            var query = SolServicioConexionQuery.GetPasosBySolicitud;
+            return (await _dapperContext.QueryAsync<Creg075Pasos, CregEstado, CregEtapa, Creg075Pasos>(query,
+                (pasosSolServicioConexion, estado, etapa) =>
+                {
+                    pasosSolServicioConexion.CregEstado = estado;
+                    pasosSolServicioConexion.CregEstado.CregEtapa = etapa;
+                    return pasosSolServicioConexion;
+                }, param)).ToList();
+        }
 
         //public async Task<List<PasosSolServicioConexion>> GetPasosByRadicado(string numRadicado)
         //{

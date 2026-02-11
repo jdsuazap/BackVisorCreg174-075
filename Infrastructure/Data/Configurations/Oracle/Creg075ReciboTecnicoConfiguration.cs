@@ -148,25 +148,25 @@
                 .IsUnicode(false)
                 .HasColumnName("TELEFONO_PROPIETARIO");
 
-            entity.HasOne(d => d.CodPersonaAutorizacion)
+            entity.HasOne(d => d.CregPersonaAutoriza)
                 .WithMany(p => p.Creg075ReciboTecnico)
                 .HasForeignKey(d => d.CodPersonaAutorizacion)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_SolServicioConexionReciboTecnico_PersonaAutorizaRecibo");
 
-            entity.HasOne(d => d.Cod075Conexion)
+            entity.HasOne(d => d.Creg075ServicioConexion)
                 .WithMany(p => p.Creg075ReciboTecnicos)
                 .HasForeignKey(d => d.Cod075Conexion)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_SolServicioConexionReciboTecnico_SolServicioConexion");
 
-            entity.HasOne(d => d.CodTipoCompletitud)
+            entity.HasOne(d => d.CregTipoCompletitud)
                 .WithMany(p => p.Creg075ReciboTecnico)
                 .HasForeignKey(d => d.CodTipoCompletitud)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_SolServicioConexionReciboTecnico_TipoCompletitud");
 
-            entity.HasOne(d => d.CodTipoSolicitud)
+            entity.HasOne(d => d.CregTipoSolicitudRecibo)
                 .WithMany(p => p.Creg075ReciboTecnico)
                 .HasForeignKey(d => d.CodTipoSolicitud)
                 .OnDelete(DeleteBehavior.ClientSetNull)
