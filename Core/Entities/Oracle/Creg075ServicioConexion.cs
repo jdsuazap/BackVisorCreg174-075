@@ -65,6 +65,7 @@ namespace Core.Entities.Oracle
         public virtual Creg075Suscriptor? Creg075Suscriptors { get; set; }
         public virtual ICollection<Creg075Pasos> Creg075Pasos { get; set; }
         public virtual ICollection<Creg075ReciboTecnico> Creg075ReciboTecnicos { get; set; }
+        public virtual ICollection<Creg075DisenioDocu> Creg075DisenioDocu { get; set; }
 
 
     }

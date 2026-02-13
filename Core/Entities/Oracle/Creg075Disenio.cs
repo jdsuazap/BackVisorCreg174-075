@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Entities.Oracle
 {
@@ -7,8 +8,8 @@ namespace Core.Entities.Oracle
     {
         public long Id { get; set; }
         public int Cod075Conexion { get; set; }
-        public Creg075ServicioConexion Creg075ServicioConexion { get; set; }
-        public long CodFactibilidad { get; set; }
+        public Creg075ServicioConexion Creg075ServicioConexion { get; set; }        
+        public long Cod075Factibilidad { get; set; }
         public Creg075Factibilidad Creg075Factibilidad { get; set; }
         public int TipoDocumento { get; set; }
         public string NombreProyecto { get; set; } = null!;
@@ -22,6 +23,6 @@ namespace Core.Entities.Oracle
 
         public virtual ICollection<Creg075DisenioActor> Creg075DisenioActor { get; set; }
         public virtual ICollection<Creg075DisenioAnexo> Creg075DisenioAnexo { get; set; }
-        //public virtual ICollection<SolServicioConexionDisenioPorDocumento> SolServicioConexionDisenioPorDocumentos { get; set; }
+        public virtual ICollection<Creg075DisenioDocu> Creg075DisenioDocu { get; set; }
     }
 }

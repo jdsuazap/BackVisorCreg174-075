@@ -111,14 +111,14 @@
             services.AddTransient<ICreg_TransformadorService, Creg_TransformadorService>();
             services.AddTransient<ICregCiudadService, CregCiudadService>();
             services.AddTransient<ISolServicioConexionFactibilidadService, SolServicioConexionFactibilidadService>();
+            services.AddTransient<IPasosSolConexionAutogenService, PasosSolConexionAutogenService>();
+            //services.AddTransient<IPasosSolServicioConexionService, PasosSolServicioConexionService>();
+            services.AddTransient<ISolServicioConexionDisenioService, SolServicioConexionDisenioService>();
 
 
             //services.AddTransient<ISolServicioConexionReciboTecnicoService, SolServicioConexionReciboTecnicoService>();
             //services.AddTransient<IMotivoProrrogaService, MotivoProrrogaService>();          
-            //services.AddTransient<IPasosSolConexionAutogenService, PasosSolConexionAutogenService>();
-            //services.AddTransient<IPasosSolServicioConexionService, PasosSolServicioConexionService>();
             //services.AddTransient<ISolServicioConexionComentarioService, SolServicioConexionComentarioService>();                      
-            //services.AddTransient<ISolServicioConexionDisenioService, SolServicioConexionDisenioService>();
             //services.AddTransient<ISolServicioConexionComentarioService , SolServicioConexionComentarioService>();
             //services.AddTransient<ISolServicioConexionReviewsService , SolServicioConexionReviewsService> ();
             //services.AddTransient<ISolConexionAutogenComentarioService, SolConexionAutogenComentarioService>();

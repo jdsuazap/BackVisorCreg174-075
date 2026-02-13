@@ -18,9 +18,9 @@
                 .HasPrecision(10)
                 .HasColumnName("COD_075_CONEXION");
 
-            entity.Property(e => e.CodFactibilidad)
+            entity.Property(e => e.Cod075Factibilidad)
                 .HasPrecision(19)
-                .HasColumnName("COD_FACTIBILIDAD");
+                .HasColumnName("COD_075_FACTIBILIDAD");
 
             entity.Property(e => e.TipoDocumento)
                 .HasPrecision(10)
@@ -78,7 +78,7 @@
 
             entity.HasOne(d => d.Creg075Factibilidad)
                 .WithMany(p => p.Creg075Disenios)
-                .HasForeignKey(d => d.CodFactibilidad)
+                .HasForeignKey(d => d.Cod075Factibilidad)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CREG_075_DISENIO_FACTIBILIDAD");
         }

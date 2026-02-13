@@ -58,16 +58,16 @@
         private readonly IEstadoRepository _estadoRepository;            
         private readonly IActividadEconomicaRepository _actividadEconomicaRepository;
         private readonly ISolServicioConexionFactibilidadRepository _solServicioConexionFactibilidadRepository;
+        //private readonly IPasosSolServicioConexionRepository _pasosSolServicioConexionRepository;
+        private readonly ISolServicioConexionDisenioRepository _solServicioConexionDisenioRepository;                
 
         #region SQLContext
 
         //private readonly ITipoActivoRepository _tipoActivoRepository;
-        //private readonly IPasosSolServicioConexionRepository _pasosSolServicioConexionRepository;
         //private readonly ISolConexionAutogenComentarioRepository _solConexionAutogenComentarioRepository;
         //private readonly ISolConexionAutogenXvisitaRepository _solConexionAutogenXvisitaRepository;        
         //private readonly ISolServicioConexionReciboTecnicoRepository _solServicioConexionReciboTecnicoRepository;
         //private readonly ISolServicioConexionComentarioRepository _solServicioConexionComentarioRepository;                
-        //private readonly ISolServicioConexionDisenioRepository _solServicioConexionDisenioRepository;                
         //private readonly ISolServicioConexionReviewRepository _solServicioConexionReviewRepository;
         //private readonly ISolConexionAutogenComentarioRepository _solConexionAutogenComentarioRepository;
         //private readonly ISolServicioConexionComentarioAnexoRepository _solServicioConexionComentarioAnexoRepository;
@@ -280,6 +280,12 @@
         );
 
         public ISolServicioConexionFactibilidadRepository SolServicioConexionFactibilidadRepository => _solServicioConexionFactibilidadRepository ?? new SolServicioConexionFactibilidadRepository(_eepContext,
+           new DbConnectionFactorySingular(
+               _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
+           )
+        ); 
+        
+        public ISolServicioConexionDisenioRepository SolServicioConexionDisenioRepository => _solServicioConexionDisenioRepository ?? new SolServicioConexionDisenioRepository(_eepContext,
            new DbConnectionFactorySingular(
                _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
            )

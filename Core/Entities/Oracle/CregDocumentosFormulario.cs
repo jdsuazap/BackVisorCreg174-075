@@ -27,9 +27,11 @@ namespace Core.Entities.Oracle
 
         public virtual ICollection<Creg075Anexo> Creg075Anexos { get; set; }
         public virtual ICollection<Creg174Anexo> Creg174Anexos { get; set; }
-        public virtual ICollection<Creg075DisenioAnexo> Creg075DisenioAnexos { get; set; }
         public virtual ICollection<Creg075FactibilidadAnexo> Creg075FactibilidadAnexos { get; set; }
         public virtual ICollection<Creg075FactibilidadDocu> Creg075FactibilidadDocu { get; set; }
+        public virtual ICollection<Creg075DisenioAnexo> Creg075DisenioAnexos { get; set; }
+        public virtual ICollection<Creg075DisenioDocu> Creg075DisenioDocu { get; set; }
+
 
     }
 }

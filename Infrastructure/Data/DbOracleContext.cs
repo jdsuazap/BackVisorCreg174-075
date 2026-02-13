@@ -32,6 +32,8 @@
         public virtual DbSet<Creg075FactibilidadObs> Creg075FactibilidadObs { get; set; } = null!;
         public virtual DbSet<Creg075FactibilidadDocu> Creg075FactibilidadDocus { get; set; } = null!;
         public virtual DbSet<Creg075FactibilidadProye> Creg075FactibilidadProyes { get; set; } = null!;
+        public virtual DbSet<Creg075DisenioDocu> Creg075DisenioDocus { get; set; } = null!;
+
 
 
 
