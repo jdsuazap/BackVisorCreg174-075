@@ -41,9 +41,9 @@
                 x => x.Creg075ServicioConexion,
                 x => x.Creg075FactibilidadAnexo,
                 x => x.Creg075FactibilidadDetCuen,
-                // x => x.SolServicioConexionFactibilidadObservaciones,
-                // x => x.SolServicioConexionFactibilidadPorProyectos,
-                // x => x.SolServicioConexionFactibilidadPorDocumentos
+                x => x.Creg075FactibilidadObs,
+                x => x.Creg075FactibilidadProye,
+                x => x.Creg075FactibilidadDocu
             };
 
             var entity = await GetEntityWithDependences(idEntity, includes);

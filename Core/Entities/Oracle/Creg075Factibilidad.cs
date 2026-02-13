@@ -10,6 +10,8 @@ namespace Core.Entities.Oracle
             Creg075Disenios = new HashSet<Creg075Disenio>();
             Creg075FactibilidadAnexo = new HashSet<Creg075FactibilidadAnexo>();
             Creg075FactibilidadDetCuen = new HashSet<Creg075FactibilidadDetCuen>();
+            Creg075FactibilidadDocu = new HashSet<Creg075FactibilidadDocu>();
+            Creg075FactibilidadProye = new HashSet<Creg075FactibilidadProye>();
         }
 
         public long Id { get; set; }
@@ -43,5 +45,9 @@ namespace Core.Entities.Oracle
         public virtual ICollection<Creg075FactibilidadAnexo> Creg075FactibilidadAnexo { get; set; } = new List<Creg075FactibilidadAnexo>();
         public virtual ICollection<Creg075FactibilidadDetCuen> Creg075FactibilidadDetCuen { get; set; } = new List<Creg075FactibilidadDetCuen>();
         public virtual CregTipoTension CregTipoTension { get; set; } = null!;
+        public virtual Creg075FactibilidadObs? Creg075FactibilidadObs { get; set; }
+        public virtual ICollection<Creg075FactibilidadDocu> Creg075FactibilidadDocu { get; set; } = new List<Creg075FactibilidadDocu>();
+        public virtual ICollection<Creg075FactibilidadProye> Creg075FactibilidadProye { get; set; } = new List<Creg075FactibilidadProye>();
+
     }
 }
