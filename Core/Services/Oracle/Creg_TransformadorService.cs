@@ -55,8 +55,9 @@
             trafo.Gen_Instalada = Convert.ToDecimal(porcentajeInstalado);
             trafo.Cap_Max_Disponible = Convert.ToDecimal(capDisponibleKw);
             
-            trafo.Tot_Cap_Ocupada = (potencia_reservada / (decimal)CapTotalKw);
-           
+            //trafo.Tot_Cap_Ocupada = (potencia_reservada / (decimal)CapTotalKw);
+            trafo.Tot_Cap_Ocupada = potencia_reservada;
+
             return trafo;
         }
 
@@ -99,11 +100,8 @@
             decimal factorPotencia = 1, potencia_reservada = 0;
 
             var potencia = await _unitOfWork.SolConexionAutogenRepository.GetEntitiesTrafo(empresa, codigo);
-
-            if (Convert.ToDecimal(potencia) > potencia.PotenciaMaximaDeclarada)
-                potencia_reservada = Convert.ToDecimal(potencia);
-            else
-                potencia_reservada = potencia.PotenciaMaximaDeclarada;
+            
+            potencia_reservada = potencia.PotenciaMaximaDeclarada;
 
             double capTotalKw = Convert.ToDouble(capKva) * Convert.ToDouble(factorPotencia);
 
