@@ -6,6 +6,5 @@
         public string Descripcion { get; set; }
         public bool? Estado { get; set; }
 
-        //public virtual ICollection<SolConexionAutogenXvisita> SolConexionAutogenXvisita { get; set; }
     }
 }

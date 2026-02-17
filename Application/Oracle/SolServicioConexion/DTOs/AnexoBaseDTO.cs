@@ -13,12 +13,6 @@
         public DateTime? Expedicion { get; set; }
         public bool ValidationDocument { get; set; }
         public bool SendNotification { get; set; }
-        public string Source { get; set; } = string.Empty;
-        public string CodUser { get; set; }
-        public DateTime FechaRegistro { get; set; }
-        public string CodUserUpdate { get; set; }
-        public DateTime FechaRegistroUpdate { get; set; }
-        public string Info { get; set; }
-        public string InfoUpdate { get; set; }
+        public string Source { get; set; } = string.Empty;        
     }
 }

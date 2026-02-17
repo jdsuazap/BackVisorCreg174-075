@@ -45,7 +45,6 @@
         public virtual ICollection<Creg075Solicitante> Creg075Solicitantes { get; set; }
         public virtual Creg075Suscriptor? Creg075Suscriptors { get; set; }
         //public virtual ICollection<SolServicioConexionReciboTecnicoDTO> SolReciboTecnicos { get; set; }
-        //public virtual ICollection<SolServicioConexionComentarioDTO> SolServicioConexionComentarios { get; set; }
         //public List<ReciboTecnicoDTO> ReciboTecnico { get; internal set; }
     }
 }

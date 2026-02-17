@@ -2,17 +2,18 @@
 {
     using Application.Oracle.SolServicioConexionFactibilidad.DTOs;
     using AutoMapper;
+    using Core.Entities.Oracle;
 
     public class SolServicioConexionFactibilidadMapper : Profile
     {
         public SolServicioConexionFactibilidadMapper()
         {
-            CreateMap<Core.Entities.Oracle.Creg075Factibilidad, SolServicioConexionFactibilidadDTO>().ReverseMap();
-            //CreateMap<Core.Entities.Oracle.SolServicioConexionFactibilidadObservaciones, SolServicioConexionFactibilidadObservacionesDTO>().ReverseMap();
-            //CreateMap<Core.Entities.Oracle.SolServicioConexionFactibilidadDetalleCuentas, SolServicioConexionFactibilidadDetalleCuentasDTO>().ReverseMap();
-            //CreateMap<Core.Entities.Oracle.SolServicioConexionFactibilidadPorDocumento, SolServicioConexionFactibilidadPorDocumentoDTO>().ReverseMap();
-            CreateMap<Core.Entities.Oracle.Creg075FactibilidadAnexo, SolServicioConexionFactibilidadAnexosDTO>().ReverseMap();
-            CreateMap<Core.Entities.Oracle.Creg075FactibilidadAnexo, FactibilidadAnexosDTO>().ReverseMap();
+            CreateMap<Creg075Factibilidad, SolServicioConexionFactibilidadDTO>().ReverseMap();
+            CreateMap<Creg075FactibilidadObs, SolServicioConexionFactibilidadObservacionesDTO>().ReverseMap();
+            CreateMap<Creg075FactibilidadDetCuen, SolServicioConexionFactibilidadDetalleCuentasDTO>().ReverseMap();
+            CreateMap<Creg075FactibilidadDocu, SolServicioConexionFactibilidadPorDocumentoDTO>().ReverseMap();
+            CreateMap<Creg075FactibilidadAnexo, SolServicioConexionFactibilidadAnexosDTO>().ReverseMap();
+            CreateMap<Creg075FactibilidadAnexo, FactibilidadAnexosDTO>().ReverseMap();
         }
     }
 }

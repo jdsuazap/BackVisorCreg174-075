@@ -38,14 +38,7 @@
 
             solicitud.Creg174Anexos = await GetAnexosBySolicitud(idEntity);
 
-
-            solicitud.Creg174Historico = await GetPasosBySolicitud(idEntity);
-
-            //solicitud.SolConexionAutogenXvisita = await GetVisitaBySolicitud(idEntity);
-
-            //solicitud.SolConexionAutogenComentarios = await GetComentarioBySolicitud(idEntity);
-
-            //solicitud.SolConexionAutogenObservacions = await GetObservacionBySolicitud(idEntity);
+            solicitud.Creg174Historico = await GetPasosBySolicitud(idEntity);            
 
             return solicitud;
         }
