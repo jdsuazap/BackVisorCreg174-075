@@ -62,8 +62,11 @@
 
         public string InfoUpdate { get; set; } = null!;
 
-        public virtual Creg075ServicioConexion CodSolServicioConexionNavigation { get; set; } = null!;
+        public virtual Creg075ServicioConexion Creg075ServicioConexion { get; set; } = null!;
+        public virtual CregTipoTension CregTipoTension { get; set; } = null!;
+        public virtual List<Creg075FactibilidadAnexo> Creg075FactibilidadAnexo { get; set; } = new List<Creg075FactibilidadAnexo>();
+        public virtual List<Creg075FactibilidadDetCuen> Creg075FactibilidadDetCuen { get; set; } = new List<Creg075FactibilidadDetCuen>();
+        public virtual List<Creg075Disenio> Creg075Disenio { get; set; } = new List<Creg075Disenio>();
 
-        public virtual List<Creg075Disenio> SolServicioConexionDisenios { get; set; } = new List<Creg075Disenio>();
     }
 }

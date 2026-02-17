@@ -8,9 +8,7 @@
     internal class SolServicioConexionMapper : Profile
     {
         public SolServicioConexionMapper()
-        {
-            //CreateMap<ListadoSolStatusServicioConexion, ListadoSolStatusServicioConexionDTO>().ReverseMap();
-            //CreateMap<ListadoSolServicioConexion, ListadoSolServicioConexionDTO>().ReverseMap();
+        {            
             CreateMap<Creg075ServicioConexion, SolServicioConexionDTO>().ReverseMap();
             CreateMap<SolServicioConexionParamsIni, SolServicioConexionParamsIniDTO>().ReverseMap();
         }

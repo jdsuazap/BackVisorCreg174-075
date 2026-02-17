@@ -57,7 +57,7 @@
             
             //trafo.Tot_Cap_Ocupada = (potencia_reservada / (decimal)CapTotalKw);
             trafo.Tot_Cap_Ocupada = potencia_reservada;
-           
+
             return trafo;
         }
 
@@ -100,6 +100,7 @@
             decimal factorPotencia = 1, potencia_reservada = 0;
 
             var potencia = await _unitOfWork.SolConexionAutogenRepository.GetEntitiesTrafo(empresa, codigo);
+            
             potencia_reservada = potencia.PotenciaMaximaDeclarada;
 
             double capTotalKw = Convert.ToDouble(capKva) * Convert.ToDouble(factorPotencia);

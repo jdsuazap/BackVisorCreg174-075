@@ -769,33 +769,37 @@
 
         internal static string GetTecnologiasUtilBySolicitud = @"            
             SELECT 
-                ID,
-                COD_174_AUTOGEN AS Cod174Autogen,
-                COD_TIPO_TECNOLOGIA AS CodTipoTecnologia,
-                OTRO_TIPO_TECNOLOGIA AS OtroTipoTecnologia,
-                CAPACIDAD_KW_POR_TECNOLOGIA AS CapacidadKwPorTecnologia,
-                FECHA_REGISTRO AS FechaRegistro
-            FROM CREG_174_TECN_UTILIZADAS
-            WHERE COD_174_AUTOGEN = :IdSolicitud            
+                B.ID,
+                B.COD_174_AUTOGEN AS Cod174Autogen,
+                B.COD_TIPO_TECNOLOGIA AS CodTipoTecnologia,
+                B.OTRO_TIPO_TECNOLOGIA AS OtroTipoTecnologia,
+                B.CAPACIDAD_KW_POR_TECNOLOGIA AS CapacidadKwPorTecnologia,
+                B.FECHA_REGISTRO AS FechaRegistro
+            FROM CREG_174_TECN_UTILIZADAS B
+            INNER JOIN CREG_174_AUTOGEN A
+                ON A.NUMERO_RADICADO = :IdSolicitud
+            WHERE B.COD_174_AUTOGEN = A.ID            
         ";
 
         internal static string GetAnexosBySolicitud = @"
             SELECT 
-                ID,
-                COD_174_AUTOGEN              AS Cod174Autogen,
-                COD_DOCUMENTOS_XFORMULARIO   AS CodDocumentosXformulario,
-                NAME_DOCUMENT                AS NameDocument,
-                EXT_DOCUMENT                 AS ExtDocument,
-                SIZE_DOCUMENT                AS SizeDocument,
-                URL_DOCUMENT                 AS UrlDocument,
-                URL_REL_DOCUMENT             AS UrlRelDocument,
-                ORIGINAL_NAMEDO_CUMENT       AS OriginalNamedoCument,
-                ESTADO_DOCUMENTO             AS EstadoDocumento,
-                EXPEDICION                   AS Expedicion,
-                VALIDATION_DOCUMENT          AS ValidationDocument,
-                SEND_NOTIFICATION             AS SendNotification
-            FROM CREG_174_ANEXOS
-            WHERE COD_174_AUTOGEN = :IdSolicitud AND Estado_Documento = 1
+                B.ID,
+                B.COD_174_AUTOGEN              AS Cod174Autogen,
+                B.COD_DOCUMENTOS_XFORMULARIO   AS CodDocumentosXformulario,
+                B.NAME_DOCUMENT                AS NameDocument,
+                B.EXT_DOCUMENT                 AS ExtDocument,
+                B.SIZE_DOCUMENT                AS SizeDocument,
+                B.URL_DOCUMENT                 AS UrlDocument,
+                B.URL_REL_DOCUMENT             AS UrlRelDocument,
+                B.ORIGINAL_NAMEDO_CUMENT       AS OriginalNamedoCument,
+                B.ESTADO_DOCUMENTO             AS EstadoDocumento,
+                B.EXPEDICION                   AS Expedicion,
+                B.VALIDATION_DOCUMENT          AS ValidationDocument,
+                B.SEND_NOTIFICATION             AS SendNotification
+            FROM CREG_174_ANEXOS B
+            INNER JOIN CREG_174_AUTOGEN A
+                ON A.NUMERO_RADICADO = :IdSolicitud
+            WHERE B.COD_174_AUTOGEN = A.ID AND Estado_Documento = 1
             ORDER BY ID DESC
         ";
 
@@ -858,8 +862,10 @@
 	            ps.*,
                 es2.*                
             FROM CREG_174_PASOS ps 
+            INNER JOIN CREG_174_AUTOGEN A
+                ON A.NUMERO_RADICADO = :IdSolicitud
             INNER JOIN CREG_Estados es2 ON ps.Cod_Estado = es2.Id             
-            WHERE ps.COD_174_AUTOGEN = :IdSolicitud
+            WHERE ps.COD_174_AUTOGEN = A.ID
             ORDER BY ps.Id ASC";
 
         internal static string GetPasosByRadicado = @"

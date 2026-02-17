@@ -8,7 +8,7 @@
         Task<Creg075ServicioConexion> GetEntity(int idEntity, int Empresa);
         Task<List<Creg075Anexo>> GetAnexosBySolicitud(int idEntity);
         Task<List<Creg075DetallesCuenta>> GetDetalleCuentaBySolicitud(int idEntity);
-        //Task<List<PasosSolServicioConexion>> GetPasosBySolicitud(int idEntity);
+        Task<List<Creg075Pasos>> GetPasosBySolicitud(int idEntity);
         //Task<List<PasosSolServicioConexion>> GetPasosByRadicado(string numRadicado);
 
 

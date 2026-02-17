@@ -40,15 +40,16 @@
         IActividadEconomicaRepository ActividadEconomicaRepository { get; }
         ISolConexionAutogenRepository SolConexionAutogenRepository { get; }
         ISolServicioConexionRepository SolServicioConexionRepository { get; }
-               
+        ISolServicioConexionFactibilidadRepository SolServicioConexionFactibilidadRepository { get; }
+
+        ISolServicioConexionDisenioRepository SolServicioConexionDisenioRepository { get; }
+
         //IPasosSolServicioConexionRepository PasosSolServicioConexionRepository { get; }
         //ITipoActivoRepository TipoActivoRepository { get; }
         //ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository { get; }
         //ISolConexionAutogenXvisitaRepository SolConexionAutogenXvisitaRepository { get; }
         //ISolServicioConexionReciboTecnicoRepository SolServicioConexionReciboTecnicoRepository { get; }
         //ISolServicioConexionComentarioRepository SolServicioConexionComentarioRepository { get; }
-        //ISolServicioConexionFactibilidadRepository SolServicioConexionFactibilidadRepository { get; }
-        //ISolServicioConexionDisenioRepository SolServicioConexionDisenioRepository { get; }       
         //ISolServicioConexionReviewRepository SolServicioConexionReviewRepository { get; }
         //ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository { get; }
         //ISolServicioConexionComentarioAnexoRepository SolServicioConexionComentarioAnexoRepository { get; }

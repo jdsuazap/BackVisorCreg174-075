@@ -1,6 +1,7 @@
 using AngleSharp.Html;
 using AngleSharp.Html.Parser;
 using Core.Exceptions;
+using Microsoft.AspNetCore.StaticFiles;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
@@ -474,6 +475,19 @@ namespace Core.Tools
                 combinedPath = Path.Combine(combinedPath, part);
             }
             return combinedPath;
+        }
+
+        public static string GetContentType(string fileName)
+        {
+            try
+            {
+                new FileExtensionContentTypeProvider().TryGetContentType(fileName, out string contentType);
+                return contentType ?? "application/octet-stream";
+            }
+            catch (Exception e)
+            {
+                throw new BusinessException($"Error: {e.Message}");
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 {
     using Application.Oracle.File.Queries;
     using Core.Exceptions;
+    using Core.Tools;
     using MediatR;
 
     public class DownloadFileQueryHandler : IRequestHandler<DownloadFileQuery, (byte[], string)>
@@ -12,9 +13,8 @@
             {
                 using var client = new HttpClient();
                 var bytes = await client.GetByteArrayAsync(request.Url, cancellationToken);
-                //string contentType = Funciones.GetContentType(request.NombreArchivo);
-                //return (bytes, contentType);
-                return (bytes, null);
+                string contentType = Funciones.GetContentType(request.NombreArchivo);
+                return (bytes, contentType);
             }
             catch (Exception e)
             {

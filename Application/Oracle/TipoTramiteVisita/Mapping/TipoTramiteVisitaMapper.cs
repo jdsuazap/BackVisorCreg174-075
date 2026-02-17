@@ -2,11 +2,13 @@
 {
     using Application.Oracle.TipoTramiteVisita.DTOs;
     using AutoMapper;
+    using Core.Entities.Oracle;
+
     internal class TipoTramiteVisitaMapper : Profile
     {
         public TipoTramiteVisitaMapper()
         {
-            CreateMap<Core.Entities.Oracle.CregTipoTramiteVisita, TipoTramiteVisitaDTO>().ReverseMap();
+            CreateMap<CregTipoTramiteVisita, TipoTramiteVisitaDTO>().ReverseMap();
         }
     }
 }

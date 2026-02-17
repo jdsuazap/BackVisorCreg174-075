@@ -56,18 +56,18 @@
         private readonly IPasosSolConexionAutogenRepository _pasosSolConexionAutogenRepository;
         private readonly ISolServicioConexionRepository _solServicioConexionRepository;
         private readonly IEstadoRepository _estadoRepository;            
-        private readonly IActividadEconomicaRepository _actividadEconomicaRepository;        
+        private readonly IActividadEconomicaRepository _actividadEconomicaRepository;
+        private readonly ISolServicioConexionFactibilidadRepository _solServicioConexionFactibilidadRepository;
+        //private readonly IPasosSolServicioConexionRepository _pasosSolServicioConexionRepository;
+        private readonly ISolServicioConexionDisenioRepository _solServicioConexionDisenioRepository;                
 
         #region SQLContext
 
         //private readonly ITipoActivoRepository _tipoActivoRepository;
-        //private readonly IPasosSolServicioConexionRepository _pasosSolServicioConexionRepository;
         //private readonly ISolConexionAutogenComentarioRepository _solConexionAutogenComentarioRepository;
         //private readonly ISolConexionAutogenXvisitaRepository _solConexionAutogenXvisitaRepository;        
         //private readonly ISolServicioConexionReciboTecnicoRepository _solServicioConexionReciboTecnicoRepository;
         //private readonly ISolServicioConexionComentarioRepository _solServicioConexionComentarioRepository;                
-        //private readonly ISolServicioConexionFactibilidadRepository _solServicioConexionFactibilidadRepository;        
-        //private readonly ISolServicioConexionDisenioRepository _solServicioConexionDisenioRepository;                
         //private readonly ISolServicioConexionReviewRepository _solServicioConexionReviewRepository;
         //private readonly ISolConexionAutogenComentarioRepository _solConexionAutogenComentarioRepository;
         //private readonly ISolServicioConexionComentarioAnexoRepository _solServicioConexionComentarioAnexoRepository;
@@ -279,6 +279,18 @@
            )
         );
 
+        public ISolServicioConexionFactibilidadRepository SolServicioConexionFactibilidadRepository => _solServicioConexionFactibilidadRepository ?? new SolServicioConexionFactibilidadRepository(_eepContext,
+           new DbConnectionFactorySingular(
+               _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
+           )
+        ); 
+        
+        public ISolServicioConexionDisenioRepository SolServicioConexionDisenioRepository => _solServicioConexionDisenioRepository ?? new SolServicioConexionDisenioRepository(_eepContext,
+           new DbConnectionFactorySingular(
+               _connections[EnumConnectionStrings.BaseDeDatoOracleEEP.ToString()]
+           )
+        );
+
 
         //public ITipoActivoRepository TipoActivoRepository => _tipoActivoRepository ?? new TipoActivoRepository(_context);        
         //public ITipoSolicitudReciboRepository TipoSolicitudReciboRepository => _tipoSolicitudReciboRepository ?? new TipoSolicitudReciboRepository(_context);
@@ -290,7 +302,6 @@
         //public ISolConexionAutogenXvisitaRepository SolConexionAutogenXvisitaRepository => _solConexionAutogenXvisitaRepository ?? new SolConexionAutogenXvisitaRepository(_context);
         //public ISolServicioConexionReciboTecnicoRepository SolServicioConexionReciboTecnicoRepository => _solServicioConexionReciboTecnicoRepository ?? new SolServicioConexionReciboTecnicoRepository(_context);
         //public ISolServicioConexionComentarioRepository SolServicioConexionComentarioRepository => _solServicioConexionComentarioRepository ?? new SolServicioConexionComentarioRepository(_context, _dapperContext);       
-        //public ISolServicioConexionFactibilidadRepository SolServicioConexionFactibilidadRepository => _solServicioConexionFactibilidadRepository ?? new SolServicioConexionFactibilidadRepository(_context);        
         //public ISolServicioConexionDisenioRepository SolServicioConexionDisenioRepository => _solServicioConexionDisenioRepository ?? new SolServicioConexionDisenioRepository(_context);
         //public ISolServicioConexionReviewRepository SolServicioConexionReviewRepository => _solServicioConexionReviewRepository ?? new SolServicioConexionReviewRepository(_context);
         //public ISolConexionAutogenComentarioRepository SolConexionAutogenComentarioRepository => _solConexionAutogenComentarioRepository ?? new SolConexionAutogenComentarioRepository(_context, _dapperContext);

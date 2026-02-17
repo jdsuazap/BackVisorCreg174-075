@@ -28,9 +28,7 @@
 
             solicitud.Creg075Anexos = await GetAnexosBySolicitud(idEntity);
             solicitud.Creg075DetallesCuentas = await GetDetalleCuentaBySolicitud(idEntity);
-            //solicitud.PasosSolServicioConexions = await GetPasosBySolicitud(idEntity);
-            //solicitud.SolServicioConexionComentarios = await GetComentarioBySolicitud(idEntity);
-
+            solicitud.Creg075Pasos = await GetPasosBySolicitud(idEntity);
             return solicitud;
         }
 
@@ -44,20 +42,15 @@
             return await _unitOfWork.SolServicioConexionRepository.GetDetalleCuentaBySolicitud(idEntity);
         }
 
-        //public async Task<List<PasosSolServicioConexion>> GetPasosBySolicitud(int idEntity)
-        //{
-        //    return await _unitOfWork.SolServicioConexionRepository.GetPasosBySolicitud(idEntity);
-        //}
+        public async Task<List<Creg075Pasos>> GetPasosBySolicitud(int idEntity)
+        {
+            return await _unitOfWork.SolServicioConexionRepository.GetPasosBySolicitud(idEntity);
+        }
 
         //public async Task<List<PasosSolServicioConexion>> GetPasosByRadicado(string numRadicado)
         //{
         //    return await _unitOfWork.SolServicioConexionRepository.GetPasosByRadicado(numRadicado);
-        //}
-
-        //public async Task<List<SolServicioConexionComentario>> GetComentarioBySolicitud(int idEntity)
-        //{
-        //    return await _unitOfWork.SolServicioConexionRepository.GetComentarioBySolicitud(idEntity);
-        //}
+        //}       
 
         public async Task<SolServicioConexionParamsIni> GetParametrosIniciales()
         {

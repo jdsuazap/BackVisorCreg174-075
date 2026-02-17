@@ -8,6 +8,10 @@ namespace Core.Entities.Oracle
         public Creg075Factibilidad()
         {
             Creg075Disenios = new HashSet<Creg075Disenio>();
+            Creg075FactibilidadAnexo = new HashSet<Creg075FactibilidadAnexo>();
+            Creg075FactibilidadDetCuen = new HashSet<Creg075FactibilidadDetCuen>();
+            Creg075FactibilidadDocu = new HashSet<Creg075FactibilidadDocu>();
+            Creg075FactibilidadProye = new HashSet<Creg075FactibilidadProye>();
         }
 
         public long Id { get; set; }
@@ -32,11 +36,18 @@ namespace Core.Entities.Oracle
         public string Longitud { get; set; } = null!;
         public string Latitud { get; set; } = null!;
         public string? Altura { get; set; }
-        public DateTime FechaRespuestaFactibiidad { get; set; }
+        public DateTime FechaRespuestaFactibilidad { get; set; }
         public bool Estado { get; set; }
 
-        public virtual Creg075ServicioConexion Cod075ConexionNavigation { get; set; } = null!;
-        public virtual CregTipoSolicitudRecibo CodTipoSolicitudNavigation { get; set; } = null!;
+        public virtual Creg075ServicioConexion Creg075ServicioConexion { get; set; } = null!;
+        public virtual CregTipoSolicitudRecibo CregTipoSolicitudRecibo { get; set; } = null!;
         public virtual ICollection<Creg075Disenio> Creg075Disenios { get; set; }
+        public virtual ICollection<Creg075FactibilidadAnexo> Creg075FactibilidadAnexo { get; set; } = new List<Creg075FactibilidadAnexo>();
+        public virtual ICollection<Creg075FactibilidadDetCuen> Creg075FactibilidadDetCuen { get; set; } = new List<Creg075FactibilidadDetCuen>();
+        public virtual CregTipoTension CregTipoTension { get; set; } = null!;
+        public virtual Creg075FactibilidadObs? Creg075FactibilidadObs { get; set; }
+        public virtual ICollection<Creg075FactibilidadDocu> Creg075FactibilidadDocu { get; set; } = new List<Creg075FactibilidadDocu>();
+        public virtual ICollection<Creg075FactibilidadProye> Creg075FactibilidadProye { get; set; } = new List<Creg075FactibilidadProye>();
+
     }
 }

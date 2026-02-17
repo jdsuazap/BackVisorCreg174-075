@@ -11,10 +11,13 @@ namespace Core.Entities.Oracle
             Creg075Detalles = new Creg075Detalle();
             Creg075DetallesCuentas = new HashSet<Creg075DetallesCuenta>();
             Creg075Disenios = new HashSet<Creg075Disenio>();
+            Creg075DisenioAnexos = new HashSet<Creg075DisenioAnexo>();
             Creg075Factibilidads = new HashSet<Creg075Factibilidad>();
             Creg075Predios = new Creg075Predio();
             Creg075Solicitantes = new HashSet<Creg075Solicitante>();
-            //Creg075Suscriptors = new Creg075Suscriptor();
+            Creg075Pasos = new HashSet<Creg075Pasos>();
+            Creg075ReciboTecnicos = new HashSet<Creg075ReciboTecnico>();
+
         }
 
         public int Id { get; set; }
@@ -49,13 +52,21 @@ namespace Core.Entities.Oracle
         public virtual CregEstratoSocioeconomico? CodEstratoNavigation { get; set; }
         public virtual CregEtapa CodEtapaNavigation { get; set; } = null!;
         public virtual CregTipoConexion CodTipoConexionNavigation { get; set; } = null!;
+        public virtual CregTipoCliente CodTipoUsoNavigation { get; set; }
+
         public virtual ICollection<Creg075Anexo> Creg075Anexos { get; set; }
         public virtual Creg075Detalle Creg075Detalles { get; set; }
         public virtual ICollection<Creg075DetallesCuenta> Creg075DetallesCuentas { get; set; }
         public virtual ICollection<Creg075Disenio> Creg075Disenios { get; set; }
+        public virtual ICollection<Creg075DisenioAnexo> Creg075DisenioAnexos { get; set; }
         public virtual ICollection<Creg075Factibilidad> Creg075Factibilidads { get; set; }
         public virtual Creg075Predio? Creg075Predios { get; set; }
         public virtual ICollection<Creg075Solicitante> Creg075Solicitantes { get; set; }
         public virtual Creg075Suscriptor? Creg075Suscriptors { get; set; }
+        public virtual ICollection<Creg075Pasos> Creg075Pasos { get; set; }
+        public virtual ICollection<Creg075ReciboTecnico> Creg075ReciboTecnicos { get; set; }
+        public virtual ICollection<Creg075DisenioDocu> Creg075DisenioDocu { get; set; }
+
+
     }
 }

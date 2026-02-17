@@ -1,6 +1,5 @@
 ﻿namespace Application.Oracle.SolConexionAutogen.DTOs
 {
-    //using Application.SQLContext.SolConexionAutogenComentario.DTOs;
     using Core.Entities.Oracle;
 
     public class SolConexionAutogenDTO
@@ -42,16 +41,11 @@
         public DateTime? FechaLimiteConexion { get; set; }        
         public DateTime FechaRegistro { get; set; }     
              
-        //public virtual ICollection<SolConexionAutogenComentarioDTO> SolConexionAutogenComentarios { get; set; }
-
         public virtual CregCiudad CregCiudad { get; set; } = null!;
         public virtual CregClasificacionProyecto CregClasificacionProyecto { get; set; }
         public virtual CregComercializador CregComercializador { get; set; }
         public virtual CregDepartamento CregDepartamento { get; set; } = null!;
         public virtual CregEstado CregEstado { get; set; } = null!;
-        //public virtual EstadoDTO? EstadoVisitaNavigation { get; set; }
-        //public virtual EstadoDTO? EstadoAnteriorProrrogaNavigation { get; set; }
-        //public virtual EstadoDTO? UltimoEstadoProrrogaNavigation { get; set; }
         public virtual CregEstratoSocioeconomico CregEstratoSocioeconomico { get; set; }
         public virtual CregTipoCliente CregTipoCliente { get; set; }
         public virtual CregTipoGeneracion CregTipoGeneracion { get; set; }
@@ -62,7 +56,6 @@
         public virtual Creg174NoBasInv Creg174NoBasInv { get; set; }
         public virtual Creg174Tecnologia Creg174Tecnologia { get; set; }
         public virtual ICollection<Creg174Anexo> Creg174Anexos { get; set; }
-        //public virtual ICollection<SolConexionAutogenComentarioDTO> SolConexionAutogenComentarios { get; set; }
         public virtual ICollection<Creg174Pasos> Creg174Historico { get; set; }
         public virtual ICollection<Creg174TecnUtilizada> Creg174TecnUtilizada { get; set; }        
     }

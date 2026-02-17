@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=172.25.3.201)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=HISCREG)));User Id=visor;Password=visor2025;" Oracle.EntityFrameworkCore -o Data/Migr -t CREG_075_PASOS -f --no-onconfiguring --namespace Core.Entities.Oracle --context PruebaCtx

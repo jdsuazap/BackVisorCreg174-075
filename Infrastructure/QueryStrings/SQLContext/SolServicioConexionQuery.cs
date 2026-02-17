@@ -318,32 +318,36 @@
 
         internal const string GetAnexosBySolicitud = @"
             SELECT 
-            ID                             AS Id,
-            COD_075_CONEXION               AS Cod075Conexion,
-            COD_DOCUMENTOS                 AS CodDocumentos,
-            NAME_DOCUMENT                  AS NameDocument,
-            EXT_DOCUMENT                   AS ExtDocument,
-            SIZE_DOCUMENT                  AS SizeDocument,
-            URL_DOCUMENT                   AS UrlDocument,
-            URL_REL_DOCUMENT               AS UrlRelDocument,
-            ORIGINAL_DOCUMENT              AS OriginalDocument,
-            ESTADO_DOCUMENTO               AS EstadoDocumento,
-            EXPEDICION                     AS Expedicion,
-            VALIDATION_DOCUMENT            AS ValidationDocument,
-            SEND_NOTIFICATION              AS SendNotification
-            FROM CREG_075_ANEXOS
-            WHERE COD_075_CONEXION = :IdSolicitud AND ESTADO_DOCUMENTO = 1
+                A.ID                             AS Id,
+                COD_075_CONEXION               AS Cod075Conexion,
+                COD_DOCUMENTOS                 AS CodDocumentos,
+                NAME_DOCUMENT                  AS NameDocument,
+                EXT_DOCUMENT                   AS ExtDocument,
+                SIZE_DOCUMENT                  AS SizeDocument,
+                URL_DOCUMENT                   AS UrlDocument,
+                URL_REL_DOCUMENT               AS UrlRelDocument,
+                ORIGINAL_DOCUMENT              AS OriginalDocument,
+                ESTADO_DOCUMENTO               AS EstadoDocumento,
+                EXPEDICION                     AS Expedicion,
+                VALIDATION_DOCUMENT            AS ValidationDocument,
+                SEND_NOTIFICATION              AS SendNotification
+            FROM CREG_075_ANEXOS A
+            INNER JOIN CREG_075_SERVICIO_CONEXION  B
+                ON A.COD_075_CONEXION = B.ID
+            WHERE B.NUMERO_RADICADO = :IdSolicitud AND ESTADO_DOCUMENTO = 1
         ";
 
         internal static string GetPasosBySolicitud = @"
             SELECT 
-                ps.IdPasosSolServicioConexion	AS Id, ps.*
-                , es.parIdEstado				AS Id, es.*
-                , et.IdEtapa					AS Id, et.*
-            FROM sol.PasosSolServicioConexion ps (NOLOCK) 
-            INNER JOIN par.Estados es (NOLOCK) ON ps.CodEstado = es.parIdEstado 
-            LEFT  JOIN par.Etapas et (NOLOCK) ON es.CodEtapa = et.IdEtapa
-            WHERE ps.CodSolServicioConexion = @IdSolicitud;
+                PS.*
+                ,ES.*
+                ,ET.*
+            FROM CREG_075_PASOS PS
+            INNER JOIN CREG_075_SERVICIO_CONEXION A
+                ON PS.COD_075_CONEXION = A.ID
+            INNER JOIN CREG_ESTADOS ES ON PS.COD_ESTADO = ES.ID 
+            LEFT  JOIN CREG_ETAPAS ET ON ES.COD_ETAPA = ET.ID
+            WHERE A.NUMERO_RADICADO = :IdSolicitud
         ";
 
         internal static string GetPasosByRadicado = @"
@@ -374,7 +378,7 @@
                 ON A.ID = SOL.COD_075_CONEXION
             INNER JOIN CREG_TIPO_CLIENTE b  ON SOL.COD_TIPO_CARGA = b.ID
             INNER JOIN CREG_TIPO_CLASE_CARGA c ON SOL.COD_TIPO_CLASE_CARGA = c.ID
-            WHERE A.ID = :IdSolicitud
+            WHERE A.NUMERO_RADICADO = :IdSolicitud
         ";
 
         internal const string GetEntitiesTrafo = @"

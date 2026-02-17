@@ -16,5 +16,6 @@ namespace Core.Entities.Oracle
         public bool? Estado { get; set; }
 
         public virtual ICollection<Creg075Detalle> Creg075Detalles { get; set; }
+        public virtual ICollection<Creg075Factibilidad> Creg075Factibilidad { get; set; }
     }
 }

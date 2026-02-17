@@ -1,4 +1,6 @@
-﻿namespace Application.Oracle.TipoSolicitudServicio.DTOs
+﻿using Core.Entities.Oracle;
+
+namespace Application.Oracle.TipoSolicitudServicio.DTOs
 {
     public class TipoSolicitudServicioDTO
     {
@@ -6,6 +8,6 @@
         public string Descripcion { get; set; }
         public bool? Estado { get; set; }
 
-        //public virtual ICollection<SolServicioConexionDetalle> SolServicioConexionDetalles { get; set; }
+        public virtual ICollection<Creg075Detalle> Creg075Detalle { get; set; }
     }
 }

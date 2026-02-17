@@ -2,7 +2,6 @@
 {
     using Application.Oracle.SolServicioConexion.DTOs;
     using AutoMapper;
-    using Core.Entities.Oracle;
     using Core.Interfaces;
     using Core.Interfaces.Oracle;
     using MediatR;

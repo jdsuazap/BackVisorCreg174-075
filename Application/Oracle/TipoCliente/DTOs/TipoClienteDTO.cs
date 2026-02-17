@@ -1,4 +1,6 @@
-﻿namespace Application.Oracle.TipoCliente.DTOs
+﻿using Core.Entities.Oracle;
+
+namespace Application.Oracle.TipoCliente.DTOs
 {
     public class TipoClienteDTO
     {
@@ -6,8 +8,8 @@
         public string Descripcion { get; set; }
         public bool? Estado { get; set; }
 
-        //public virtual ICollection<SolConexionAutogen> SolConexionAutogens { get; set; }
-        //public virtual ICollection<SolServicioConexionDetalleCuenta> SolServicioConexionDetalleCuenta { get; set; }
-        //public virtual ICollection<SolServicioConexion> SolServicioConexions { get; set; }
+        public virtual ICollection<Creg174Autogen> Creg174Autogen { get; set; }
+        public virtual ICollection<Creg075DetallesCuenta> Creg075DetallesCuenta { get; set; }
+        public virtual ICollection<Creg075ServicioConexion> Creg075ServicioConexion { get; set; }
     }
 }
