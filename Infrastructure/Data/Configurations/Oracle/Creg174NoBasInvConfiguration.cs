@@ -10,6 +10,8 @@
         {
             entity.ToTable("CREG_174_NO_BAS_INV");
 
+            entity.HasKey(e => e.Id);
+
             entity.Property(e => e.Id)
                 .HasPrecision(10)
                 .HasColumnName("ID");

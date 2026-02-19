@@ -8,7 +8,7 @@ namespace Core.Entities.Oracle
         public Creg075ReciboTecnico()
         {
             Etapa = 1;
-            //SolServicioConexionReciboTecnicoAnexos = new HashSet<SolServicioConexionReciboTecnicoAnexos>();
+            Creg075ReciboTecnicoAnexo = new HashSet<Creg075ReciboTecnicoAnexo>();
             //SolServicioConexionTipoProyectoPorReciboTecnicos = new HashSet<SolServicioConexionTipoProyectoPorReciboTecnico>();
         }
 
@@ -20,7 +20,7 @@ namespace Core.Entities.Oracle
         public string NombreProyecto { get; set; } = null!;
         public string OficinaRadicacion { get; set; } = null!;
         public string Direccion { get; set; } = null!;
-        public decimal CodComercializador { get; set; }
+        public string Comercializador { get; set; }
         public string? NumeroMatricula { get; set; }
         public string? ClienteCargoMedidor { get; set; }
         public int CodPersonaAutorizacion { get; set; }
@@ -46,7 +46,7 @@ namespace Core.Entities.Oracle
         public virtual CregTipoCompletitud CregTipoCompletitud { get; set; }
         public virtual CregTipoSolicitudRecibo CregTipoSolicitudRecibo { get; set; }
         public Creg075ServicioConexion Creg075ServicioConexion { get; set; }
-        //public ICollection<SolServicioConexionReciboTecnicoAnexos> SolServicioConexionReciboTecnicoAnexos { get; set; }
+        public ICollection<Creg075ReciboTecnicoAnexo> Creg075ReciboTecnicoAnexo { get; set; }
         //public virtual ICollection<SolServicioConexionTipoProyectoPorReciboTecnico> SolServicioConexionTipoProyectoPorReciboTecnicos { get; set; }
     }
 }

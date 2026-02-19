@@ -11,6 +11,8 @@
             {
                 entity.ToTable("CREG_075_SERVICIO_CONEXION");
 
+                entity.HasKey(e => e.Id);
+
                 entity.Property(e => e.Id)
                     .HasPrecision(10)
                     .HasColumnName("ID");

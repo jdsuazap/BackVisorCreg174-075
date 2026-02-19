@@ -10,6 +10,8 @@
         {
             entity.ToTable("CREG_174_AUTOGEN");
 
+            entity.HasKey(e => e.Id);
+
             entity.Property(e => e.Id)
                 .HasPrecision(10)
                 .ValueGeneratedNever()

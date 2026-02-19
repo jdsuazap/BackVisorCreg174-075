@@ -9,6 +9,8 @@
         {
             entity.ToTable("CREG_075_DISENIO_ACTOR");
 
+            entity.HasKey(e => e.Id);
+
             entity.Property(e => e.Id)
                 .HasPrecision(10)
                 .ValueGeneratedNever()
