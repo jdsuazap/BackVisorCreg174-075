@@ -114,9 +114,9 @@
             services.AddTransient<IPasosSolConexionAutogenService, PasosSolConexionAutogenService>();
             //services.AddTransient<IPasosSolServicioConexionService, PasosSolServicioConexionService>();
             services.AddTransient<ISolServicioConexionDisenioService, SolServicioConexionDisenioService>();
+            services.AddTransient<ISolServicioConexionReciboTecnicoService, SolServicioConexionReciboTecnicoService>();
 
 
-            //services.AddTransient<ISolServicioConexionReciboTecnicoService, SolServicioConexionReciboTecnicoService>();
             //services.AddTransient<IMotivoProrrogaService, MotivoProrrogaService>();          
             //services.AddTransient<ISolServicioConexionComentarioService, SolServicioConexionComentarioService>();                      
             //services.AddTransient<ISolServicioConexionComentarioService , SolServicioConexionComentarioService>();

@@ -42,7 +42,7 @@
 
                             
                 infoFormularioDTO.Transformador = request.CodTransformador.ToString();
-                infoFormularioDTO.Porcentaje = entity.Gen_Instalada.ToString();
+                infoFormularioDTO.Porcentaje = Math.Round((decimal)entity.Gen_Instalada, 0, MidpointRounding.AwayFromZero).ToString();
                 infoFormularioDTO.CapacidadMaximaDisponible = entity.Cap_Max_Disponible;
                 infoFormularioDTO.TotalCapacidadOcupada = entity.Tot_Cap_Ocupada;
             }

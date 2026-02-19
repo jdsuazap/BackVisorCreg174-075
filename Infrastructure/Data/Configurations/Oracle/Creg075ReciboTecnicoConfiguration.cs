@@ -8,6 +8,8 @@
         public void Configure(EntityTypeBuilder<Creg075ReciboTecnico> entity)
         {
             entity.ToTable("CREG_075_RECIBO_TECNICO");
+            
+            entity.HasKey(e => e.Id);
 
             entity.Property(e => e.Id)
                 .HasPrecision(10)
@@ -33,9 +35,10 @@
                 .HasPrecision(10)
                 .HasColumnName("COD_075_CONEXION");
 
-            entity.Property(e => e.CodComercializador)
-                .HasColumnType("NUMBER")
-                .HasColumnName("COD_COMERCIALIZADOR");
+            entity.Property(e => e.Comercializador)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("COMERCIALIZADOR");
 
             entity.Property(e => e.CodPersonaAutorizacion)
                 .HasPrecision(10)
@@ -171,6 +174,7 @@
                 .HasForeignKey(d => d.CodTipoSolicitud)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_SolServicioConexionReciboTecnico_TipoSolicitud");
+
         }
     }
 }

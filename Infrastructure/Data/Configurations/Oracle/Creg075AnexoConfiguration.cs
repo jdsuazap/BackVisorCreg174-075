@@ -8,6 +8,8 @@
         public void Configure(EntityTypeBuilder<Creg075Anexo> entity)
         {
             entity.ToTable("CREG_075_ANEXOS");
+            
+            entity.HasKey(e => e.Id);
 
             entity.Property(e => e.Id)
                 .HasPrecision(10)

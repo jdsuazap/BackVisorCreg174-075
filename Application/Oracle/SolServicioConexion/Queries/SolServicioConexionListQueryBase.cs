@@ -3,6 +3,7 @@
     //using Application.Oracle.PasosSolServicioConexion.DTOs;
     //using Application.Oracle.SolReciboTecnico.DTOs;
     using Application.Oracle.SolServicioConexion.DTOs;
+    using Application.Oracle.SolServicioConexionReciboTecnico.DTOs;
     //using Application.Oracle.SolServicioConexionAnexo.DTOs;
     //using Application.Oracle.SolServicioConexionComentarioAnexos.DTOs;
     //using Application.Oracle.SolServicioConexionDisenio.DTOs;
@@ -11,6 +12,7 @@
     //using Application.Oracle.SolServicioConexionSeguimientoObra.DTOs;
     using AutoMapper;
     using Core.Entities.Oracle;
+    using Core.Enumerations;
     using Core.Interfaces;
     using System.Linq;
 
@@ -477,26 +479,25 @@
         //    }
         //}
 
-        //private async Task GetReciboTecnicoAnexosAsync(List<SolServicioConexionDTO> entitiesDto, List<Estado> estados, bool includeAllDependencies = false)
+        //private async Task GetReciboTecnicoAnexosAsync(List<SolServicioConexionDTO> entitiesDto, List<CregEstado> estados, bool includeAllDependencies = false)
         //{
         //    var entitiesIds = entitiesDto.Select(e => e.Id).ToList();
 
-        //    var resibosTecnicos = await _unitOfWork.SolServicioConexionReciboTecnicoRepository.GetAllAsync(
-        //        filter: x => entitiesIds.Contains(x.CodSolServicioConexion)
+        //    var resibosTecnicos = await _unitOfWork.SolServicioConexionReciboTecnicoRepository.GetAll(
+        //        filter: x => entitiesIds.Contains(x.Cod075Conexion)
         //        && x.Estado.HasValue
         //        && x.Estado.Value,
         //        orderBy: q => q.OrderBy(recibo => recibo.Etapa)
         //    );
 
-        //    List<SolServicioConexionReciboTecnicoAnexos> anexos = [];
-        //    List<SolServicioConexionReview> otherAnexosReviews = [];
+        //    List<Creg075ReciboTecnicoAnexo> anexos = new List<Creg075ReciboTecnicoAnexo>();
 
         //    if (includeAllDependencies)
         //    {
-        //        anexos = await _unitOfWork.SolServicioConexionReciboTecnicoAnexosRepository.GetAllAsync(
+        //        anexos = await _unitOfWork.SolServicioConexionReciboTecnicoAnexosRepository.GetAll(
         //            filter: x => entitiesIds.Contains(x.CodSolServicioConexion)
         //        );
-                
+
         //        var status = new int[] {
         //            (int)EstadosEnum.Creg_075_Solicitud_recibo_tecnico,
         //            (int)EstadosEnum.Creg_075_Pendiente_documentacion_recibo_tecnico,
@@ -504,8 +505,6 @@
         //            (int)EstadosEnum.Creg_075_Recibo_tecnico_aprobado,
         //            (int)EstadosEnum.Creg_075_Recibo_tecnico_aprobado_de_la_etapa
         //        };
-
-        //        otherAnexosReviews = await GetOtherAnexos(entitiesIds, status);
         //    }
 
         //    if (resibosTecnicos.Count != 0)
@@ -527,24 +526,7 @@
         //                            .OrderBy(x => x.FechaRegistroUpdate)
         //                            .ToList();
 
-        //                        anexosDto = _mapper.Map<List<ReciboTecnicoAnexoDTO>>(reciboAnexos);
-
-        //                        var otherAnexosBySolicitud = otherAnexosReviews
-        //                            .Where(x => x.CodSolServicioConexion == recibo.CodSolServicioConexion && x.Etapa == recibo.Etapa)
-        //                            .ToList();
-
-        //                        foreach (var otherAnexo in otherAnexosBySolicitud)
-        //                        {
-        //                            foreach (var item in otherAnexo.SolServicioConexionReviewoAnexos)
-        //                            {
-        //                                var anexo = _mapper.Map<ReciboTecnicoAnexoDTO>(item);
-
-        //                                var estado = estados.First(x => x.Id == otherAnexo.CodEstado);
-
-        //                                anexo.Source = estado.ParDescripcion;
-        //                                anexosDto.Add(anexo);
-        //                            }
-        //                        }
+        //                        anexosDto = _mapper.Map<List<ReciboTecnicoAnexoDTO>>(reciboAnexos);                                
         //                    }
 
         //                    entitie.ReciboTecnico.Add(new ReciboTecnicoDTO()

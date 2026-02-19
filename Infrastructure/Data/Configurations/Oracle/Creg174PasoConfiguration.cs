@@ -9,6 +9,8 @@
         {
             entity.ToTable("CREG_174_PASOS");
 
+            entity.HasKey(e => e.Id);
+
             entity.Property(e => e.Id)
                 .HasPrecision(10)
                 .HasColumnName("ID");
