@@ -7,21 +7,21 @@ namespace Core.Entities.Oracle
     {
         public Creg075Factibilidad()
         {
-            Creg075Disenios = new HashSet<Creg075Disenio>();
             Creg075FactibilidadAnexo = new HashSet<Creg075FactibilidadAnexo>();
             Creg075FactibilidadDetCuen = new HashSet<Creg075FactibilidadDetCuen>();
             Creg075FactibilidadDocu = new HashSet<Creg075FactibilidadDocu>();
             Creg075FactibilidadProye = new HashSet<Creg075FactibilidadProye>();
+            Creg075Disenios = new HashSet<Creg075Disenio>();
         }
 
         public long Id { get; set; }
         public int Cod075Conexion { get; set; }
         public string NumeroFactibilidad { get; set; } = null!;
         public DateTime FechaFactibilidad { get; set; }
-        public int VigenciaFactibilidad { get; set; }
+        public long VigenciaFactibilidad { get; set; }
         public int CodTipoSolicitud { get; set; }
-        public decimal CargaAprobada { get; set; }
-        public decimal CargaExistente { get; set; }
+        public long CargaAprobada { get; set; }
+        public long CargaExistente { get; set; }
         public int NivelAprobacion { get; set; }
         public string? NombreCircuitobt { get; set; }
         public string? NumeroCircuitobt { get; set; }
@@ -41,13 +41,13 @@ namespace Core.Entities.Oracle
 
         public virtual Creg075ServicioConexion Creg075ServicioConexion { get; set; } = null!;
         public virtual CregTipoSolicitudRecibo CregTipoSolicitudRecibo { get; set; } = null!;
-        public virtual ICollection<Creg075Disenio> Creg075Disenios { get; set; }
+        public virtual CregTipoTension CregTipoTension { get; set; } = null!;
         public virtual ICollection<Creg075FactibilidadAnexo> Creg075FactibilidadAnexo { get; set; } = new List<Creg075FactibilidadAnexo>();
         public virtual ICollection<Creg075FactibilidadDetCuen> Creg075FactibilidadDetCuen { get; set; } = new List<Creg075FactibilidadDetCuen>();
-        public virtual CregTipoTension CregTipoTension { get; set; } = null!;
         public virtual Creg075FactibilidadObs? Creg075FactibilidadObs { get; set; }
         public virtual ICollection<Creg075FactibilidadDocu> Creg075FactibilidadDocu { get; set; } = new List<Creg075FactibilidadDocu>();
         public virtual ICollection<Creg075FactibilidadProye> Creg075FactibilidadProye { get; set; } = new List<Creg075FactibilidadProye>();
+        public virtual ICollection<Creg075Disenio> Creg075Disenios { get; set; }
 
     }
 }
