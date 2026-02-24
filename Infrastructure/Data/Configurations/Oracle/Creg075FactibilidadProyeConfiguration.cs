@@ -13,12 +13,12 @@
             entity.ToTable("CREG_075_FACTIBILIDAD_PROYE");
 
             entity.Property(e => e.Id)
-                .HasColumnType("NUMBER")
-                .ValueGeneratedOnAdd()
-                .HasColumnName("ID");
+                    .HasPrecision(19)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("ID");
 
             entity.Property(e => e.Cod075Factibilidad)
-                .HasColumnType("NUMBER")
+                .HasPrecision(19)
                 .HasColumnName("COD_075_FACTIBILIDAD");
 
             entity.Property(e => e.CodTipoProyecto)

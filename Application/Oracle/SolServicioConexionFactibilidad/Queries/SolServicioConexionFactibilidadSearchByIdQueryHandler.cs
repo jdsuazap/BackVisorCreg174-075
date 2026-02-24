@@ -18,7 +18,7 @@
       
         public async Task<SolServicioConexionFactibilidadDTO> Handle(SolServicioConexionFactibilidadSearchByIdQuery request, CancellationToken cancellationToken)
         {
-            var entity = await _solServicioConexionFactibilidadService.GetEntityByIdSolicitud(request.Numero_Radicado, request.Empresa);
+            var entity = await _solServicioConexionFactibilidadService.GetEntityByIdSolicitud(request.Id, request.Numero_Radicado, request.Empresa);
             return _mapper.Map<SolServicioConexionFactibilidadDTO>(entity);
         }        
     }

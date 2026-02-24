@@ -21,11 +21,11 @@
                 .HasColumnName("ALTURA");
 
             entity.Property(e => e.CargaAprobada)
-                .HasColumnType("NUMBER")
+                .HasPrecision(19)
                 .HasColumnName("CARGA_APROBADA");
 
             entity.Property(e => e.CargaExistente)
-                .HasColumnType("NUMBER")
+                .HasPrecision(19)
                 .HasColumnName("CARGA_EXISTENTE");
 
             entity.Property(e => e.Cod075Conexion)
@@ -120,11 +120,12 @@
                 .HasColumnName("TRANSFORMADOR_DISTRIBUCION");
 
             entity.Property(e => e.VigenciaFactibilidad)
-                .HasPrecision(10)
+                .HasPrecision(19)
                 .HasColumnName("VIGENCIA_FACTIBILIDAD");
 
             entity.HasOne(d => d.Creg075ServicioConexion)
                 .WithMany(p => p.Creg075Factibilidads)
+                .HasPrincipalKey(p => p.Id)
                 .HasForeignKey(d => d.Cod075Conexion)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CREG_075_FACTIBILIDAD_SERVICIO");

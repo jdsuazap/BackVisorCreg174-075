@@ -29,13 +29,19 @@
 
         private readonly Expression<Func<Creg075ServicioConexion, object>>[] IncludeProperties = new Expression<Func<Creg075ServicioConexion, object>>[]
         {
-            // Agrega aquí las propiedades de navegación que deseas incluir
+            //entity => entity.CodActividadEconomicaNavigation,
+            //entity => entity.CodEstadoNavigation,
+            //entity => entity.CodEstratoNavigation,
+            //entity => entity.CodTipoConexionNavigation,
+            //entity => entity.CodTipoUsoNavigation,
+
             entity => entity.Creg075Solicitantes,
             entity => entity.Creg075Suscriptors,
             entity => entity.Creg075Detalles,
             entity => entity.Creg075DetallesCuentas,
             entity => entity.Creg075Predios,
-            //entity => entity.PasosSolServicioConexions,
+            entity => entity.Creg075Anexos,
+            entity => entity.Creg075Pasos,
         };
 
         public async Task<Creg075ServicioConexion> GetEntity(int idEntity, int Empresa)
@@ -68,7 +74,7 @@
             parameters.Add("O_TIPO_CONSTRUCCION", null, OracleMappingType.RefCursor, ParameterDirection.Output);
             parameters.Add("O_TIPO_ZONA", null, OracleMappingType.RefCursor, ParameterDirection.Output);
             parameters.Add("O_FACTIBILIDAD", null, OracleMappingType.RefCursor, ParameterDirection.Output);
-            //parameters.Add("O_FACTIBILIDAD_OBS", null, OracleMappingType.RefCursor, ParameterDirection.Output);
+            parameters.Add("O_FACTIBILIDAD_OBS", null, OracleMappingType.RefCursor, ParameterDirection.Output);
 
             //string query = SolServicioConexionQuery.GetEntity;
 
@@ -108,13 +114,15 @@
             var predioTipoZona = (await multi.ReadAsync<CregTipoZona>()).FirstOrDefault();
 
             var factibilidad = (await multi.ReadAsync<Creg075Factibilidad>()).ToList();
+            var factibilidadObs = (await multi.ReadAsync<Creg075FactibilidadObs>()).FirstOrDefault();
+
 
             solicitud.CodActividadEconomicaNavigation = actividadEconomica;
             solicitud.CodEstadoNavigation = estadoSol;
-            //solicitud.CodEstadoNavigation.CodEtapaNavigation = etapaSol;
+            solicitud.CodEstadoNavigation.CregEtapa = etapaSol;
             solicitud.CodEstratoNavigation = estrato;
             solicitud.CodTipoConexionNavigation = tipoConexion;
-            //solicitud.CodTipoUso = tipoCliente;
+            solicitud.CodTipoUsoNavigation = tipoCliente;
 
             solicitud.Creg075Solicitantes = new List<Creg075Solicitante> { datosSolicitante };
             solicitud.Creg075Solicitantes.First().CodMunicipioNavigation = datosSolicitanteCiudad;
@@ -139,7 +147,7 @@
 
             if (factibilidad.Count != 0)
             {
-                //solicitud.Creg075Factibilidads.First().SolServicioConexionFactibilidadObservaciones = factibilidadObs;
+                solicitud.Creg075Factibilidads.First().Creg075FactibilidadObs = factibilidadObs;
             }
 
             return solicitud;

@@ -3,6 +3,7 @@
     using Core.CustomEntities.FormInitialParams;
     using Core.Entities.Oracle;
     using Core.Enumerations;
+    using Core.Exceptions;
     using Core.Interfaces;
     using Core.Interfaces.Oracle;
     using Core.Options;
@@ -25,6 +26,10 @@
         public async Task<Creg075ServicioConexion> GetEntity(int idEntity, int Empresa)
         {
             var solicitud = await _unitOfWork.SolServicioConexionRepository.GetEntity(idEntity, Empresa);
+            if (solicitud == null)
+            {
+                throw new BusinessException("Solicitud Inexistente");
+            }
 
             solicitud.Creg075Anexos = await GetAnexosBySolicitud(idEntity);
             solicitud.Creg075DetallesCuentas = await GetDetalleCuentaBySolicitud(idEntity);

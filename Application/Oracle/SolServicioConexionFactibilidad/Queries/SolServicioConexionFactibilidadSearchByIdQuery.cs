@@ -7,6 +7,9 @@
     public class SolServicioConexionFactibilidadSearchByIdQuery : IRequest<SolServicioConexionFactibilidadDTO>
     {
         [Required]
+        public long Id { get; set; }
+
+        [Required]
         public int Numero_Radicado { get; set; }
 
         [Required]

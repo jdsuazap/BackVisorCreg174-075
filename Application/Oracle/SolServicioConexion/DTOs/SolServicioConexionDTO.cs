@@ -36,15 +36,21 @@
         public virtual CregEstratoSocioeconomico? CodEstratoNavigation { get; set; }
         public virtual CregEtapa CodEtapaNavigation { get; set; } = null!;
         public virtual CregTipoConexion CodTipoConexionNavigation { get; set; } = null!;
-        public virtual ICollection<Creg075Anexo> Creg075Anexos { get; set; }
-        public virtual Creg075Detalle Creg075Detalles { get; set; }
-        public virtual ICollection<Creg075DetallesCuenta> Creg075DetallesCuentas { get; set; }
-        public virtual ICollection<Creg075Disenio> Creg075Disenios { get; set; }
-        public virtual ICollection<Creg075Factibilidad> Creg075Factibilidads { get; set; }
-        public virtual Creg075Predio? Creg075Predios { get; set; }
+        public virtual CregTipoCliente CodTipoUsoNavigation { get; set; }
         public virtual ICollection<Creg075Solicitante> Creg075Solicitantes { get; set; }
         public virtual Creg075Suscriptor? Creg075Suscriptors { get; set; }
-        //public virtual ICollection<SolServicioConexionReciboTecnicoDTO> SolReciboTecnicos { get; set; }
-        //public List<ReciboTecnicoDTO> ReciboTecnico { get; internal set; }
+        public virtual Creg075Detalle Creg075Detalles { get; set; }
+        public virtual ICollection<Creg075DetallesCuenta> Creg075DetallesCuentas { get; set; }
+        public virtual Creg075Predio? Creg075Predios { get; set; }
+        public virtual ICollection<Creg075Anexo> Creg075Anexos { get; set; }
+        public virtual ICollection<Creg075ReciboTecnico> Creg075ReciboTecnicos { get; set; }
+        public virtual ICollection<Creg075Factibilidad> Creg075Factibilidads { get; set; }
+
+
+        public virtual ICollection<Creg075Disenio> Creg075Disenios { get; set; }
+        public virtual ICollection<Creg075DisenioAnexo> Creg075DisenioAnexos { get; set; }
+        public virtual ICollection<Creg075Pasos> Creg075Pasos { get; set; }
+        public virtual ICollection<Creg075ReciboTecnicoAnexo> Creg075ReciboTecnicoAnexo { get; set; }
+        public virtual ICollection<Creg075DisenioDocu> Creg075DisenioDocu { get; set; }
     }
 }

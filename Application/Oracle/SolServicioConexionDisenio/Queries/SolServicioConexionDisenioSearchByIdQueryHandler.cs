@@ -25,7 +25,6 @@
                 };
             var entity = (await _SolServicioConexionDisenioService.GetAll(filter: x=> x.Cod075Conexion == request.Id && x.Estado.HasValue && x.Estado.Value , 
                                                                               includeObjectProperties: includes)).FirstOrDefault();
-
             return _mapper.Map<SolServicioConexionDisenioDTO>(entity);
         }
     }

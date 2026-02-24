@@ -5,6 +5,11 @@ namespace Core.Entities.Oracle
 {
     public partial class Creg075FactibilidadDetCuen
     {
+        public Creg075FactibilidadDetCuen()
+        {
+            Estado = true;
+        }
+
         public int Id { get; set; }
         public long Cod075Factibilidad { get; set; }
         public int CodTipoCarga { get; set; }
