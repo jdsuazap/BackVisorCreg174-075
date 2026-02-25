@@ -4,7 +4,7 @@
 
     public class SolServicioConexionFactibilidadRequest
     {
-        public int CodSolServicioConexion { get; set; }
+        public int Cod075Conexion { get; set; }
 
         public string NumeroFactibilidad { get; set; } = null!;
 
@@ -20,33 +20,33 @@
 
         public long CargaExistente { get; set; }
 
-        public int CodigoNivelAprobacion { get; set; }
+        public int NivelAprobacion { get; set; }
 
-        public string? NombreCircuitoBt { get; set; }
+        public string? NombreCircuitobt { get; set; }
 
-        public string? NumeroCircuitoBt { get; set; }
+        public string? NumeroCircuitobt { get; set; }
 
-        public string NombreCircuitoMt { get; set; } = null!;
+        public string NombreCircuitomt { get; set; } = null!;
 
-        public string NumeroCircuitoMt { get; set; } = null!;
+        public string NumeroCircuitomt { get; set; } = null!;
 
-        public string SubEstacionPotencia { get; set; } = null!;
+        public string SubestacionPotencia { get; set; } = null!;
 
         public string DistanciaPuntoConexion { get; set; } = null!;
 
-        public string NivelCortocircuitoTrifasico { get; set; } = null!;
+        public string NivelTrifasico { get; set; } = null!;
 
-        public string NivelCortocircuitoMonofasico { get; set; } = null!;
+        public string NivelMonofasico { get; set; } = null!;
 
         public string TransformadorDistribucion { get; set; } = null!;
 
         public string NumeroNodo { get; set; } = null!;
 
-        public string GeoReferenciaLongitud { get; set; } = null!;
+        public string Longitud { get; set; } = null!;
 
-        public string GeoReferenciaLatitud { get; set; } = null!;
+        public string Latitud { get; set; } = null!;
 
-        public string? GeoReferenciaH { get; set; }
+        public string? Altura { get; set; }
 
         public bool? Estado { get; set; }
 
