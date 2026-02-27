@@ -46,5 +46,25 @@
             }
         }
 
+        /// <summary>
+        /// Metodo para consultar Datos Iniciales
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        [HttpGet("GetDatosGenerales", Name = "GetDatosGenerales")]
+        [Consumes("application/json")]
+        public async Task<IActionResult> GetDatosGenerales()
+        {
+            try
+            {
+                var entityResp = await _mediator.Send(new SolServicioConexionDisenioInitialDataQuery());
+                var response = new ApiResponse<DatosAnexosDisenioDTO>(entityResp, 200);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                throw new BusinessException($"Error en la búsqueda. Detalle: {e.Message}");
+            }
+        }
     }
 }

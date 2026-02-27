@@ -43,5 +43,26 @@
                 throw new BusinessException($"Error en la búsqueda. Detalle: {e.Message}");
             }
         }
+
+        /// <summary>
+        /// Metodo para consultar Datos Iniciales
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        [HttpGet("GetDatosGeneralesFac", Name = "GetDatosGeneralesFac")]
+        [Consumes("application/json")]
+        public async Task<IActionResult> GetDatosGeneralesFac()
+        {
+            try
+            {
+                var entityResp = await _mediator.Send(new SolServicioConexionFactibilidadInitialDataQuery ());
+                var response = new ApiResponse<DatosAnexosDTO>(entityResp, 200);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                throw new BusinessException($"Error en la búsqueda. Detalle: {e.Message}");
+            }
+        }
     }
 }

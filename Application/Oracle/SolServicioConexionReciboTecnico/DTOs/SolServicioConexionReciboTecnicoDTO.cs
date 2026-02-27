@@ -3,7 +3,7 @@
     using Application.Oracle.SolServicioConexionReciboTecnico.DTOs;
     public class ReciboTecnicoBaseDTO
     {
-        public int CodSolServicioConexion { get; set; }
+        public int Cod075Conexion { get; set; }
         public DateTime FechaSolicitud { get; set; }
         public int CodTipoSolicitud { get; set; }
         public List<int> CodTiposProyectos { get; set; }
@@ -14,7 +14,7 @@
         public string Direccion { get; set; }
         public string Comercializador { get; set; }
         public string NumeroMatricula { get; set; }
-        public string ClienteCargoCobroMedidores { get; set; }
+        public string ClienteCargoMedidor { get; set; }
         public int CodPersonaAutorizacion { get; set; }
         public int CodTipoCompletitud { get; set; }
         public int EtapaProyecto { get; set; }
