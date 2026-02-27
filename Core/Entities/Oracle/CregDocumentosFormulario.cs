@@ -19,12 +19,12 @@ namespace Core.Entities.Oracle
         public string NombreDocumento { get; set; } = null!;
         public string Descripcion { get; set; } = null!;
         public bool? Estado { get; set; }
-        public bool? Requiered { get; set; }
+        public bool Requiered { get; set; }
         public long Limitload { get; set; }
         public bool? Vigencia { get; set; }
         public int VigenciaMaxima { get; set; }
         public bool? IsCampo { get; set; }
-        public decimal? CodFormulario { get; set; }
+        public int CodFormulario { get; set; }
 
         public virtual ICollection<Creg075Anexo> Creg075Anexos { get; set; }
         public virtual ICollection<Creg174Anexo> Creg174Anexos { get; set; }

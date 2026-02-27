@@ -9,7 +9,7 @@ namespace Core.Entities.Oracle
         {
             Etapa = 1;
             Creg075ReciboTecnicoAnexo = new HashSet<Creg075ReciboTecnicoAnexo>();
-            //SolServicioConexionTipoProyectoPorReciboTecnicos = new HashSet<SolServicioConexionTipoProyectoPorReciboTecnico>();
+            Creg075ReciboTecnicoProy = new HashSet<Creg075ReciboTecnicoProy>();
         }
 
         public int Id { get; set; }
@@ -47,6 +47,6 @@ namespace Core.Entities.Oracle
         public virtual CregTipoSolicitudRecibo CregTipoSolicitudRecibo { get; set; }
         public Creg075ServicioConexion Creg075ServicioConexion { get; set; }
         public ICollection<Creg075ReciboTecnicoAnexo> Creg075ReciboTecnicoAnexo { get; set; }
-        //public virtual ICollection<SolServicioConexionTipoProyectoPorReciboTecnico> SolServicioConexionTipoProyectoPorReciboTecnicos { get; set; }
+        public virtual ICollection<Creg075ReciboTecnicoProy> Creg075ReciboTecnicoProy { get; set; }
     }
 }

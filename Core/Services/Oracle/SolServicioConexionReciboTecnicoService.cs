@@ -1,30 +1,18 @@
 ﻿namespace Core.Services.Oracle
 {
-    using Core.CustomEntities;
     using Core.Entities.Oracle;
-    using Core.Enumerations;
-    using Core.Exceptions;
     using Core.Interfaces;
     using Core.Interfaces.Oracle;
-    using Core.Options;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.Extensions.Options;
     using System.Linq.Expressions;
 
     public class SolServicioConexionReciboTecnicoService : ISolServicioConexionReciboTecnicoService
     {
         private readonly IUnitOfWork _unitOfWork;
-        //private readonly IFileWithDoccPerFormDependenciesService<Creg075ReciboTecnicoAnexo> _solServicioConexionFileService;
-        private readonly PathOptions _pathOptions;
 
         public SolServicioConexionReciboTecnicoService(
-            IUnitOfWork unitOfWork,
-            //IFileWithDoccPerFormDependenciesService<Creg075ReciboTecnicoAnexo> solServicioConexionFileService,
-            IOptions<PathOptions> pathOptions)
+            IUnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork;
-            //_solServicioConexionFileService = solServicioConexionFileService;
-            _pathOptions = pathOptions.Value;
+            _unitOfWork = unitOfWork;            
         }
 
        

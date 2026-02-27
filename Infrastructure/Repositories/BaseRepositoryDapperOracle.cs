@@ -125,6 +125,7 @@ namespace Infrastructure.Repositories
                 foreach (Expression<Func<T, object>> include in includeObjectProperties)
                 {
                     query = query.Include(include);
+                    var sql = query.ToQueryString();
                 }
             }
 

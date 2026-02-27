@@ -7,7 +7,6 @@
     using Core.Entities.Oracle;
     using Core.Exceptions;
     using Core.Interfaces;
-    using Core.Interfaces.Oracle;
     using MediatR;
     using System.Linq.Expressions;
 
@@ -28,8 +27,8 @@
         {
             Expression<Func<Creg075ReciboTecnico, object>>[] includes = {
                     x => x.Creg075ReciboTecnicoAnexo,
-                    x=>x.Creg075ServicioConexion
-                    //x=>x.SolServicioConexionTipoProyectoPorReciboTecnicos
+                    x => x.Creg075ServicioConexion,
+                    x => x.Creg075ReciboTecnicoProy
             };
 
             var solicitud = (await _unitOfWork.SolServicioConexionRepository.GetAll(filter: x => x.NumeroRadicado == request.Numero_Radicado)).FirstOrDefault();
@@ -53,7 +52,7 @@
 
                 reciboTecnicoDto.NumeroFactibilidad = entity_solicitud.Creg075Factibilidads.FirstOrDefault().NumeroFactibilidad;
                 reciboTecnicoDto.NumeroMatricula = entity_solicitud.Creg075Predios.MatriculaInmobiliaria;
-                //reciboTecnicoDto.CodTiposProyectos = entity.SolServicioConexionTipoProyectoPorReciboTecnicos.Select(x => x.CodTipoProyecto).ToList();
+                reciboTecnicoDto.CodTiposProyectos = entity.Creg075ReciboTecnicoProy.Select(x => x.CodTipoProyecto).ToList();
 
                 var reciboPorEtapa = solServicioConexionReciboTecnicoPorEtapas.FirstOrDefault(x => x.Etapa == entity.Etapa);
                 if (reciboPorEtapa != null)
