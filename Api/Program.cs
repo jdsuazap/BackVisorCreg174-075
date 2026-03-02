@@ -30,6 +30,7 @@ builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
 //builder.Services.AddControllers();
 builder.Services.AddControllers(options =>
 {
+    options.Filters.Add<GlobalExceptionFilter>();
     options.Filters.Add<ValidationFilter>();
     //options.Filters.Add<RolesFilter>();
     //options.Filters.Add<ResultFilter>();
