@@ -6,6 +6,7 @@
     using Core.Interfaces;
     using Core.Interfaces.Oracle;
     using Core.Options;
+    using Core.Services;
     using Core.Services.Oracle;
     using Infrastructure.Data;
     using Infrastructure.Interfaces;
@@ -76,6 +77,8 @@
             services.Configure<PaginationOptions>(options => configuration.GetSection("Pagination").Bind(options));
             services.Configure<PasswordOptions>(options => configuration.GetSection("PasswordOptions").Bind(options));
             services.Configure<PathOptions>(options => configuration.GetSection("PathOptions").Bind(options));
+            services.Configure<CodigoVerificacionOptions>(options => configuration.GetSection("CodigoVerificacionOptions").Bind(options));
+            services.Configure<CredencialesCorreoOptions>(options => configuration.GetSection("CredencialesCorreoOptions").Bind(options));
 
             return services;
         }
@@ -115,6 +118,8 @@
             //services.AddTransient<IPasosSolServicioConexionService, PasosSolServicioConexionService>();
             services.AddTransient<ISolServicioConexionDisenioService, SolServicioConexionDisenioService>();
             services.AddTransient<ISolServicioConexionReciboTecnicoService, SolServicioConexionReciboTecnicoService>();
+            services.AddTransient<ICodigoVerificacionService, CodigoVerificacionService>();
+            services.AddTransient<IEmailService, EmailService>();
 
 
             //services.AddTransient<IMotivoProrrogaService, MotivoProrrogaService>();          

@@ -2,8 +2,10 @@ namespace Api.Controllers
 {
     using Application.Oracle.File.Queries;
     using MediatR;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize]
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
