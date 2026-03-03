@@ -40,9 +40,9 @@
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        [HttpPost("VerificarCodigoSMS", Name = "VerificarCodigoSMS")]
+        [HttpPost("VerificarCodigo", Name = "VerificarCodigo")]
         [Consumes("application/json")]
-        public async Task<IActionResult> VerificarCodigoSMS([FromBody] VerificarCodigoQuery entity)
+        public async Task<IActionResult> VerificarCodigo([FromBody] VerificarCodigoQuery entity)
         {
             var entityResp = await _mediator.Send(entity);
             var response = new ApiResponse<object>(null, 0);
