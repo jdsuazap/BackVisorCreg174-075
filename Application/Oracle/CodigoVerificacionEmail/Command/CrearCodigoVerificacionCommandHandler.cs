@@ -55,7 +55,9 @@
                 email = entity.EmailCliente;
             }
 
-            email = "johndasua@hotmail.com";
+            //Pruebas
+            //email = "johndasua@hotmail.com";
+
             await _crearCodigoVerificacionService.GenerarCodigoVerificacion(email, "Código de verificación visualización solicitud", "Verificación de Solicitud");
             
             return new EnvioCodigoReponse { Email = email };

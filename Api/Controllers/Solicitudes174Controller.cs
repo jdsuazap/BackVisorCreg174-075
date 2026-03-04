@@ -57,6 +57,7 @@ namespace Api.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("GetTrafoPotenciaReservada", Name = "GetTrafoPotenciaReservada")]
         public async Task<IActionResult> GetTrafoPotenciaReservada([FromQuery] InfoFormularioSearchQuery parameters)
         {
