@@ -69,7 +69,7 @@
         public decimal? Demanda { get; set; }
         public decimal? Ltotal { get; set; }
         public string? Tiposub { get; set; }
-        public byte? Zonae { get; set; }
+        public int? Zonae { get; set; }
         public int? Idmercado { get; set; }
         public bool? Islight { get; set; }
         public bool? Deleted { get; set; }
