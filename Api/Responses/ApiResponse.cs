@@ -1,6 +1,4 @@
 ﻿using Core.CustomEntities;
-using Core.Entities;
-using System.Collections.Generic;
 
 namespace Api.Responses
 {

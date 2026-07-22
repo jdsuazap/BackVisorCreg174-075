@@ -1,13 +1,9 @@
 ﻿namespace Infrastructure.Repositories.Oracle
 {
     using Core.Entities.Oracle;
-    using Core.Exceptions;
     using Core.Interfaces.Oracle;
-    using Core.ModelResponse;
     using Infrastructure.Data;
     using Infrastructure.Interfaces;
-    using Infrastructure.Utils;
-    using Microsoft.EntityFrameworkCore;
 
     public class EmpresasRepository : BaseRepositoryDapperOracle<CregEmpresa>, IEmpresasRepository
     {

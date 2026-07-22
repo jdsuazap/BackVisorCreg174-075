@@ -24,6 +24,11 @@
                 .HasPrecision(10)
                 .HasColumnName("COD_ESTADO");
 
+            entity.Property(e => e.FechaRegistro)
+                .HasColumnType("DATE")
+                .HasColumnName("FECHA_REGISTRO")
+                .HasDefaultValueSql("SYSDATE ");
+
             entity.Property(e => e.Estado)
                 .IsRequired()
                 .HasPrecision(1)

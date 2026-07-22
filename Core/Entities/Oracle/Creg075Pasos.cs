@@ -14,6 +14,7 @@ namespace Core.Entities.Oracle
         public int CodEstado { get; set; }
         public int Etapa { get; set; }
         public bool? Estado { get; set; }
+        public DateTime FechaRegistro { get; set; }
 
         public virtual CregEstado CregEstado { get; set; }
         public virtual Creg075ServicioConexion Creg075ServicioConexion { get; set; }

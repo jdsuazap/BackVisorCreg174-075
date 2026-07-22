@@ -164,37 +164,5 @@
 
             return result.ToList();
         }
-
-        public async Task<List<Creg174Pasos>> GetPasosByRadicado(string numRadicado)
-        {
-            var param = new { Radicado = numRadicado };
-
-            var query = SolConexionAutogenQuery.GetPasosByRadicado;
-            return (await _dapperContext.QueryAsync<Creg174Pasos, CregEstado, Creg174Pasos>(query,
-                (pasosSolConexionAutogen, estado) =>
-                {
-                    pasosSolConexionAutogen.CregEstado = estado;
-                    return pasosSolConexionAutogen;
-                }, param)).ToList();
-        }
-
-
-        //public async Task<List<SolConexionAutogenObservacion>> GetObservacionBySolicitud(int idEntity)
-        //{
-        //    var param = new { IdSolicitud = idEntity };
-
-        //    var query = SolConexionAutogenQuery.GetObservacionBySolicitud;
-        //    //return (await _dapperContext.QueryAsync<SolConexionAutogenObservacion, SolConexionAutogenObservacion>(query,
-        //    //    (observacion, anexos) =>
-        //    //    {
-        //    //        if (anexos != null)
-        //    //        {
-        //    //            observacion.SolConexionAutogenObservacionAnexos.Add(anexos);
-        //    //        }
-        //    //        return observacion;
-        //    //    }, param)).ToList();
-
-        //    return null;
-        //}
     }
 }
