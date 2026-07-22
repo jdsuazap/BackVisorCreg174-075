@@ -33,7 +33,7 @@
 
             solicitud.Creg075Anexos = await GetAnexosBySolicitud(idEntity);
             solicitud.Creg075DetallesCuentas = await GetDetalleCuentaBySolicitud(idEntity);
-            solicitud.Creg075Pasos = await GetPasosBySolicitud(idEntity);
+            solicitud.Creg075Historico = await GetPasosBySolicitud(idEntity);
             return solicitud;
         }
 

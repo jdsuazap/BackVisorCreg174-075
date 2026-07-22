@@ -47,7 +47,7 @@
                 .HasConstraintName("FK_PasosSolServicioConexion_Estados");
 
             entity.HasOne(d => d.Creg075ServicioConexion)
-                .WithMany(p => p.Creg075Pasos)
+                .WithMany(p => p.Creg075Historico)
                 .HasForeignKey(d => d.Cod075Conexion)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PasosSolServicioConexion_SolServicioConexion");

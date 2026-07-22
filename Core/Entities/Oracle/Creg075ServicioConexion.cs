@@ -15,7 +15,7 @@ namespace Core.Entities.Oracle
             Creg075Factibilidads = new HashSet<Creg075Factibilidad>();
             Creg075Predios = new Creg075Predio();
             Creg075Solicitantes = new HashSet<Creg075Solicitante>();
-            Creg075Pasos = new HashSet<Creg075Pasos>();
+            Creg075Historico = new HashSet<Creg075Pasos>();
             Creg075ReciboTecnicos = new HashSet<Creg075ReciboTecnico>();
             Creg075ReciboTecnicoAnexo = new HashSet<Creg075ReciboTecnicoAnexo>();
         }
@@ -65,7 +65,7 @@ namespace Core.Entities.Oracle
 
         public virtual ICollection<Creg075Disenio> Creg075Disenios { get; set; }
         public virtual ICollection<Creg075DisenioAnexo> Creg075DisenioAnexos { get; set; }
-        public virtual ICollection<Creg075Pasos> Creg075Pasos { get; set; }
+        public virtual ICollection<Creg075Pasos> Creg075Historico { get; set; }
         public virtual ICollection<Creg075ReciboTecnicoAnexo> Creg075ReciboTecnicoAnexo { get; set; }
         public virtual ICollection<Creg075DisenioDocu> Creg075DisenioDocu { get; set; }
 

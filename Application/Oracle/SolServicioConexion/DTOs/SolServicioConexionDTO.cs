@@ -49,7 +49,7 @@
 
         public virtual ICollection<Creg075Disenio> Creg075Disenios { get; set; }
         public virtual ICollection<Creg075DisenioAnexo> Creg075DisenioAnexos { get; set; }
-        public virtual ICollection<Creg075Pasos> Creg075Pasos { get; set; }
+        public virtual ICollection<Creg075Pasos> Creg075Historico { get; set; }
         public virtual ICollection<Creg075ReciboTecnicoAnexo> Creg075ReciboTecnicoAnexo { get; set; }
         public virtual ICollection<Creg075DisenioDocu> Creg075DisenioDocu { get; set; }
     }

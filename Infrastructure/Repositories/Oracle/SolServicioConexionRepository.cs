@@ -41,7 +41,7 @@
             entity => entity.Creg075DetallesCuentas,
             entity => entity.Creg075Predios,
             entity => entity.Creg075Anexos,
-            entity => entity.Creg075Pasos,
+            entity => entity.Creg075Historico,
         };
 
         public async Task<Creg075ServicioConexion> GetEntity(int idEntity, int Empresa)
